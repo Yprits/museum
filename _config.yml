@@ -1,7 +1,3 @@
-title: Музей вычислительной техники
-baseurl: "/museum"  # Критически важно!
-url: "https://yprits.github.io"
-
 collections:
   exhibits:
     output: true
