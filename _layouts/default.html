@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  {% raw %}{% include head.html %}{% endraw %}
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+  </head>
   <body>
-    {% raw %}{% include header.html %}{% endraw %}
     {{ content }}
   </body>
 </html>
