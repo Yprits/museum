@@ -3,6 +3,6 @@ baseurl: "/museum"  # Критически важно!
 url: "https://yprits.github.io"
 
 collections:
-  collection:
+  exhibits:
     output: true
-    permalink: /collection/:path/
+    permalink: /museum/:name/
