@@ -1,4 +1,4 @@
+theme: minima
 collections:
-  exhibits:
-    output: true
-    permalink: /museum/:name/
+  exhibits:           # Это твоя коллекция экспонатов
+    output: true      # Разрешаем создавать страницы
