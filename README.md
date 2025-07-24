@@ -1,3 +1,10 @@
+---
+layout: default
+title: Home
+---
+<h1>{{ "Hello World!" | downcase }}</h1>
+
+
 # Музей вычислительной техники
 ## Что здесь есть
 - фото техники
