@@ -5,3 +5,4 @@ url: "https://yprits.github.io"
 collections:
   collection:
     output: true
+    permalink: /collection/:path/
