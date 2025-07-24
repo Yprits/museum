@@ -1,0 +1,15 @@
+name: Build Museum Catalog
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build Jekyll
+        run: |
+          cd Museum
+          echo "gem 'jekyll'" > Gemfile
+          bundle install
+          bundle exec jekyll build -d _site
