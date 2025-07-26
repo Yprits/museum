@@ -5,7 +5,7 @@ model: Б3-18А
 category: Инженерный калькулятор
 year: 1980
 serial:
-manufacturer:
+manufacturer: Электроника
 country: СССР
 price: неизвестно
 ---
