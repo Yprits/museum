@@ -9,4 +9,10 @@ manufacturer: Электроника
 country: СССР
 price: неизвестно
 condition: рабочий
+collectionstatus: в коллекции
+innernumber: ВЭИ-1
+tags:
+  - ussr
+  - 8bit
+  - retro
 ---
