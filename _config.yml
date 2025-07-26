@@ -25,3 +25,8 @@ defaults:
     country: неизвестна
     price: не указана
     condition: не проверено
+
+
+- scope:
+      path: "_models" # Применяется ко всем файлам в папке
+      type: models    # Тип коллекции
