@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+</head>
+
+  
+<body>
+  <div class="exhibit">
+    <h1>{{ page.title }}</h1>
+    
+    <!-- Основное фото -->
+    <img src="{{ page.photo }}" alt="{{ page.title }}">
+
+    <!-- Блок с характеристиками -->
+    <div class="specs">
+      {% if page.year %}<p><strong>Год выпуска:</strong> {{ page.year }}</p>{% endif %}
+      {% if page.manufacturer %}<p><strong>Производитель:</strong> {{ page.manufacturer }}</p>{% endif %}
+      {% if page.cpu %}<p><strong>Процессор:</strong> {{ page.cpu }}</p>{% endif %}
+      {% if page.ram %}<p><strong>Память:</strong> {{ page.ram }}</p>{% endif %}
+      {% if page.condition %}<p><strong>Состояние:</strong> {{ page.condition }}</p>{% endif %}
+      <!-- Добавьте другие поля по аналогии -->
+    </div>
+
+    <!-- Описание экспоната -->
+    <div class="description">
+      {{ content }}
+    </div>
+
+    <!-- Навигация -->
+    <div class="navigation">
+      {% if page.previous %}
+        <a href="{{ page.previous.url }}">← {{ page.previous.title }}</a>
+      {% endif %}
+      {% if page.next %}
+        <a href="{{ page.next.url }}">{{ page.next.title }} →</a>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
