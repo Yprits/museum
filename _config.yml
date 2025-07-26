@@ -6,3 +6,15 @@ collections:
   exhibits:           # Это твоя коллекция экспонатов
     output: true      # Разрешаем создавать страницы
     permalink: /:collection/:name/
+
+defaults:
+  values:
+    model: не указана
+    category: прочее
+    year: не указан
+    modelyears: неизвестны
+    serial: -
+    manufacturer: неизвестен
+    country: неизвестна
+    price: не указана
+    condition: не проверено
