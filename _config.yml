@@ -1,4 +1,5 @@
 remote_theme: pages-themes/minimal@v0.2.0
+baseurl: "/museum"
 collections:
   exhibits:           # Это твоя коллекция экспонатов
     output: true      # Разрешаем создавать страницы
