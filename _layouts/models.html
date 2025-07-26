@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | {{ site.title }}</title>
+</head>
+
+  
+<body>
+  <div class="model">
+    <h1>{{ page.title }}</h1>
+    
+    <!-- Основное фото -->
+    <!-- #<img src="{{ page.photo }}" alt="{{ page.title }}"> -->
+
+    <!-- Блок с характеристиками -->
+    <div class="specs">
+      <p><strong>Модель:</strong> {{ page.model }}</p>
+      <p><strong>Тип:</strong> {{ page.category }}</p>
+      <p><strong>Годы выпуска модели:</strong> {{ page.modelyears }}</p>
+      <p><strong>Производитель:</strong> {{ page.manufacturer }}</p>
+      <p><strong>Страна:</strong> {{ page.country }}</p>
+      <p><strong>Цена:</strong> {{ page.price }}</p>
+     
+      {% if page.cpu %}<p><strong>Процессор: </strong> {{ page.cpu }}</p>{% endif %}
+      {% if page.ram %}<p><strong>Память: </strong> {{ page.ram }}</p>{% endif %}
+      {% if page.material %}<p><strong>Материал: </strong> {{ page.material }}</p>{% endif %}
+      {% if page.inputs %}<p><strong>Ввод: </strong> {{ page.inputs }}</p>{% endif %}
+      {% if page.outputs %}<p><strong>Вывод: </strong> {{ page.outputs }}</p>{% endif %}
+      {% if page.storage %}<p><strong>Хранение информации: </strong> {{ page.storage }}</p>{% endif %}
+      
+      <!-- Добавьте другие поля по аналогии -->
+    </div>
+
+    <!-- Описание модели -->
+    <div class="description">
+      {{ content }}
+    </div>
+
+   
+  </div>
+</body>
+</html>
