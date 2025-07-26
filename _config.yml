@@ -8,6 +8,9 @@ collections:
     permalink: /:collection/:name/
 
 defaults:
+- scope:
+      path: "_exhibits" # Применяется ко всем файлам в папке
+      type: exhibits    # Тип коллекции
   values:
     model: не указана
     category: прочее
