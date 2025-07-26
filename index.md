@@ -1,5 +1,6 @@
 ---
 layout: default
-title: Home
+title: Главная
 ---
-<h1>{{ "Hello World!11" | downcase }}</h1>
+# Моя коллекция ретро-компьютеров
+[Список компьютеров](/computers)
