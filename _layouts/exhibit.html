@@ -17,7 +17,7 @@
     <div class="specs">
       <p><strong>Модель:</strong> {{ page.model }}</p>
       <p><strong>Тип:</strong> {{ page.category }}</p>
-      <p><strong>Год выпуска:</strong> {{ page.year }}</p>
+      <p><strong>Год выпуска:</strong> {{ page.year | default}}</p>
       <p><strong>Годы выпуска модели:</strong> {{ page.modelyears }}</p>
       <p><strong>Серийный номер:</strong> {{ page.serial }}</p>
       <p><strong>Производитель:</strong> {{ page.manufacturer }}</p>
