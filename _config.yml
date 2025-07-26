@@ -12,9 +12,9 @@ defaults:
       path: "_exhibits" # Применяется ко всем файлам в папке
       type: exhibits    # Тип коллекции
   values:
-    model: не указана
+    model: "не указана"
     category: прочее
-    year: не указан
+    year: "не указан"
     modelyears: неизвестны
     serial: -
     manufacturer: неизвестен
