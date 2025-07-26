@@ -5,6 +5,6 @@ year: 1989
 manufacturer: "ВЭИ им. Ленина"
 photo: "https://ваш-хостинг.ru/images/vei1.jpg"  # Внешняя ссылка
 cpu: "КР580ВМ80А (клон Intel 8080)"
-ram: "64 КБ"
+ram:
 condition: "Рабочее"
 ---
