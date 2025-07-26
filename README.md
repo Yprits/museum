@@ -1,7 +1,4 @@
----
-layout: pages
-title: Главная
----
+
 # Моя коллекция
 [Список](/museum/exhibits)
 
