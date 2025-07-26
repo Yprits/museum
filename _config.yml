@@ -14,7 +14,7 @@ defaults:
   values:
     model: "не указана"
     category: прочее
-    year: "не указан"
+    prodyear: "не указан"
     modelyears: неизвестны
     serial: "-"
     manufacturer: неизвестен
