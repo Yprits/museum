@@ -4,3 +4,4 @@ theme: minima # встроенная тема
 collections:
   exhibits:           # Это твоя коллекция экспонатов
     output: true      # Разрешаем создавать страницы
+    permalink: /:collection/:name/
