@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: pages
 title: Главная
 ---
 # Моя коллекция
