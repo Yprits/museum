@@ -7,7 +7,7 @@ collections:
     output: true      # Разрешаем создавать страницы
     permalink: /:collection/:name/
     
-  models:           # Это твоя коллекция экспонатов
+  models:           # Это твоя коллекция моделей
     output: true      # Разрешаем создавать страницы
     permalink: /:collection/:name/
 
