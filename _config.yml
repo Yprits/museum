@@ -11,6 +11,10 @@ collections:
     output: true      # Разрешаем создавать страницы
     permalink: /:collection/:name/
 
+  pages:           # Вспомогательные страницы (теги, списки, помощь и прочее барахло)
+    output: true      # Разрешаем создавать страницы
+    permalink: /:collection/:name/  
+
 defaults:
 - scope:
       path: "_exhibits" # Применяется ко всем файлам в папке
@@ -30,3 +34,5 @@ defaults:
 - scope:
       path: "_models" # Применяется ко всем файлам в папке
       type: models    # Тип коллекции
+
+      
