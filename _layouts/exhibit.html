@@ -18,7 +18,7 @@
       <p><strong>Модель:</strong> {{ page.model }}</p>
       <p><strong>Тип:</strong> {{ page.category }}</p>
       <p><strong>Год выпуска:</strong> {{ page.year | default}}</p>
-      <p><strong>Годы выпуска модели:</strong> {{ page.modelyears }}</p>
+      <p><strong>Годы выпуска модели:</strong> {{ page.modelyears | default: "ваще хз"}}</p>
       <p><strong>Серийный номер:</strong> {{ page.serial }}</p>
       <p><strong>Производитель:</strong> {{ page.manufacturer }}</p>
       <p><strong>Страна:</strong> {{ page.country }}</p>
