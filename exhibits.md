@@ -3,6 +3,8 @@ layout: pages
 title: "Все экспонаты коллекции"
 ---
 
+TEST!!!
+
 <h1>{{ page.title }}</h1>
 
 <div class="models-grid">
