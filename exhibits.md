@@ -1,5 +1,5 @@
 ---
-layout: pages
+layout: pgs
 title: "Все экспонаты коллекции"
 ---
 
