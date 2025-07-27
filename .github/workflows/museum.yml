@@ -1,4 +1,3 @@
-
 name: Build Museum Catalog
 on: [push]
 
@@ -8,10 +7,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Совместимая версия Ruby для Jekyll
+          bundler-cache: true  # Автоматически кэширует gem-зависимости
+          
       - name: Build Jekyll
         run: |
-          cd test
-          gem install jekyll
           echo "gem 'jekyll'" > Gemfile
           bundle install
-          bundle exec jekyll build -d _site          
+          bundle exec jekyll build -d _site
