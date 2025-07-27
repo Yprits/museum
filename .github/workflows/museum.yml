@@ -1,15 +1,28 @@
 name: Build Museum Catalog
+
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      # 1. Загрузка кода репозитория
+      - name: Checkout repository
+        uses: actions/checkout@v4
       
-      - name: Build Jekyll
+      # 2. Установка Ruby и кэширование зависимостей
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      
+      # 3. Установка зависимостей
+      - name: Install dependencies
         run: |
-          cd museum
-          echo "gem 'jekyll'" > Gemfile
           bundle install
-          bundle exec jekyll build -d _site          
+      
+      # 4. Сборка Jekyll-сайта
+      - name: Build Jekyll site
+        run: |
+          bundle exec jekyll build --trace
