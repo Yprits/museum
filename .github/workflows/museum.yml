@@ -10,7 +10,7 @@ jobs:
       
       - name: Build Jekyll
         run: |
-          ## пока уберем cd museum
+          cd museum
           echo "gem 'jekyll'" > Gemfile
           bundle install
           bundle exec jekyll build -d _site          
