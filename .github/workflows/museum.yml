@@ -10,11 +10,14 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'  # Совместимая версия Ruby для Jekyll
-          bundler-cache: true  # Автоматически кэширует gem-зависимости
+          ruby-version: '3.1'
+          bundler-cache: true
           
       - name: Build Jekyll
         run: |
-          echo "gem 'jekyll'" > Gemfile
+          # Создаем корректный Gemfile с указанием источника
+          echo "source 'https://rubygems.org'" > Gemfile
+          echo "gem 'jekyll'" >> Gemfile
+          
           bundle install
           bundle exec jekyll build -d _site
