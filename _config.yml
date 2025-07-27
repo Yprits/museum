@@ -12,9 +12,9 @@ collections:
     output: true      # Разрешаем создавать страницы
     permalink: /:collection/:name/
 
-  pages:           # Вспомогательные страницы (теги, списки, помощь и прочее барахло)
+  pgs:           # Вспомогательные страницы (теги, списки, помощь и прочее барахло)
     output: true      # Разрешаем создавать страницы
-    #permalink: /:collection/:name/  
+    permalink: /:collection/:name/  
 
 defaults:
 - scope:
