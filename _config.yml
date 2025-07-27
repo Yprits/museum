@@ -1,7 +1,7 @@
 baseurl: "/museum"
 title: "Моя коллекция"
 # theme: minima # встроенная тема
-theme: hacker
+remote_theme: pages-themes/hacker@v0.2.0
 collections:
   exhibits:           # Это твоя коллекция экспонатов
     output: true      # Разрешаем создавать страницы
