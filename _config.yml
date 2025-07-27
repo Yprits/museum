@@ -4,10 +4,6 @@ url: "https://yprits.github.io"
 title: "Моя коллекция"
 # theme: minima # встроенная тема
 remote_theme: pages-themes/hacker@v0.2.0
-
-plugins:
-- jekyll-remote-theme
-
 collections:
   exhibits:           # Это твоя коллекция экспонатов
     output: true      # Разрешаем создавать страницы
