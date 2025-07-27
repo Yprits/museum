@@ -9,7 +9,7 @@ jobs:
       
       - name: Build Jekyll
         run: |
-          cd .github
+          cd _models
           echo "gem 'jekyll'" > Gemfile
           bundle install
           bundle exec jekyll build -d _site          
