@@ -1,4 +1,4 @@
-name: Build Museum Catalog
+museumname: Build Museum Catalog
 on: [push]
 
 jobs:
@@ -9,7 +9,7 @@ jobs:
       
       - name: Build Jekyll
         run: |
-          cd 
+          cd museum
           echo "gem 'jekyll'" > Gemfile
           bundle install
           bundle exec jekyll build -d _site
