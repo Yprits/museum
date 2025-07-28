@@ -2,6 +2,13 @@
 body {
   background-color: #202020; /* Глубокий темный фон */
   color: #e0e0e0;          /* Светло-серый текст */
+  
+  font-family: Verdana, Georgia, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #e8e8e8;      /* Для темного фона */
+  background: #121212;
+  max-width: 700px;    /* Ограничение ширины текста */
 }
 
 /* Для заголовков */
