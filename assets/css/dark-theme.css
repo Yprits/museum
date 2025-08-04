@@ -1,7 +1,7 @@
 /* dark-theme.css */
 body {
-  background-color: #202020; /* Глубокий темный фон */
-  color: #e0e0e0;          /* Светло-серый текст */
+  background-color: #f2f3f4; /*Мягко-белый фон */
+  color: #222222;          /* темный текст */
   
   font-family: Verdana, Georgia, sans-serif;
   font-size: 16px;
