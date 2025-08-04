@@ -6,14 +6,14 @@ body {
   font-family: Verdana, Georgia, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: #e8e8e8;      /* Для темного фона */
-  background: #121212;
+  color: #222222;      /* Для темного фона */
+  background: #f2f3f4;
   max-width: 700px;    /* Ограничение ширины текста */
 }
 
 /* Для заголовков */
 h1, h2, h3, h4, h5, h6 {
-  color: #ffffff;         /* Чистый белый для заголовков */
+  color: #333333;         /* Чистый белый для заголовков */
 }
 
 /* Для ссылок */
