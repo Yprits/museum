@@ -7,7 +7,7 @@ title: "Все экспонаты коллекции"
 
 Чтобы посмотреть информацию про любой экземпляр, просто кликните на его номер в коллекции!
 
-Хотите искать по моделям? Вам  <a href="https://yprits.github.io/museum">сюда</a>.
+Хотите искать по моделям? Вам  <a href="https://yprits.github.io/museum/models">сюда</a>.
 
 {% for exhibit in site.exhibits %}
 <a href="{{ exhibit.url | relative_url }}">
