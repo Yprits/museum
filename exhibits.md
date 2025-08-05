@@ -3,12 +3,13 @@ layout: pgs
 title: "Все экспонаты коллекции"
 ---
 
-# На этой странице можно посмотреть, какие модели есть (или разыскиваются!) в музей
+# На этой странице можно посмотреть все экспонаты в коллекции
 
 Хотите узнать про какую-либо модель? Просто кликните на ее название! 
 
-{% for model in site.models %}
+{% for exhibit in site.exhibits %}
 <a href="{{ model.url | relative_url }}">
-    {{ model.title }}
+    {{ exhibit.innernumber }}
+    {{ exhibit.model}}
   </a>
 {% endfor %}
