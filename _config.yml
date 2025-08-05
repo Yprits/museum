@@ -36,7 +36,4 @@ defaults:
 - scope:
       path: "_models" # Применяется ко всем файлам в папке
       type: models    # Тип коллекции
-    values:
-      status: "ПОИСК"
-
       
