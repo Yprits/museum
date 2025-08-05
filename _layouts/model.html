@@ -48,12 +48,13 @@
     {% if page.status | default: "ПОИСК" | upcase == "ПОИСК" %}
       <span style="background-color: yellow; color: red; font-weight: bold; padding: 2px 6px;">
         {{ page.status | default: "ПОИСК" }}
-      </span>
-    {% else %}
-      {{ page.status }}
-    {% endif %}
-  </p>
-        
+        </span>
+      {% else %}
+        {{ page.status }}
+      {% endif %}
+    </p>
+      
+   {% if page.seek %}<p><strong>Что требуется: </strong> {{ page.seek }}</p>{% endif %}     
       
       <!-- Добавьте другие поля по аналогии -->
     </div>
