@@ -35,7 +35,7 @@
       <p><strong>Производитель:</strong> {{ page.manufacturer }}</p>
       <p><strong>Страна:</strong> {{ page.country }}</p>
       <p><strong>Цена:</strong> {{ page.price }}</p>
-      <p><strong>Статус:</strong> {{ page.status }}</p>
+      
      
       {% if page.cpu %}<p><strong>Процессор: </strong> {{ page.cpu }}</p>{% endif %}
       {% if page.ram %}<p><strong>Память: </strong> {{ page.ram }}</p>{% endif %}
@@ -43,6 +43,16 @@
       {% if page.inputs %}<p><strong>Ввод: </strong> {{ page.inputs }}</p>{% endif %}
       {% if page.outputs %}<p><strong>Вывод: </strong> {{ page.outputs }}</p>{% endif %}
       {% if page.storage %}<p><strong>Хранение информации: </strong> {{ page.storage }}</p>{% endif %}
+
+      <p><strong>Статус:</strong>
+    {% if page.status | default: "ПОИСК" | upcase == "ПОИСК" %}
+      <span style="background-color: yellow; color: red; font-weight: bold; padding: 2px 6px;">
+        {{ page.status | default: "ПОИСК" }}
+      </span>
+    {% else %}
+      {{ page.status }}
+    {% endif %}
+  </p>
       
       <!-- Добавьте другие поля по аналогии -->
     </div>
