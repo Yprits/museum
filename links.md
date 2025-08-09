@@ -26,20 +26,28 @@ title: Ссылки
 [Музей советских калькуляторов](https://elektronika.su/) - содержит качественные фотографии и сжатые, но емкие описания.
 
 [Инвариант](https://electronika-5.ru/) - содержит большую коллекцию [документации](https://electronika-5.ru/calc/index.php?page=doc_calc) и крайне полезную [таблицу](https://electronika-5.ru/calc/index.php?page=factories) с логотипами производителей. Давно не обновлялся.
+
 [MyCalcDB](http://mycalcdb.free.fr/) - большая база данных для маленьких калькуляторов. Есть [страница](http://mycalcdb.free.fr/main.php?l=0&b=140) "Электроники". Давно не обновлялся.
+
 [Virtual Museum of Calculators](http://www.arithmomuseum.com/?&lang=en) - венгерский сайт о калькуляторах. Есть достаточно подробные статьи о [советских](http://www.arithmomuseum.com/album.php?ao=17&lang=en) моделях.
+
+[RSKEY.ORG](https://www.rskey.org/CMS/) - сайт Виктора Тота, посвященный в основном программируемым калькуляторам. Есть в коллекции и [механические](https://www.rskey.org/CMS/exhibit-hall?view=article&id=113), и просто [интересные](https://www.rskey.org/CMS/exhibit-hall?view=article&id=114) образцы.
 
 
 ---
 
-### Конкретные модели и серии
+### Конкретные модели, серии и производители
 
 #### Советские программируемые микрокалькуляторы (от Б3-21 до МК 52)
 
 [Lord_BSS project: ПМК](https://lordbss.narod.ru/pmk.html) - большое собрание игр для МК 61/52.
 [Эмулятор русских кулькуляторов](https://mk-61.moy.su/emulator.html) - точный (поддерживает всю ЕГГОГологию) и один из самых функциональных эмуляторов калькуляторов Б3-34, МК 54, МК 56 и МК 61.
+
 [Расширенный эмулятор МК 61/54](https://play.google.com/store/apps/details?id=com.cax.pmk.ext&hl=ru) для Android - версия для телефона. Сам им постоянно пользуюсь.
-[]
+
+#### Texas Instruments
+
+[Datamath Calculator Museum](http://www.datamath.org/) - посвящен калькуляторам (и не только) разработки и производства Texas Instruments. 
 
 ---
 
@@ -47,6 +55,7 @@ title: Ссылки
 ### Общее
 
 [Open Library](https://openlibrary.org/) - открытая библиотека с огромным фондом литературы, в том числе на ретро-тематику. Некоторые книги можно скачать, некоторые - только просматривать на сайте. Рекомендую зарегистрироваться.
+
 [Internet Archive](https://archive.org/) - собрание всевозможной информации от копий веб-страниц до старой литературы и компьютерных программ.
 
 
