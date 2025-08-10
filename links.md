@@ -31,7 +31,8 @@ title: Ссылки
 
 [Virtual Museum of Calculators](http://www.arithmomuseum.com/?&lang=en) - венгерский сайт о калькуляторах. Есть достаточно подробные статьи о [советских](http://www.arithmomuseum.com/album.php?ao=17&lang=en) моделях.
 
-[RSKEY.ORG](https://www.rskey.org/CMS/) - сайт Виктора Тота, посвященный в основном программируемым калькуляторам. Есть в коллекции и [механические](https://www.rskey.org/CMS/exhibit-hall?view=article&id=113), и просто [интересные](https://www.rskey.org/CMS/exhibit-hall?view=article&id=114) образцы.
+[RSKEY.ORG](https://www.rskey.org/CMS/) - сайт Виктора Т. Тота, посвященный в основном программируемым калькуляторам. Есть в коллекции и [механические](https://www.rskey.org/CMS/exhibit-hall?view=article&id=113), и просто [интересные](https://www.rskey.org/CMS/exhibit-hall?view=article&id=114) образцы.
+
 
 
 ---
