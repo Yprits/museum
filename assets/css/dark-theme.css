@@ -32,3 +32,33 @@ code, pre {
   color: #d4d4d4;          /* Светло-серый текст кода */
   border: 1px solid #333; /* Тонкая граница */
 }
+
+
+
+
+
+
+/* Максимально упрощенная версия */
+details {
+  margin: 8px 0;
+}
+
+summary {
+  cursor: pointer;
+  color: #008888;
+  font-weight: bold;
+  list-style: none;
+  padding-left: 20px;
+  position: relative;
+}
+
+summary::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #00aaaa;
+}
+
+details[open] summary::before {
+  content: "▼";
+}
