@@ -10,7 +10,7 @@ country: СССР
 price: 45 сов.руб.
 condition: рабочий. Контакты батарей окислены, 1 паз на крышке сломан. Нет винта задней крышки.
 collectionstatus: в коллекции
-innernumber: ВЭИ-2
+innernumber: ВЭА-2
 tags:
   - ussr
   - retro
