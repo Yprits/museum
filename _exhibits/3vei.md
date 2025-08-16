@@ -10,7 +10,7 @@ country: СССР
 price: 210 сов.руб.
 condition: рабочий
 collectionstatus: в коллекции
-innernumber: ВЭИ-2
+innernumber: ВЭИ-3
 aquired_date:
 complect: Калькулятор, чехол
 tags:
