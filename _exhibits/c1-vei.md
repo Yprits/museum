@@ -7,7 +7,7 @@ prodyear: 5.1980
 serial: 43078
 manufacturer: Электроника (НПО)
 country: СССР
-price: неизвестно
+price: 204 сов.руб.
 condition: рабочий
 collectionstatus: в коллекции
 innernumber: ВЭИ-1
