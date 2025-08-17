@@ -17,7 +17,7 @@ title: Литература
 
 - **Donald D.Spencer. The Timetable of Computers. 1999**: [веб-страница](https://archive.org/details/TheTimetableOfComputers/page/n5/mode/1up) / [прямая ссылка](https://ia802803.us.archive.org/14/items/TheTimetableOfComputers/The%20Timetable%20of%20Computers.pdf) - англоязычная хронология вычислительной техники.
 - **Апокин И.А., Майстров Л.Е. Развитие вычислительных машин/ 1974**: [прямая ссылка](https://publ.lib.ru/ARCHIVES/A/APOKIN_Igor'_Alekseevich/Apokin_I.A...__Razvitie_vychislitel'nyh_mashin.(1974).[djv].zip) - книга об истории вычислительных машин от их возникновения до второй половины XX века с особой концентрацией на ЭВМ.
-- **Blinkenlights. Pop Quiz: What was the first personal computer?** [прямая ссылка](http://www.blinkenlights.com/pc.shtml) - попытка найти "первый персональный компьютер", которая отправляет нас в глубину веков.
+
 
 
 ### Механика и до-механика
@@ -35,6 +35,17 @@ title: Литература
 
 
 ## Статьи
+
+## Русскоязычные статьи
+
+Статьи, изначально написанные на русском языке (как правило, в (бывшем) СССР)
+
+## Иностранные статьи
+
+Статьи, написанные за рубежом. Некоторые из них могут быть переведены на русский.
+
+- **Blinkenlights. Pop Quiz: What was the first personal computer?** [прямая ссылка](http://www.blinkenlights.com/pc.shtml) - попытка найти "первый персональный компьютер", которая отправляет нас в глубину веков.
+
 
 ### Зарубежные статьи об отечественной технике
 
