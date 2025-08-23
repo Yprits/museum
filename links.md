@@ -37,7 +37,7 @@ title: Ссылки
 
 [Вычисления](https://polymus.ru/collection/category/vychisleniya?group=vychisleniya) - коллекция Политехнического музея. Представлено много различных экспонатов, включая одни из первых советских ЭВМ. А еще у них есть [материалы для педагогов](https://polymus.ru/media/detail/ot-vychislitelnoy-mashiny-k-personalnomu-kompyuteru-i-iskusstvennomu-intellektu).
 
-
+[Советские домашние компьютеры и немного другого (Алексей Морозов)](https://alemorf.github.io/retro_computers/index.html) - коллекция (пост)советских компьютеров, периферии и приставок Алексея Морозова. К каждому есть документация, ко многим - дополнительные материалы.
 
 ---
 
@@ -52,7 +52,11 @@ title: Ссылки
 
 #### Texas Instruments
 
-[Datamath Calculator Museum](http://www.datamath.org/) - посвящен калькуляторам (и не только) разработки и производства Texas Instruments. 
+[Datamath Calculator Museum](http://www.datamath.org/) - посвящен калькуляторам (и не только) разработки и производства Texas Instruments.
+
+#### ZX Spectrum и совместимые
+
+[ZX-Byte](https://zxbyte.ru/) - сайт о советских клонах ZX Spectrum (в первую очередь - о "Байте" (завод "БЭМЗ") и некоторых других компьютерах.
 
 ---
 
