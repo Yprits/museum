@@ -33,6 +33,8 @@ title: Ссылки
 
 [RSKEY.ORG](https://www.rskey.org/CMS/) - сайт Виктора Т. Тота, посвященный в основном программируемым калькуляторам. Есть в коллекции и [механические](https://www.rskey.org/CMS/exhibit-hall?view=article&id=113), и просто [интересные](https://www.rskey.org/CMS/exhibit-hall?view=article&id=114) образцы.
 
+[Index of /pmk](http://arbinada.ddns.net/pmk/) - большое собрание литературы и каталогов по калькуляторам, в первую очередь программируемым, но попадается и про другие модели. СССР и зарубежье. Есть и инструкции.
+
 [Вычисления](https://polymus.ru/collection/category/vychisleniya?group=vychisleniya) - коллекция Политехнического музея. Представлено много различных экспонатов, включая одни из первых советских ЭВМ. А еще у них есть [материалы для педагогов](https://polymus.ru/media/detail/ot-vychislitelnoy-mashiny-k-personalnomu-kompyuteru-i-iskusstvennomu-intellektu).
 
 
