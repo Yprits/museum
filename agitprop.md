@@ -18,9 +18,9 @@ title: Агитация и пропаганда
 Чтобы не утяжелять сайт, описания помещены под изображениями под спойлером. Каждые 10 изображений объединены в группы (необязательно тематические или временн**ы**е), под ними - спойлер.
 
 
-1) [<img src="https://archive.radio.ru/web/img/1986/p.1986-01.000.jpg">](https://archive.radio.ru/web/img/1986/b.1986-01.000.jpg)
-2) [<img src="https://archive.radio.ru/web/img/1984/p.1984-08.001.jpg">](https://archive.radio.ru/web/img/1984/f.1984-08.001.jpg)
-3) [<img src="https://archive.radio.ru/web/img/1985/p.1985-09.018.jpg">](https://archive.radio.ru/web/img/1985/b.1985-09.018.jpg)
+1)[<img src="https://archive.radio.ru/web/img/1986/p.1986-01.000.jpg">](https://archive.radio.ru/web/img/1986/b.1986-01.000.jpg)
+2)[<img src="https://archive.radio.ru/web/img/1984/p.1984-08.001.jpg">](https://archive.radio.ru/web/img/1984/f.1984-08.001.jpg)
+3)[<img src="https://archive.radio.ru/web/img/1985/p.1985-09.018.jpg">](https://archive.radio.ru/web/img/1985/b.1985-09.018.jpg)
 
 <details>
   1. Журнал 'Радио', № 1 (январь) за 1986 г. На этом съезде эпоха развитого социализма будет названа 'эпохой застоя', и впервые обратит на себя внимание широкой общественности тогда еще первый секретарь Московского горкома партии Б.Н.Ельцин.
