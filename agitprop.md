@@ -11,6 +11,8 @@ title: Агитация и пропаганда
 
 Для более удобного поиска изображения сделаны маленькими. Наведите курсор на интересующую картинку, и появится ее описание. Полный размер можно увидеть, нажав "Открыть изображение в новой вкладке".
 
+1) ![Тест](https://archive.radio.ru/web/img/1985/p.1985-09.018.jpg)
+
 1) <img src="https://archive.radio.ru/web/img/1986/b.1986-01.000.jpg" width="200" title="">
 2) <img src="https://archive.radio.ru/web/img/1984/f.1984-08.001.jpg" width="200" title="">
 3) <img src="https://archive.radio.ru/web/img/1985/b.1985-09.018.jpg" width="200" title="">
