@@ -16,7 +16,7 @@ complect: Калькулятор, 4 АКБ (утеряны)
 tags:
   - ussr
   - retro
-  - mk
+  - b3
   - engineer
   - calculator
 ---
