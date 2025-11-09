@@ -34,21 +34,11 @@ code, pre {
 }
 
 
-q {
-  quotes: '«' '»';
-  color: #744ce5;
-}
-
-.quote {
-  position: relative;
-}
-
-.quote::before {
-  content: "“";
-  position: absolute;
-  left: 5rem;
-  top: 5rem;
-  font-family: sans-serif;
+blockquote {
+  border-left: 4px solid #007bff;
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  margin: 0 0 20px;
 }
 
 
