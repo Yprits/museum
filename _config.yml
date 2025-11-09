@@ -32,3 +32,5 @@ defaults:
       type: models
   values:
       status: "ПОИСК"
+
+disable_disk_cache: true
