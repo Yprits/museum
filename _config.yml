@@ -32,9 +32,3 @@ defaults:
       type: models
   values:
       status: "ПОИСК"
-
-markdown: kramdown
-kramdown:
-  input: GFM
-  hard_wrap: false
-  syntax_highlighter: rouge
