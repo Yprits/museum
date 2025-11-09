@@ -1,4 +1,6 @@
 source "https://rubygems.org"
 
 gem "github-pages", group: :jekyll_plugins
-gem "jekyll-sass-converter", "~> 2.2.0"
+gem "html-proofer"
+# Явно указываем совместимую версию jekyll-mentions
+gem "jekyll-mentions", "~> 1.8"
