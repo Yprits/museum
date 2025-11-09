@@ -1,4 +1,3 @@
-
 baseurl: "/museum"
 url: "https://yprits.github.io"
 title: "Моя коллекция"
@@ -32,9 +31,14 @@ defaults:
     price: не указана
     condition: не проверено
 
-
 - scope:
       path: "_models" # Применяется ко всем файлам в папке
       type: models    # Тип коллекции
   values:
-      status: "ПОИСК"  # Добавляем значение по умолчанию для статуса    
+      status: "ПОИСК"  # Добавляем значение по умолчанию для статуса
+
+# ДОБАВЬТЕ ЭТО В КОНЕЦ ФАЙЛА
+plugins:
+  - jekyll-sass-converter
+
+jekyll: 3.9.3
