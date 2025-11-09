@@ -33,4 +33,5 @@ defaults:
   values:
       status: "ПОИСК"
 
-disable_disk_cache: true
+markdown: kramdown
+highlighter: rouge
