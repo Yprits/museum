@@ -1,26 +1,22 @@
-
 baseurl: "/museum"
 url: "https://yprits.github.io"
 title: "Моя коллекция"
-# theme: minima # встроенная тема
 remote_theme: pages-themes/hacker@v0.2.0
 collections:
-  exhibits:           # Это твоя коллекция экспонатов
-    output: true      # Разрешаем создавать страницы
+  exhibits:
+    output: true
     permalink: /:collection/:name/
-    
-  models:           # Это твоя коллекция моделей
-    output: true      # Разрешаем создавать страницы
+  models:
+    output: true
     permalink: /:collection/:name/
-
-  pgs:           # Вспомогательные страницы (теги, списки, помощь и прочее барахло)
-    output: true      # Разрешаем создавать страницы
-    permalink: /:collection/:name/  
+  pgs:
+    output: true
+    permalink: /:collection/:name/
 
 defaults:
 - scope:
-      path: "_exhibits" # Применяется ко всем файлам в папке
-      type: exhibits    # Тип коллекции
+      path: "_exhibits"
+      type: exhibits
   values:
     model: "не указана"
     category: прочее
@@ -31,10 +27,14 @@ defaults:
     country: неизвестна
     price: не указана
     condition: не проверено
-
-
 - scope:
-      path: "_models" # Применяется ко всем файлам в папке
-      type: models    # Тип коллекции
+      path: "_models"
+      type: models
   values:
-      status: "ПОИСК"  # Добавляем значение по умолчанию для статуса    
+      status: "ПОИСК"
+
+# ДОБАВЬТЕ ЭТО В КОНЕЦ
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
