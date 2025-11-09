@@ -7,6 +7,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential ruby-dev pkg-config
+          
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -15,9 +20,12 @@ jobs:
           
       - name: Build Jekyll
         run: |
-          # Создаем корректный Gemfile с указанием источника
-          echo "source 'https://rubygems.org'" > Gemfile
-          echo "gem 'jekyll'" >> Gemfile
+          # Создаем корректный Gemfile
+          cat > Gemfile << 'EOF'
+          source "https://rubygems.org"
+          gem "github-pages", group: :jekyll_plugins
+          gem "jekyll-sass-converter", "~> 2.2.0"
+          EOF
           
           bundle install
           bundle exec jekyll build -d _site
