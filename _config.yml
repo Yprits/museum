@@ -19,19 +19,17 @@ defaults:
       type: exhibits
   values:
     model: "не указана"
-    category: прочее
+    category: "прочее"
     prodyear: "не указан"
-    modelyears: неизвестны
+    modelyears: "неизвестны"
     serial: "-"
-    manufacturer: неизвестен
-    country: неизвестна
-    price: не указана
-    condition: не проверено
+    manufacturer: "неизвестен"
+    country: "неизвестна"
+    price: "не указана"
+    condition: "не проверено"
 - scope:
       path: "_models"
       type: models
   values:
       status: "ПОИСК"
 
-markdown: kramdown
-highlighter: rouge
