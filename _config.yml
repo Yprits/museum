@@ -1,9 +1,9 @@
+
 baseurl: "/museum"
 url: "https://yprits.github.io"
 title: "Моя коллекция"
 # theme: minima # встроенная тема
 remote_theme: pages-themes/hacker@v0.2.0
-highlighter: rouge
 collections:
   exhibits:           # Это твоя коллекция экспонатов
     output: true      # Разрешаем создавать страницы
@@ -32,14 +32,9 @@ defaults:
     price: не указана
     condition: не проверено
 
+
 - scope:
       path: "_models" # Применяется ко всем файлам в папке
       type: models    # Тип коллекции
   values:
-      status: "ПОИСК"  # Добавляем значение по умолчанию для статуса
-
-# ДОБАВЬТЕ ЭТО В КОНЕЦ ФАЙЛА
-plugins:
-  - jekyll-sass-converter
-
-jekyll: 3.9.3
+      status: "ПОИСК"  # Добавляем значение по умолчанию для статуса    
