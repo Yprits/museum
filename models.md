@@ -15,9 +15,7 @@ title: "Модели вычислительной техники"
 
 Модели расположены в алфавитном порядке.
 
-{% for modell in site.models %}
-<a href="{{ modell.url | relative_url }}"> {{ modell.title }} </a> - {{ modell.short }} ({{ modell.country}})
-{% endfor %}
+
 
  <div class="spisok">
    
