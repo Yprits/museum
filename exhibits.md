@@ -11,7 +11,7 @@ title: "Все экспонаты коллекции"
 
 Хотите искать по моделям? Вам  <a href="https://yprits.github.io/museum/models">сюда</a>.
 
- <div>
+ <div class="spisok">
    
 <table>
   {% for exhibit in site.exhibits %}
