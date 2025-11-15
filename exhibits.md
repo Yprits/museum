@@ -33,7 +33,7 @@ title: "Все экспонаты коллекции"
             <span>Нет изображения</span>
           {% endif %}
         </td>
-        <td><a href="{{ exhibit.url | relative_url }}">{{ exhibit.innernumber }}</a> <br> {{ exhibit.model}} <br> {{ exhibit.prodyear }}) </td>
+        <td><a href="{{ exhibit.url | relative_url }}">{{ exhibit.innernumber }}</a> <br> {{ exhibit.model}} <br> {{ exhibit.prodyear }} </td>
       </tr>
     {% endif %}
   {% endfor %}  
