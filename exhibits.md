@@ -20,6 +20,8 @@ title: "Все экспонаты коллекции"
  - [Японские](./exhibits/japan);
  - [Прочие](./exhibits/others) - в разработке.
 
+
+
  <div class="spisok">
    
 <table>
@@ -30,7 +32,7 @@ title: "Все экспонаты коллекции"
           {% if exhibit.photo0 and exhibit.prev0 %}
             <a href="{{ exhibit.photo0 }}"><img src="{{ exhibit.prev0 }}" alt="Изображения пока нет"></a>
           {% else %}
-            <span>Нет изображения</span>
+            <img src="https://placehold.co/200/png/?text=%D0%A4%D0%BE%D1%82%D0%BE\n%D0%BF%D0%BE%D0%BA%D0%B0\n%D0%BD%D0%B5%D1%82" alt="Фото нет">
           {% endif %}
         </td>
         <td><a href="{{ exhibit.url | relative_url }}">{{ exhibit.innernumber }}</a> <br> {{ exhibit.model}} <br> {{ exhibit.prodyear }} </td>
