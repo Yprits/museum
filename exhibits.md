@@ -32,10 +32,4 @@ title: "Все экспонаты коллекции"
 
  </div>
 
-{% for exhibit in site.exhibits %}
-{% if exhibit.innernumber %}
-<a href="{{ exhibit.url | relative_url }}"> {{ exhibit.innernumber }} </a> - {{ exhibit.model}} ({{ exhibit.prodyear }})
-{% endif %}
-{% endfor %}
-
 <!-- Ну и что вы здесь ожидали увидеть? -->
