@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: pages
 title: "Советская техника"
 tag: ussr
 ---
