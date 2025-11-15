@@ -11,6 +11,18 @@ title: "Все экспонаты коллекции"
 
 Хотите искать по моделям? Вам  <a href="https://yprits.github.io/museum/models">сюда</a>.
 
+
+<table>
+  {% for exhibit in site.exhibits %}
+    {% if exhibit.innernumber %}
+      <tr>
+        <td> <a href= {{ exhibit.photo0 }} > <img src= {{ exhibit.prev0 }} alt= "Изображения пока нет"> </a> </td>
+        <td> <a href="{{ exhibit.url | relative_url }}"> {{ exhibit.innernumber }} </a> - {{ exhibit.model}} ({{ exhibit.prodyear }})
+      </tr>
+  {% endfor %}  
+</table>
+
+
 {% for exhibit in site.exhibits %}
 {% if exhibit.innernumber %}
 <a href="{{ exhibit.url | relative_url }}"> {{ exhibit.innernumber }} </a> - {{ exhibit.model}} ({{ exhibit.prodyear }})
