@@ -12,6 +12,5 @@ tag: ussr
 {% for exhibit in site.exhibits %}
   {% if exhibit.tags contains page.tag %}
     <a href="{{ exhibit.url | relative_url }}"> {{ exhibit.innernumber }} </a> - {{ exhibit.model}} ({{ exhibit.prodyear }})
-    </div>
   {% endif %}
 {% endfor %}
