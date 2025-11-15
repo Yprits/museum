@@ -1,5 +1,5 @@
 ---
-layout: pgs
+layout: taglist
 title: Советская техника
 tagz: ussr
 ---
