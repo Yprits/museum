@@ -23,7 +23,7 @@ title: "Модели вычислительной техники"
    
 <table>
   {% for modell in site.models %}
-    {% if modell.innernumber %}
+    {% if modell.title %}
       <tr>
         <td>
           {% if modell.photo0 and modell.prev0 %}
