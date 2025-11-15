@@ -17,10 +17,16 @@ title: "Все экспонаты коллекции"
   {% for exhibit in site.exhibits %}
     {% if exhibit.innernumber %}
       <tr>
-        <td> <a href= {{ exhibit.photo0 }} > <img src= {{ exhibit.prev0 }} alt= "Изображения пока нет"> </a> </td>
-        <td> <a href="{{ exhibit.url | relative_url }}"> {{ exhibit.innernumber }} </a> - {{ exhibit.model}} ({{ exhibit.prodyear }}) </td>
+        <td>
+          {% if exhibit.photo0 and exhibit.prev0 %}
+            <a href="{{ exhibit.photo0 }}"><img src="{{ exhibit.prev0 }}" alt="Изображения пока нет"></a>
+          {% else %}
+            <span>Нет изображения</span>
+          {% endif %}
+        </td>
+        <td><a href="{{ exhibit.url | relative_url }}">{{ exhibit.innernumber }}</a> - {{ exhibit.model}} ({{ exhibit.prodyear }})</td>
       </tr>
-  {% endif %}
+    {% endif %}
   {% endfor %}  
 </table>
 
