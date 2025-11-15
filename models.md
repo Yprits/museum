@@ -32,7 +32,7 @@ title: "Модели вычислительной техники"
             <img src="https://placehold.co/128/png/?text=%D0%A4%D0%BE%D1%82%D0%BE\n%D0%BF%D0%BE%D0%BA%D0%B0\n%D0%BD%D0%B5%D1%82" alt="Фото нет">
           {% endif %}
         </td>
-        <td><a <a href="{{ modell.url | relative_url }}"> {{ modell.title }} </a> - {{ modell.short }} ({{ modell.country}})
+        <td> <a href="{{ modell.url | relative_url }}"> {{ modell.title }} </a> - {{ modell.short }} ({{ modell.country}}) </td>
       </tr>
     {% endif %}
   {% endfor %}  
