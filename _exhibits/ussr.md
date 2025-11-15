@@ -1,7 +1,7 @@
 ---
 layout: pgs
 title: Советская техника
-tag: ussr
+tagz: ussr
 ---
 
 # Модели с тегом "советская техника"
@@ -9,17 +9,9 @@ tag: ussr
 О советской технике ходило немало шуток. А здесь мы показываем ее такой, какая она была.
 
 
-<div class="exhibits-list">
-{% for exhibit in site.exhibits %}
-  {% if exhibit.tags contains page.tag %}
-    <a href="{{ exhibit.url | relative_url }}"> {{ exhibit.innernumber }} </a> - {{ exhibit.model}} ({{ exhibit.prodyear }})<br>
-  {% endif %}
-{% endfor %}
-</div>
-
 <table>
   {% for exhibit in site.exhibits %}
-    {% if exhibit.tags contains page.tag %}
+    {% if exhibit.tags contains page.tagz %}
       <tr>
         <td>
           {% if exhibit.photo0 and exhibit.prev0 %}
