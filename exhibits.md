@@ -19,6 +19,7 @@ title: "Все экспонаты коллекции"
         <td> <a href= {{ exhibit.photo0 }} > <img src= {{ exhibit.prev0 }} alt= "Изображения пока нет"> </a> </td>
         <td> <a href="{{ exhibit.url | relative_url }}"> {{ exhibit.innernumber }} </a> - {{ exhibit.model}} ({{ exhibit.prodyear }}) </td>
       </tr>
+  {% endif %}
   {% endfor %}  
 </table>
 
