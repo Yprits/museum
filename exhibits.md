@@ -58,7 +58,7 @@ title: "Все экспонаты коллекции"
             <img src="https://placehold.co/128/png/?text=%D0%A4%D0%BE%D1%82%D0%BE\n%D0%BF%D0%BE%D0%BA%D0%B0\n%D0%BD%D0%B5%D1%82" alt="Фото нет">
           {% endif %}
         </td>
-        <td><a href="{{ exhibit.url | relative_url }}">{{ exhibit.innernumber }}</a> <br> {{ exhibit.model}} <br> {{ exhibit.prodyear | string}} </td>
+        <td><a href="{{ exhibit.url | relative_url }}">{{ exhibit.innernumber }}</a> <br> {{ exhibit.model}} <br> {{ exhibit.prodyear | append: ""}} </td>
       {% if mod == 1 or forloop.last %}</tr>{% endif %}
     {% endif %}
   {% endfor %}  
