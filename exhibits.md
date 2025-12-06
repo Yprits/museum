@@ -12,6 +12,9 @@ title: "Все экспонаты коллекции"
 Хотите искать по моделям? Вам  <a href="https://yprits.github.io/museum/models">сюда</a>.
 
 У экспонатов есть категории по странам:
+<details>
+ <summary> Подробнее... </summary>
+
  - [Советские](./exhibits/ussr) - все, связанные с СССР;
  - [Белорусские](./exhibits/belarus);
  - [Российские](./exhibits/russia);
@@ -19,6 +22,9 @@ title: "Все экспонаты коллекции"
  - [Американские](./exhibits/usa);
  - [Японские](./exhibits/japan);
  - [Прочие](./exhibits/others) - в разработке.
+ 
+</details>
+ 
 
 
 <!--
