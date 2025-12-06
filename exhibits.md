@@ -45,7 +45,6 @@ title: "Все экспонаты коллекции"
  </div>
 -->
 
-{% raw %}
 <div class="spisok">
 <table>
   {% for exhibit in site.exhibits %}
@@ -54,7 +53,7 @@ title: "Все экспонаты коллекции"
       {% if mod == 0 %}<tr>{% endif %}
         <td>
           {% if exhibit.photo0 and exhibit.prev0 %}
-            <a href="{{ exhibit.photo0 }}"><img src="{{ exhibit.prev0 }}" alt="Изображения пока нет"></a>
+            <a href="{{ exhibit.photo0 }}"><img src="{{ exhibit.prev0 }}" alt="Возникла проблема с загрузкой!"></a>
           {% else %}
             <img src="https://placehold.co/128/png/?text=%D0%A4%D0%BE%D1%82%D0%BE\n%D0%BF%D0%BE%D0%BA%D0%B0\n%D0%BD%D0%B5%D1%82" alt="Фото нет">
           {% endif %}
@@ -65,6 +64,5 @@ title: "Все экспонаты коллекции"
   {% endfor %}  
 </table> tst
 </div>
-{% endraw %}
-
+nttttcn
 <!-- Ну и что вы здесь ожидали увидеть? -->
