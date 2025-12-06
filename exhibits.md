@@ -13,16 +13,19 @@ title: "Все экспонаты коллекции"
 
 У экспонатов есть категории по странам:
 <details>
- <summary> Подробнее... </summary>
+<summary>Подробнее...</summary>
 
- - [Советские](./exhibits/ussr) - все, связанные с СССР;
- - [Белорусские](./exhibits/belarus);
- - [Российские](./exhibits/russia);
- - [Китайские](./exhibits/china);
- - [Американские](./exhibits/usa);
- - [Японские](./exhibits/japan);
- - [Прочие](./exhibits/others) - в разработке.
- 
+{% capture details_content %}
+- [Советские](./exhibits/ussr) - все, связанные с СССР;
+- [Белорусские](./exhibits/belarus);
+- [Российские](./exhibits/russia);
+- [Китайские](./exhibits/china);
+- [Американские](./exhibits/usa);
+- [Японские](./exhibits/japan);
+- [Прочие](./exhibits/others) - в разработке.
+{% endcapture %}
+{{ details_content | markdownify }}
+
 </details>
  
 
