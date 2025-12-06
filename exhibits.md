@@ -12,6 +12,25 @@ title: "Все экспонаты коллекции"
 Хотите искать по моделям? Вам  <a href="https://yprits.github.io/museum/models">сюда</a>.
 
 Для удобства поиска всем экспонатам присвоены теги, обозначающие категорию, страну, производителя и прочее.
+
+<details>
+<summary>Искать по типу</summary>
+
+{% capture details_content %}
+- [Программируемые](./exhibits/programmable) калькуляторы и компьютеры;
+- [Инженерные](./exhibits/engineer) калькуляторы;
+- [Арифметические](./exhibits/arithmetical) калькуляторы;
+- [Линейки](./exhibits/rules) логарифмические и не только;
+- [Механические](./exhibits/mech) счетные устройства;
+- [Домеханические](./exhibits/premech) цифровые счетные устройства (счеты, палочки и другое);
+- [Электронные записные книжки](./exhibits/notebook);
+- [Прочие](./exhibits/othercategory) - в разработке.
+{% endcapture %}
+{{ details_content | markdownify }}
+
+</details>
+
+
 <details>
 <summary>Искать по странам</summary>
 
@@ -21,8 +40,9 @@ title: "Все экспонаты коллекции"
 - [Российские](./exhibits/russia);
 - [Китайские](./exhibits/china);
 - [Американские](./exhibits/usa);
+- [Немецкие](./exhibits/germany);
 - [Японские](./exhibits/japan);
-- [Прочие](./exhibits/others) - в разработке.
+- [Прочие](./exhibits/othercountry) - в разработке.
 {% endcapture %}
 {{ details_content | markdownify }}
 
