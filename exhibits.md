@@ -45,6 +45,7 @@ title: "Все экспонаты коллекции"
  </div>
 -->
 
+{% raw %}
 <div class="spisok">
 <table>
   {% for exhibit in site.exhibits %}
@@ -64,5 +65,6 @@ title: "Все экспонаты коллекции"
   {% endfor %}  
 </table> tst
 </div>
+{% endraw %}
 
 <!-- Ну и что вы здесь ожидали увидеть? -->
