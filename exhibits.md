@@ -39,7 +39,7 @@ title: "Все экспонаты коллекции"
       </tr>
     {% endif %}
   {% endfor %}  
-</table>
+</table> test
 
 
  </div>
