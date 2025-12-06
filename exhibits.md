@@ -62,7 +62,7 @@ title: "Все экспонаты коллекции"
       {% if mod == 1 or forloop.last %}</tr>{% endif %}
     {% endif %}
   {% endfor %}  
-</table> tst
+</table>
 </div>
-nttttcn
+
 <!-- Ну и что вы здесь ожидали увидеть? -->
