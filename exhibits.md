@@ -11,32 +11,39 @@ title: "Все экспонаты коллекции"
 
 <div class="filter-section">
   <details>
-    <summary>Искать по типу</summary>
-    <div class="filter-content">
-      <a href="./exhibits/programmable">Программируемые калькуляторы и компьютеры</a>
-      <a href="./exhibits/engineer">Инженерные калькуляторы</a>
-      <a href="./exhibits/arithmetical">Арифметические калькуляторы</a>
-      <a href="./exhibits/rules">Линейки логарифмические и не только</a>
-      <a href="./exhibits/mech">Механические счетные устройства</a>
-      <a href="./exhibits/premech">Домеханические цифровые счетные устройства</a>
-      <a href="./exhibits/notebook">Электронные записные книжки</a>
-      <a href="./exhibits/othercategory">Прочие (в разработке)</a>
-    </div>
-  </details>
+<summary>Искать по типу</summary>
 
-  <details>
-    <summary>Искать по странам</summary>
-    <div class="filter-content">
-      <a href="./exhibits/ussr">Советские</a>
-      <a href="./exhibits/belarus">Белорусские</a>
-      <a href="./exhibits/russia">Российские</a>
-      <a href="./exhibits/china">Китайские</a>
-      <a href="./exhibits/usa">Американские</a>
-      <a href="./exhibits/germany">Немецкие</a>
-      <a href="./exhibits/japan">Японские</a>
-      <a href="./exhibits/othercountry">Прочие (в разработке)</a>
-    </div>
-  </details>
+{% capture details_content %}
+- [Программируемые](./exhibits/programmable) калькуляторы и компьютеры;
+- [Инженерные](./exhibits/engineer) калькуляторы;
+- [Арифметические](./exhibits/arithmetical) калькуляторы;
+- [Линейки](./exhibits/rules) логарифмические и не только;
+- [Механические](./exhibits/mech) счетные устройства;
+- [Домеханические](./exhibits/premech) цифровые счетные устройства (счеты, палочки и другое);
+- [Электронные записные книжки](./exhibits/notebook);
+- [Прочие](./exhibits/othercategory) - в разработке.
+{% endcapture %}
+{{ details_content | markdownify }}
+
+</details>
+
+
+<details>
+<summary>Искать по странам</summary>
+
+{% capture details_content %}
+- [Советские](./exhibits/ussr) - все, связанные с СССР;
+- [Белорусские](./exhibits/belarus);
+- [Российские](./exhibits/russia);
+- [Китайские](./exhibits/china);
+- [Американские](./exhibits/usa);
+- [Немецкие](./exhibits/germany);
+- [Японские](./exhibits/japan);
+- [Прочие](./exhibits/othercountry) - в разработке.
+{% endcapture %}
+{{ details_content | markdownify }}
+
+</details>
 </div>
 
 <div class="exhibits-grid items-grid">
