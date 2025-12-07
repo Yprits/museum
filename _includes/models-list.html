@@ -1,0 +1,42 @@
+<!-- Шаблон для отображения списка моделей -->
+<!-- Принимает параметры: 
+     collection - массив моделей для отображения
+     title - заголовок списка (опционально)
+-->
+
+{% if include.title %}
+<h2>{{ include.title }}</h2>
+{% endif %}
+
+{% if include.subtitle %}
+<p class="list-subtitle">{{ include.subtitle }}</p>
+{% endif %}
+
+<div class="models-grid items-grid">
+  {% for model in include.collection %}
+    {% if model.title %}
+      <div class="model-card item-card">
+        <div class="item-image">
+          {% if model.photo0 and model.prev0 %}
+            <a href="{{ model.photo0 }}">
+              <img src="{{ model.prev0 }}" alt="{{ model.title }}" loading="lazy">
+            </a>
+          {% else %}
+            <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
+                 alt="Фото пока нет" loading="lazy">
+          {% endif %}
+        </div>
+        <div class="item-info">
+          <a href="{{ model.url | relative_url }}" class="item-title">{{ model.title }}</a>
+          <div class="item-meta">
+            {% if model.category %}({{ model.category}}; {% endif %}
+            {% if model.short %}{{ model.short }}){% else %}){% endif %}
+            {% if model.modelyears %} 📆 {{ model.modelyears }}{% endif %}
+            {% if model.country %} 🌍 {{ model.country }}{% endif %}
+            {% if model.manufacturer %} 🏭 {{ model.manufacturer }}{% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
