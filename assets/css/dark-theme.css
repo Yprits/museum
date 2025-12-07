@@ -1,6 +1,6 @@
-/* === dark-theme.css - ФИКСИРОВАННАЯ ШИРИНА === */
+/* === museum-theme.css - ОБЩИЙ CSS для всей коллекции === */
 
-/* 1. Базовые стили */
+/* 1. БАЗОВЫЕ СТИЛИ (одинаковые для всех) */
 body {
   margin: 0;
   padding: 10px;
@@ -12,7 +12,6 @@ body {
   max-width: 100%;
 }
 
-/* 2. Заголовки и ссылки */
 h1 {
   border-bottom: 2px solid #00aaaa;
   padding-bottom: 10px;
@@ -28,7 +27,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 3. Детали (details/summary) */
 details {
   margin: 10px 0;
   background: #f8f9fa;
@@ -57,30 +55,26 @@ details[open] summary::before {
   content: "▼";
 }
 
-/* 4. СЕТКА ЭКСПОНАТОВ */
-.exhibits-grid {
+/* 2. ОБЩИЕ КЛАССЫ ДЛЯ КАРТОЧЕК */
+.items-grid {
   display: grid;
-  /* Фиксированная ширина карточек + автоматическое количество в строке */
-  grid-template-columns: repeat(auto-fill, 500px);
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   gap: 15px;
   padding: 20px 0;
-  justify-content: center; /* Центрируем сетку */
+  justify-content: center;
 }
 
-/* КАРТОЧКА - ФИКСИРОВАННАЯ ШИРИНА */
-.exhibit-card {
+.item-card {
   display: flex;
   background: #ffffff;
   border: 1px solid #ddd;
   border-radius: 6px;
   overflow: hidden;
   min-height: 150px;
-  width: 500px; /* Фиксированная ширина */
-  max-width: 100%; /* На мобильных может быть меньше */
+  width: 100%;
 }
 
-/* КАРТИНКА СЛЕВА */
-.exhibit-image {
+.item-image {
   flex: 0 0 180px;
   display: flex;
   align-items: center;
@@ -90,14 +84,13 @@ details[open] summary::before {
   border-right: 1px solid #ddd;
 }
 
-.exhibit-image img {
+.item-image img {
   max-width: 100%;
   max-height: 120px;
   object-fit: contain;
 }
 
-/* ТЕКСТ СПРАВА */
-.exhibit-info {
+.item-info {
   flex: 1;
   padding: 15px;
   display: flex;
@@ -105,7 +98,7 @@ details[open] summary::before {
   justify-content: center;
 }
 
-.exhibit-number {
+.item-title {
   font-size: 1.3em;
   font-weight: bold;
   color: #00aaaa;
@@ -113,140 +106,140 @@ details[open] summary::before {
   margin-bottom: 8px;
 }
 
-.exhibit-model {
+.item-description {
   font-weight: bold;
   margin-bottom: 5px;
   color: #333333;
   font-size: 1.1em;
 }
 
-.exhibit-year {
+.item-meta {
   color: #666666;
   font-size: 0.9em;
   margin-top: 5px;
 }
 
-/* Placeholder изображение */
-.exhibit-image img[src*="placehold.co"] {
-  opacity: 0.6;
-  background: #eee;
-  padding: 10px;
-  border-radius: 4px;
+/* 3. СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ ЭКСПОНАТОВ */
+/* (можно переопределить общие стили если нужно) */
+.exhibits-grid {
+  /* Наследует все от .items-grid */
 }
 
-/* 5. АДАПТИВНОСТЬ - МЕНЯЕМ ШИРИНУ КАРТОЧКИ */
+.exhibit-card {
+  /* Наследует все от .item-card */
+}
 
-/* На очень широких экранах - 550px карточки */
+/* 4. СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ МОДЕЛЕЙ */
+.models-grid {
+  /* Наследует все от .items-grid */
+}
+
+.model-card {
+  /* Наследует все от .item-card */
+}
+
+/* Можно сделать небольшие отличия если нужно */
+.model-card .item-description {
+  font-style: italic;
+  color: #555;
+}
+
+.model-card .item-meta {
+  font-weight: bold;
+}
+
+/* 5. АДАПТИВНОСТЬ ДЛЯ ВСЕХ КАРТОЧЕК */
 @media screen and (min-width: 2000px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, 550px);
-  }
-  
-  .exhibit-card {
-    width: 550px;
+  .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
   }
 }
 
-/* На средних экранах - 450px карточки */
 @media screen and (min-width: 1400px) and (max-width: 1999px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, 450px);
-  }
-  
-  .exhibit-card {
-    width: 450px;
-  }
-  
-  .exhibit-image {
-    flex: 0 0 150px;
+  .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   }
 }
 
-/* На ноутбуках - 400px карточки */
 @media screen and (min-width: 1024px) and (max-width: 1399px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, 400px);
+  .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 12px;
   }
   
-  .exhibit-card {
-    width: 400px;
+  .item-card {
     min-height: 140px;
   }
   
-  .exhibit-image {
+  .item-image {
     flex: 0 0 140px;
     padding: 12px;
   }
   
-  .exhibit-image img {
+  .item-image img {
     max-height: 110px;
   }
   
-  .exhibit-info {
+  .item-info {
     padding: 12px;
   }
 }
 
-/* На планшетах - 350px карточки, 2 в строке */
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, 350px);
+  .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 12px;
   }
   
-  .exhibit-card {
-    width: 350px;
+  .item-card {
     min-height: 130px;
   }
   
-  .exhibit-image {
+  .item-image {
     flex: 0 0 130px;
     padding: 10px;
   }
   
-  .exhibit-image img {
+  .item-image img {
     max-height: 100px;
   }
   
-  .exhibit-info {
+  .item-info {
     padding: 12px;
   }
   
-  .exhibit-number {
+  .item-title {
     font-size: 1.2em;
   }
   
-  .exhibit-model {
+  .item-description {
     font-size: 1em;
   }
 }
 
-/* На мобильных телефонах - 1 карточка на всю ширину */
 @media screen and (max-width: 767px) {
-  .exhibits-grid {
+  .items-grid {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 12px;
   }
   
-  .exhibit-card {
+  .item-card {
     width: 100%;
     max-width: 400px;
     min-height: auto;
   }
 }
 
-/* На очень маленьких телефонах - карточка вертикальная */
 @media screen and (max-width: 480px) {
-  .exhibit-card {
+  .item-card {
     flex-direction: column;
     min-height: auto;
     max-width: 300px;
   }
   
-  .exhibit-image {
+  .item-image {
     flex: 0 0 auto;
     height: 150px;
     border-right: none;
@@ -254,11 +247,11 @@ details[open] summary::before {
     padding: 15px;
   }
   
-  .exhibit-image img {
+  .item-image img {
     max-height: 120px;
   }
   
-  .exhibit-info {
+  .item-info {
     padding: 15px;
   }
   
@@ -268,28 +261,27 @@ details[open] summary::before {
   }
 }
 
-/* На очень-очень маленьких телефонах */
 @media screen and (max-width: 360px) {
-  .exhibit-image {
+  .item-image {
     height: 120px;
     padding: 10px;
   }
   
-  .exhibit-image img {
+  .item-image img {
     max-height: 100px;
   }
   
-  .exhibit-info {
+  .item-info {
     padding: 12px;
   }
   
-  .exhibit-number {
+  .item-title {
     font-size: 1.1em;
   }
 }
 
-/* 6. Улучшение читаемости для длинного текста */
-.exhibit-model {
+/* 6. Улучшение читаемости */
+.item-description {
   overflow-wrap: break-word;
   word-wrap: break-word;
   hyphens: auto;
