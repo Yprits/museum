@@ -48,5 +48,9 @@ title: "Все экспонаты коллекции"
 {% assign sorted_exhibits = site.exhibits | sort: "innernumber" %}
 {% include exhibits-list.html 
     collection=sorted_exhibits 
-    subtitle="Всего экспонатов: " | append: sorted_exhibits.size 
+     
 %}
+
+
+
+
