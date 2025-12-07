@@ -1,4 +1,4 @@
-/* === dark-theme.css - УПРОЩЕННЫЙ И БЫСТРЫЙ === */
+/* === dark-theme.css - ФИКСИРОВАННАЯ ШИРИНА === */
 
 /* 1. Базовые стили */
 body {
@@ -57,14 +57,17 @@ details[open] summary::before {
   content: "▼";
 }
 
-/* 4. СЕТКА ЭКСПОНАТОВ - КАРТИНКИ СЛЕВА, ТЕКСТ СПРАВА */
+/* 4. СЕТКА ЭКСПОНАТОВ */
 .exhibits-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 15px 0;
+  display: grid;
+  /* Фиксированная ширина карточек + автоматическое количество в строке */
+  grid-template-columns: repeat(auto-fill, 500px);
+  gap: 15px;
+  padding: 20px 0;
+  justify-content: center; /* Центрируем сетку */
 }
 
+/* КАРТОЧКА - ФИКСИРОВАННАЯ ШИРИНА */
 .exhibit-card {
   display: flex;
   background: #ffffff;
@@ -72,6 +75,8 @@ details[open] summary::before {
   border-radius: 6px;
   overflow: hidden;
   min-height: 150px;
+  width: 500px; /* Фиксированная ширина */
+  max-width: 100%; /* На мобильных может быть меньше */
 }
 
 /* КАРТИНКА СЛЕВА */
@@ -129,32 +134,74 @@ details[open] summary::before {
   border-radius: 4px;
 }
 
-/* 5. АДАПТИВНОСТЬ */
+/* 5. АДАПТИВНОСТЬ - МЕНЯЕМ ШИРИНУ КАРТОЧКИ */
 
-/* На широких экранах - 2 колонки карточек */
-@media screen and (min-width: 1024px) {
+/* На очень широких экранах - 550px карточки */
+@media screen and (min-width: 2000px) {
   .exhibits-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, 550px);
   }
   
   .exhibit-card {
-    height: 100%;
+    width: 550px;
   }
 }
 
-/* На очень широких экранах - 3 колонки */
-@media screen and (min-width: 1400px) {
+/* На средних экранах - 450px карточки */
+@media screen and (min-width: 1400px) and (max-width: 1999px) {
   .exhibits-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, 450px);
   }
-}
-
-/* На планшетах */
-@media screen and (max-width: 768px) {
+  
+  .exhibit-card {
+    width: 450px;
+  }
+  
   .exhibit-image {
     flex: 0 0 150px;
+  }
+}
+
+/* На ноутбуках - 400px карточки */
+@media screen and (min-width: 1024px) and (max-width: 1399px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, 400px);
+    gap: 12px;
+  }
+  
+  .exhibit-card {
+    width: 400px;
+    min-height: 140px;
+  }
+  
+  .exhibit-image {
+    flex: 0 0 140px;
+    padding: 12px;
+  }
+  
+  .exhibit-image img {
+    max-height: 110px;
+  }
+  
+  .exhibit-info {
+    padding: 12px;
+  }
+}
+
+/* На планшетах - 350px карточки, 2 в строке */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, 350px);
+    gap: 12px;
+  }
+  
+  .exhibit-card {
+    width: 350px;
+    min-height: 130px;
+  }
+  
+  .exhibit-image {
+    flex: 0 0 130px;
     padding: 10px;
   }
   
@@ -175,11 +222,28 @@ details[open] summary::before {
   }
 }
 
-/* На мобильных телефонах */
+/* На мобильных телефонах - 1 карточка на всю ширину */
+@media screen and (max-width: 767px) {
+  .exhibits-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .exhibit-card {
+    width: 100%;
+    max-width: 400px;
+    min-height: auto;
+  }
+}
+
+/* На очень маленьких телефонах - карточка вертикальная */
 @media screen and (max-width: 480px) {
   .exhibit-card {
     flex-direction: column;
     min-height: auto;
+    max-width: 300px;
   }
   
   .exhibit-image {
@@ -204,7 +268,7 @@ details[open] summary::before {
   }
 }
 
-/* На очень маленьких телефонах */
+/* На очень-очень маленьких телефонах */
 @media screen and (max-width: 360px) {
   .exhibit-image {
     height: 120px;
@@ -230,57 +294,3 @@ details[open] summary::before {
   word-wrap: break-word;
   hyphens: auto;
 }
-
-/* 7. Альтернативный вариант: ТАБЛИЧНЫЙ ВИД (если нужно) */
-/* Раскомментируйте, если хотите табличный вид вместо карточек */
-
-/*
-.table-view {
-  display: table;
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.table-row {
-  display: table-row;
-  border-bottom: 1px solid #ddd;
-}
-
-.table-cell-image {
-  display: table-cell;
-  width: 180px;
-  padding: 10px;
-  vertical-align: middle;
-  text-align: center;
-  border-right: 1px solid #ddd;
-  background: #f8f9fa;
-}
-
-.table-cell-info {
-  display: table-cell;
-  padding: 15px;
-  vertical-align: middle;
-}
-
-@media screen and (max-width: 768px) {
-  .table-view,
-  .table-row,
-  .table-cell-image,
-  .table-cell-info {
-    display: block;
-    width: 100%;
-  }
-  
-  .table-row {
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  
-  .table-cell-image {
-    border-right: none;
-    border-bottom: 1px solid #ddd;
-  }
-}
-*/
