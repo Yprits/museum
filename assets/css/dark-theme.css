@@ -156,12 +156,11 @@ details[open] summary::before {
 
 /* Можно сделать небольшие отличия если нужно */
 .model-card .item-description {
-  font-style: italic;
-  color: #555;
+  
 }
 
 .model-card .item-meta {
-  font-weight: bold;
+  
 }
 
 /* 5. АДАПТИВНОСТЬ ДЛЯ ВСЕХ КАРТОЧЕК */
