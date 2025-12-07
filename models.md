@@ -15,6 +15,13 @@ title: "Модели вычислительной техники"
 
 Модели расположены в алфавитном порядке.
 
+{% assign sorted_models = site.models | sort: "title" %}
+{% include models-list.html 
+    collection=sorted_models 
+    subtitle="Все модели в алфавитном порядке" 
+%}
+
+<!--
 <div class="models-grid items-grid">
   {% for modell in site.models %}
     {% if modell.title %}
@@ -43,12 +50,6 @@ title: "Модели вычислительной техники"
   {% endfor %}
 </div>
 
+-->
 
 
-Модели расположены в алфавитном порядке.
-
-{% assign sorted_models = site.models | sort: "title" %}
-{% include models-list.html 
-    collection=sorted_models 
-    subtitle="Все модели в алфавитном порядке" 
-%}
