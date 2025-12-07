@@ -1,191 +1,111 @@
-/* === dark-theme.css - УЛЬТРА-АДАПТИВНЫЙ CSS для онлайн-коллекции === */
+/* === dark-theme.css - УПРОЩЕННЫЙ И БЫСТРЫЙ === */
 
-/* 1. Глобальные переменные для быстрой настройки */
-:root {
-  --color-primary: #00aaaa;
-  --color-primary-dark: #008888;
-  --color-bg-light: #ffffe0;
-  --color-bg-gray: #f2f3f4;
-  --color-text: #222222;
-  --color-card-bg: #ffffff;
-  --color-border: #dee2e6;
-  --color-shadow: rgba(0, 0, 0, 0.08);
-  --border-radius: 12px;
-  --transition: 0.3s ease;
-}
-
-/* 2. Базовые стили */
-* {
-  box-sizing: border-box;
-}
-
+/* 1. Базовые стили */
 body {
   margin: 0;
-  padding: 20px;
-  background-color: var(--color-bg-light);
-  color: var(--color-text);
-  font-family: Verdana, Georgia, sans-serif;
+  padding: 10px;
+  background: #f2f3f4;
+  color: #222222;
+  font-family: Verdana, sans-serif;
   font-size: 16px;
-  line-height: 1.6;
-  background: var(--color-bg-gray);
+  line-height: 1.5;
   max-width: 100%;
-  min-height: 100vh;
 }
 
-/* 3. Заголовки */
-h1, h2, h3, h4, h5, h6 {
-  color: #333333;
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-}
-
+/* 2. Заголовки и ссылки */
 h1 {
-  border-bottom: 2px solid var(--color-primary);
+  border-bottom: 2px solid #00aaaa;
   padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-/* 4. Ссылки */
 a {
-  color: var(--color-primary);
+  color: #00aaaa;
   text-decoration: none;
-  transition: color var(--transition);
 }
 
 a:hover {
-  color: var(--color-primary-dark);
   text-decoration: underline;
 }
 
-/* 5. Детали (details/summary) */
+/* 3. Детали (details/summary) */
 details {
-  margin: 15px 0;
+  margin: 10px 0;
   background: #f8f9fa;
-  border: 1px solid var(--color-border);
-  border-radius: var(--border-radius);
-  padding: 10px;
-  transition: all var(--transition);
-}
-
-details[open] {
-  background: #e8f4f8;
-  box-shadow: 0 2px 8px var(--color-shadow);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 summary {
   cursor: pointer;
-  color: var(--color-primary-dark);
+  color: #008888;
   font-weight: bold;
   list-style: none;
-  padding: 10px 10px 10px 35px;
+  padding-left: 20px;
   position: relative;
-  user-select: none;
 }
 
 summary::before {
   content: "▶";
   position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--color-primary);
-  transition: transform var(--transition);
+  left: 0;
+  color: #00aaaa;
 }
 
 details[open] summary::before {
   content: "▼";
-  transform: translateY(-50%) rotate(0deg);
 }
 
-details > div {
-  padding: 15px;
-  border-top: 1px solid var(--color-border);
-  margin-top: 10px;
-}
-
-/* 6. СЕКЦИЯ КАРТОЧЕК ЭКСПОНАТОВ */
-/* Основная сетка - максимально адаптивная */
+/* 4. СЕТКА ЭКСПОНАТОВ - КАРТИНКИ СЛЕВА, ТЕКСТ СПРАВА */
 .exhibits-grid {
-  display: grid;
-  /* Автоматически заполняем строку максимальным количеством карточек */
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-  padding: 30px 0;
-  margin: 20px 0;
-  
-  /* Оптимизация производительности */
-  will-change: transform;
-  contain: content;
-}
-
-/* Карточка экспоната */
-.exhibit-card {
-  background: var(--color-card-bg);
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 8px var(--color-shadow);
-  overflow: hidden;
-  transition: all var(--transition);
-  border: 1px solid var(--color-border);
-  height: 100%;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  padding: 15px 0;
 }
 
-.exhibit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+.exhibit-card {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+  min-height: 150px;
 }
 
-/* Изображение в карточке */
+/* КАРТИНКА СЛЕВА */
 .exhibit-image {
-  aspect-ratio: 4/3;
+  flex: 0 0 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  overflow: hidden;
+  padding: 15px;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
 }
 
 .exhibit-image img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 120px;
   object-fit: contain;
-  transition: transform var(--transition);
-  border-radius: 8px;
 }
 
-.exhibit-card:hover .exhibit-image img {
-  transform: scale(1.05);
-}
-
-/* Placeholder изображение */
-.exhibit-image img[src*="placehold.co"] {
-  opacity: 0.7;
-  background: #f0f0f0;
-  padding: 15px;
-  border-radius: 6px;
-}
-
-/* Информация об экспонате */
+/* ТЕКСТ СПРАВА */
 .exhibit-info {
-  padding: 20px;
-  flex-grow: 1;
+  flex: 1;
+  padding: 15px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .exhibit-number {
   font-size: 1.3em;
   font-weight: bold;
-  color: var(--color-primary);
+  color: #00aaaa;
   display: block;
   margin-bottom: 8px;
-  text-decoration: none !important;
-}
-
-.exhibit-number:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline !important;
 }
 
 .exhibit-model {
@@ -193,232 +113,174 @@ details > div {
   margin-bottom: 5px;
   color: #333333;
   font-size: 1.1em;
-  line-height: 1.4;
-  flex-grow: 1;
-  
-  /* Обрезаем слишком длинные названия */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
 }
 
 .exhibit-year {
   color: #666666;
-  font-size: 0.95em;
-  font-style: italic;
+  font-size: 0.9em;
   margin-top: 5px;
 }
 
-/* 7. АДАПТИВНОСТЬ ДЛЯ РАЗНЫХ ЭКРАНОВ */
-
-/* ОЧЕНЬ большие мониторы (4K и выше) - максимум 6 карточек в строке */
-@media screen and (min-width: 1920px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
-    justify-content: center;
-    gap: 30px;
-  }
+/* Placeholder изображение */
+.exhibit-image img[src*="placehold.co"] {
+  opacity: 0.6;
+  background: #eee;
+  padding: 10px;
+  border-radius: 4px;
 }
 
-/* Большие десктопы - максимум 5 карточек в строке */
-@media screen and (min-width: 1600px) and (max-width: 1919px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-  }
-}
+/* 5. АДАПТИВНОСТЬ */
 
-/* Стандартные десктопы - 3-4 карточки в строке */
-@media screen and (min-width: 1200px) and (max-width: 1599px) {
+/* На широких экранах - 2 колонки карточек */
+@media screen and (min-width: 1024px) {
   .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 25px;
-  }
-}
-
-/* Ноутбуки и планшеты в альбомной ориентации - 2-3 карточки */
-@media screen and (min-width: 992px) and (max-width: 1199px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-}
-
-/* Планшеты - 2 карточки в строке */
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-  }
-  
-  .exhibit-image {
-    aspect-ratio: 16/9;
-    padding: 15px;
-  }
-}
-
-/* Большие смартфоны - 2 карточки в строке */
-@media screen and (min-width: 576px) and (max-width: 767px) {
-  .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
-  }
-  
-  body {
-    padding: 15px;
-    font-size: 15px;
-  }
-  
-  .exhibit-image {
-    aspect-ratio: 16/9;
-    padding: 15px;
-  }
-  
-  .exhibit-info {
-    padding: 15px;
-  }
-}
-
-/* Мобильные телефоны - 1 карточка в строке */
-@media screen and (max-width: 575px) {
-  .exhibits-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  body {
-    padding: 10px;
-    font-size: 14px;
   }
   
   .exhibit-card {
-    max-width: 100%;
-  }
-  
-  .exhibit-image {
-    aspect-ratio: 16/9;
-    padding: 15px;
-  }
-  
-  .exhibit-info {
-    padding: 15px;
-  }
-  
-  h1 {
-    font-size: 1.8em;
+    height: 100%;
   }
 }
 
-/* Очень маленькие экраны */
-@media screen and (max-width: 360px) {
-  body {
-    padding: 8px;
-  }
-  
+/* На очень широких экранах - 3 колонки */
+@media screen and (min-width: 1400px) {
   .exhibits-grid {
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* На планшетах */
+@media screen and (max-width: 768px) {
+  .exhibit-image {
+    flex: 0 0 150px;
+    padding: 10px;
   }
   
-  .exhibit-image {
-    padding: 10px;
+  .exhibit-image img {
+    max-height: 100px;
   }
   
   .exhibit-info {
     padding: 12px;
   }
-}
-
-/* 8. Оптимизация для устройств с медленной анимацией */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  
+  .exhibit-number {
+    font-size: 1.2em;
   }
   
-  .exhibit-card,
-  .exhibit-image img,
-  details {
-    transition: none !important;
-  }
-  
-  .exhibit-card:hover {
-    transform: none;
+  .exhibit-model {
+    font-size: 1em;
   }
 }
 
-/* 9. Стили для печати */
-@media print {
-  .exhibits-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  
+/* На мобильных телефонах */
+@media screen and (max-width: 480px) {
   .exhibit-card {
-    break-inside: avoid;
-    box-shadow: none;
-    border: 1px solid #cccccc;
+    flex-direction: column;
+    min-height: auto;
   }
   
   .exhibit-image {
-    display: none;
+    flex: 0 0 auto;
+    height: 150px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+  }
+  
+  .exhibit-image img {
+    max-height: 120px;
+  }
+  
+  .exhibit-info {
+    padding: 15px;
+  }
+  
+  body {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+/* На очень маленьких телефонах */
+@media screen and (max-width: 360px) {
+  .exhibit-image {
+    height: 120px;
+    padding: 10px;
+  }
+  
+  .exhibit-image img {
+    max-height: 100px;
+  }
+  
+  .exhibit-info {
+    padding: 12px;
   }
   
   .exhibit-number {
-    color: #000000 !important;
+    font-size: 1.1em;
   }
 }
 
-/* 10. Дополнительные улучшения */
-/* Информация о количестве */
-.performance-info {
-  text-align: center;
-  margin-top: 20px;
+/* 6. Улучшение читаемости для длинного текста */
+.exhibit-model {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* 7. Альтернативный вариант: ТАБЛИЧНЫЙ ВИД (если нужно) */
+/* Раскомментируйте, если хотите табличный вид вместо карточек */
+
+/*
+.table-view {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-row {
+  display: table-row;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-cell-image {
+  display: table-cell;
+  width: 180px;
   padding: 10px;
-  color: #666666;
-  font-size: 0.9em;
-  border-top: 1px solid var(--color-border);
+  vertical-align: middle;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  background: #f8f9fa;
 }
 
-/* Улучшение для ссылок в деталях */
-details a {
-  display: block;
-  padding: 5px 0;
-  color: var(--color-primary);
+.table-cell-info {
+  display: table-cell;
+  padding: 15px;
+  vertical-align: middle;
 }
 
-details a:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
+@media screen and (max-width: 768px) {
+  .table-view,
+  .table-row,
+  .table-cell-image,
+  .table-cell-info {
+    display: block;
+    width: 100%;
+  }
+  
+  .table-row {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  .table-cell-image {
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
 }
-
-/* Стиль для основного контейнера */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* 11. Улучшение скроллбара */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-dark);
-}
+*/
