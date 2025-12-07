@@ -1,4 +1,3 @@
-
 /* === museum-theme.css - ОБЩИЙ CSS для всей коллекции === */
 
 /* 1. БАЗОВЫЕ СТИЛИ (одинаковые для всех) */
@@ -69,22 +68,6 @@ summary::before {
 
 details[open] summary::before {
   content: "▼";
-}
-
-
-
-/* Стили для основного контента */
-.page-content {
-  min-height: 70vh;
-  padding: 20px 0;
-}
-
-.page-footer {
-  margin-top: 40px;
-  padding: 20px 0;
-  font-size: 0.9em;
-  color: #666;
-  border-top: 1px solid #eee;
 }
 
 /* 2. ОБЩИЕ КЛАССЫ ДЛЯ КАРТОЧЕК */
@@ -584,13 +567,9 @@ details[open] summary::before {
   }
 }
 
+/* ===================== СТИЛИ ДЛЯ ШАБЛОНА (добавлены без удаления существующих) =========================== */
 
-
-
-
-
-/* === ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ШАБЛОНА === */
-
+/* 9. СТИЛИ ДЛЯ ОБЩЕГО ШАБЛОНА СТРАНИЦЫ */
 .page-wrapper {
   max-width: 1400px;
   margin: 0 auto;
@@ -619,6 +598,18 @@ details[open] summary::before {
   cursor: pointer;
   color: #00aaaa;
   font-weight: bold;
+  padding-left: 20px;
+}
+
+.more-menu summary::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #00aaaa;
+}
+
+.more-menu[open] summary::before {
+  content: "▼";
 }
 
 .submenu {
@@ -673,5 +664,56 @@ details[open] summary::before {
   .page-header p {
     font-size: 0.9em;
     line-height: 1.4;
+  }
+}
+
+/* Стили для основного контента */
+.page-content {
+  min-height: 70vh;
+  padding: 20px 0;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  font-size: 0.9em;
+  color: #666;
+  border-top: 1px solid #eee;
+}
+
+/* Сохраняем стили для существующего pageinfo */
+.pageinfo {
+  /* Существующие стили сохранены */
+}
+
+/* Сохраняем стили для существующего description */
+.description {
+  /* Существующие стили сохранены */
+}
+
+/* Сохраняем стили для существующего header и footer внутри pageinfo */
+.pageinfo header,
+.pageinfo footer {
+  /* Существующие стили сохранены */
+}
+
+/* 10. АДАПТИВНОСТЬ ДЛЯ ШАБЛОНА */
+@media screen and (max-width: 767px) {
+  .page-wrapper {
+    padding: 8px;
+  }
+  
+  .page-content {
+    padding: 15px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-wrapper {
+    padding: 5px;
+  }
+  
+  .page-content {
+    padding: 10px 0;
   }
 }
