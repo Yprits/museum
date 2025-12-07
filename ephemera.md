@@ -29,7 +29,7 @@ title: "Эфемеры"
         
         <!-- Описание -->
         <div class="ephemera-list-description">
-          {{ item.description | default: "Без описания" | truncate: 120 }}
+          {{ item.description | default: "Без описания" }}
         </div>
         
         <!-- Основная мета-информация -->
@@ -59,21 +59,20 @@ title: "Эфемеры"
           {% endif %}
         </div>
         
-        <!-- Связанные модели (новое поле!) -->
+        <!-- Связанные модели -->
         {% if item.models %}
         <div class="ephemera-list-models">
           <div class="ephemera-list-models-title">📱 Изображенные модели:</div>
-          <div class="ephemera-list-models-list">
+          <div class="ephemera-list-models-items">
             {% assign model_refs = item.models | split: "," %}
             {% for model_ref in model_refs %}
               {% assign model_name = model_ref | strip %}
               {% if model_name != "" %}
-                <!-- Ищем модель в коллекции -->
                 {% assign found_model = site.models | where: "title", model_name | first %}
                 {% if found_model %}
-                  <a href="{{ found_model.url | relative_url }}">{{ model_name }}</a>{% unless forloop.last %}, {% endunless %}
+                  <a href="{{ found_model.url | relative_url }}" class="ephemera-list-model-item">{{ model_name }}</a>
                 {% else %}
-                  {{ model_name }}{% unless forloop.last %}, {% endunless %}
+                  <span class="ephemera-list-model-item" style="background: #f0f0f0; color: #666; border-color: #ddd;">{{ model_name }}</span>
                 {% endif %}
               {% endif %}
             {% endfor %}
@@ -84,7 +83,7 @@ title: "Эфемеры"
         <!-- Бейджи -->
         <div class="ephemera-list-badges">
           {% if item.type %}
-          <span class="ephemera-list-badge type" title="Тип документа">{{ item.type | truncate: 15 }}</span>
+          <span class="ephemera-list-badge type" title="Тип документа">{{ item.type }}</span>
           {% endif %}
           
           {% if item.year %}
@@ -93,6 +92,10 @@ title: "Эфемеры"
           
           {% if item.rare %}
           <span class="ephemera-list-badge rare" title="Редкий документ">★ Редкий</span>
+          {% endif %}
+          
+          {% if item.language %}
+          <span class="ephemera-list-badge" title="Язык">{{ item.language }}</span>
           {% endif %}
         </div>
       </div>
