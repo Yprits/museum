@@ -26,7 +26,12 @@ title: "Все экспонаты коллекции"
         <div class="item-info">
           <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
           <div class="item-description">{{ exhibit.model }}</div>
-          <div class="item-meta">{{ exhibit.prodyear | replace: ".", "." }}</div>
+          <div class="item-meta">
+            ({{ exhibit.class }})
+            🏭 {{ exhibit.manufacturer }}
+            📅 {{ exhibit.prodyear | replace: ".", "." }}
+            🌍 {{ exhibit.country }}
+          </div>
         </div>
       </div>
     {% endif %}
