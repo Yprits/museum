@@ -36,7 +36,7 @@
             {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear | replace: ".", "." }}{% endif %}
             {% if exhibit.country %}<br>🌍 {{ exhibit.country }}{% endif %}
             {% if exhibit.collectionstatus %}
-              <br>
+              <br> ℹ 
               {% assign status = exhibit.collectionstatus | upcase %}
               {% if status contains "ПОИСК" or status contains "ИЩУ" %}
                 <span class="status-seek">{{ exhibit.collectionstatus }}</span>
