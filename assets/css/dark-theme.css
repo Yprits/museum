@@ -28,6 +28,21 @@ a:hover {
   text-decoration: underline;
 }
 
+code, pre {
+  background-color: #1e1e1e; /* Темный фон для кода */
+  color: #d4d4d4;          /* Светло-серый текст кода */
+  border: 1px solid #333; /* Тонкая граница */
+}
+
+
+blockquote {
+  border-left: 4px solid #007bff;
+  background-color: #f8f9fa;
+  padding: 10px 20px;
+  margin: 0 0 20px;
+}
+
+
 details {
   margin: 10px 0;
   background: #f8f9fa;
