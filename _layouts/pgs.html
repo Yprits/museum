@@ -2,48 +2,79 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{'/assets/css/dark-theme.css'|relative_url}}"> 
+  <link rel="stylesheet" href="{{'/assets/css/museum-theme.css'|relative_url}}"> 
 </head>
 
-  
 <body>
-    <div class="pageinfo">
-      <header>
-           
-      <p>Pritty Computer Collection // Компьютерная коллекция Притти. Добро пожаловать!</p>
-      <p>[<a title="Основная страница коллекции" href="https://yprits.github.io/museum">Главная</a>]
-         [<a title="Записи о жизни Притти и его коллекции" href="https://yprits.github.io/museum/blog">Блог</a>]
-         [<a title="Небольшие разъяснения о категориях" href="https://yprits.github.io/museum/category">Категории</a>]
-         [<a title="Список моделей вычислительной техники" href="https://yprits.github.io/museum/models">Модели</a>]
-         [<a title="Список экспонатов вычислительной техники" href="https://yprits.github.io/museum/exhibits">Экспонаты</a>]
-         [<a title="Книжки, журналы, статьи и прочее чтиво" href="https://yprits.github.io/museum/books">Литература</a>]
-         [<a title="Календарики, реклама, визитки, этикетки, марки..." href="https://yprits.github.io/museum/ephemera">Эфемера</a>]
-         [<a title="Новости из мира калькуляторов и ретрЫ" href="https://yprits.github.io/museum/news">Новости</a>]
-         [<a title="Полезные ссылки на веб-ресурсы" href="https://yprits.github.io/museum/links">Ссылки</a>]
-         [<a title="Важная информация о сайте и коллекции" href="https://yprits.github.io/museum/about">О&#160сайте</a>]
-         [<a title="Дубли, 'лишние' образы, нетематические экземпляры и другое" href="https://yprits.github.io/museum/exchange">Обменный&#160фонд</a>]
-         [<a title="Информация для желающих помочь" href="https://yprits.github.io/museum/help">Помочь&#160коллекции</a>]
-      </p>
+  <div class="page-wrapper">
+    <header class="page-header">
+      <div class="header-info">
+        <p>Pritty Computer Collection // Компьютерная коллекция Притти. Добро пожаловать!</p>
+      </div>
+      
+      <!-- Компактное меню -->
+      <nav class="main-nav">
+        <details class="mobile-menu">
+          <summary>☰ Меню</summary>
+          <div class="nav-links">
+            [<a title="Основная страница коллекции" href="https://yprits.github.io/museum">Главная</a>]
+            [<a title="Записи о жизни Притти и его коллекции" href="https://yprits.github.io/museum/blog">Блог</a>]
+            [<a title="Небольшие разъяснения о категориях" href="https://yprits.github.io/museum/category">Категории</a>]
+            [<a title="Список моделей вычислительной техники" href="https://yprits.github.io/museum/models">Модели</a>]
+            [<a title="Список экспонатов вычислительной техники" href="https://yprits.github.io/museum/exhibits">Экспонаты</a>]
+            [<a title="Книжки, журналы, статьи и прочее чтиво" href="https://yprits.github.io/museum/books">Литература</a>]
+            [<a title="Календарики, реклама, визитки, этикетки, марки..." href="https://yprits.github.io/museum/ephemera">Эфемера</a>]
+            [<a title="Новости из мира калькуляторов и ретрЫ" href="https://yprits.github.io/museum/news">Новости</a>]
+            [<a title="Полезные ссылки на веб-ресурсы" href="https://yprits.github.io/museum/links">Ссылки</a>]
+            [<a title="Важная информация о сайте и коллекции" href="https://yprits.github.io/museum/about">О&#160сайте</a>]
+            [<a title="Дубли, 'лишние' образы, нетематические экземпляры и другое" href="https://yprits.github.io/museum/exchange">Обменный&#160фонд</a>]
+            [<a title="Информация для желающих помочь" href="https://yprits.github.io/museum/help">Помочь&#160коллекции</a>]
+          </div>
+        </details>
+        
+        <div class="desktop-menu">
+          [<a title="Основная страница коллекции" href="https://yprits.github.io/museum">Главная</a>]
+          [<a title="Записи о жизни Притти и его коллекции" href="https://yprits.github.io/museum/blog">Блог</a>]
+          [<a title="Список моделей вычислительной техники" href="https://yprits.github.io/museum/models">Модели</a>]
+          [<a title="Список экспонатов вычислительной техники" href="https://yprits.github.io/museum/exhibits">Экспонаты</a>]
+          <details class="more-menu">
+            <summary>Ещё...</summary>
+            <div class="submenu">
+              [<a title="Небольшие разъяснения о категориях" href="https://yprits.github.io/museum/category">Категории</a>]
+              [<a title="Книжки, журналы, статьи и прочее чтиво" href="https://yprits.github.io/museum/books">Литература</a>]
+              [<a title="Календарики, реклама, визитки, этикетки, марки..." href="https://yprits.github.io/museum/ephemera">Эфемера</a>]
+              [<a title="Новости из мира калькуляторов и ретрЫ" href="https://yprits.github.io/museum/news">Новости</a>]
+              [<a title="Полезные ссылки на веб-ресурсы" href="https://yprits.github.io/museum/links">Ссылки</a>]
+              [<a title="Важная информация о сайте и коллекции" href="https://yprits.github.io/museum/about">О&#160сайте</a>]
+              [<a title="Дубли, 'лишние' образы, нетематические экземпляры и другое" href="https://yprits.github.io/museum/exchange">Обменный&#160фонд</a>]
+              [<a title="Информация для желающих помочь" href="https://yprits.github.io/museum/help">Помочь&#160коллекции</a>]
+            </div>
+          </details>
+        </div>
+      </nav>
       <hr>
     </header>
-    <h1>{{ page.title }}</h1>
-    </div>
 
-    <!-- Описание страницы -->
-    <div class="description">
-      <div align="justify">
-      {{ content }}
+    <main class="page-content">
+      <h1>{{ page.title }}</h1>
+      
+      <!-- Описание страницы -->
+      <div class="description">
+        <div align="justify">
+          {{ content }}
+        </div>
       </div>
-    </div>
+    </main>
 
-   <footer>
-     <hr>
-     <p> (ɔ) Притти Д. <br>
+    <footer class="page-footer">
+      <hr>
+      <p> (ɔ) Притти Д. <br>
         На данный момент это все. Желаете дополнить? <br>
-       Обнаружили ошибку? Сообщите!</p>
-   </footer>
-   
+        Обнаружили ошибку? Сообщите!
+      </p>
+    </footer>
   </div>
 </body>
 </html>
