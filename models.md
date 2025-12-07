@@ -31,8 +31,12 @@ title: "Модели вычислительной техники"
         </div>
         <div class="item-info">
           <a href="{{ modell.url | relative_url }}" class="item-title">{{ modell.title }}</a>
-          <div class="item-description">{{ modell.short }}</div>
-          <div class="item-meta">{{ modell.country }}</div>
+          <div class="item-meta">
+            ({{ modell.category}}; {{ modell.short }})
+            📆 {{ modell.modelyears }}
+            🌍 {{ modell.country }}
+            🏭 {{ modell.manufacturer }}
+          </div>
         </div>
       </div>
     {% endif %}
