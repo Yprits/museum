@@ -13,44 +13,72 @@ title: "Все экспонаты коллекции"
   <details>
     <summary>Искать по типу</summary>
     <div class="filter-content">
-      {% capture details_content %}
-      - [Программируемые](./exhibits/programmable) калькуляторы и компьютеры;
-      - [Инженерные](./exhibits/engineer) калькуляторы;
-      - [Арифметические](./exhibits/arithmetical) калькуляторы;
-      - [Линейки](./exhibits/rules) логарифмические и не только;
-      - [Механические](./exhibits/mech) счетные устройства;
-      - [Домеханические](./exhibits/premech) цифровые счетные устройства (счеты, палочки и другое);
-      - [Электронные записные книжки](./exhibits/notebook);
-      - [Прочие](./exhibits/othercategory) - в разработке.
-      {% endcapture %}
-      {{ details_content | markdownify }}
+      <ul>
+        <li><a href="./exhibits/programmable">Программируемые калькуляторы и компьютеры</a></li>
+        <li><a href="./exhibits/engineer">Инженерные калькуляторы</a></li>
+        <li><a href="./exhibits/arithmetical">Арифметические калькуляторы</a></li>
+        <li><a href="./exhibits/rules">Линейки логарифмические и не только</a></li>
+        <li><a href="./exhibits/mech">Механические счетные устройства</a></li>
+        <li><a href="./exhibits/premech">Домеханические цифровые счетные устройства (счеты, палочки и другое)</a></li>
+        <li><a href="./exhibits/notebook">Электронные записные книжки</a></li>
+        <li><a href="./exhibits/othercategory">Прочие</a> - в разработке.</li>
+      </ul>
     </div>
   </details>
 
   <details>
     <summary>Искать по странам</summary>
     <div class="filter-content">
-      {% capture details_content %}
-      - [Советские](./exhibits/ussr) - все, связанные с СССР;
-      - [Белорусские](./exhibits/belarus);
-      - [Российские](./exhibits/russia);
-      - [Китайские](./exhibits/china);
-      - [Американские](./exhibits/usa);
-      - [Немецкие](./exhibits/germany);
-      - [Японские](./exhibits/japan);
-      - [Прочие](./exhibits/othercountry) - в разработке.
-      {% endcapture %}
-      {{ details_content | markdownify }}
+      <ul>
+        <li><a href="./exhibits/ussr">Советские</a> - все, связанные с СССР</li>
+        <li><a href="./exhibits/belarus">Белорусские</a></li>
+        <li><a href="./exhibits/russia">Российские</a></li>
+        <li><a href="./exhibits/china">Китайские</a></li>
+        <li><a href="./exhibits/usa">Американские</a></li>
+        <li><a href="./exhibits/germany">Немецкие</a></li>
+        <li><a href="./exhibits/japan">Японские</a></li>
+        <li><a href="./exhibits/othercountry">Прочие</a> - в разработке.</li>
+      </ul>
     </div>
   </details>
 </div>
 
-{% assign sorted_exhibits = site.exhibits | sort: "innernumber" %}
-{% include exhibits-list.html 
-    collection=sorted_exhibits 
-     
-%}
-
-
-
-
+<!-- Сортируем экспонаты по числовому номеру -->
+{% assign sorted_exhibits = site.exhibits | sort: "basename" %}
+<div class="exhibits-grid items-grid">
+  {% for exhibit in sorted_exhibits %}
+    {% if exhibit.innernumber %}
+      <div class="exhibit-card item-card">
+        <div class="item-image">
+          {% if exhibit.photo0 and exhibit.prev0 %}
+            <a href="{{ exhibit.photo0 }}">
+              <img src="{{ exhibit.prev0 }}" alt="{{ exhibit.model }}" loading="lazy">
+            </a>
+          {% else %}
+            <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
+                 alt="Фото пока нет" loading="lazy">
+          {% endif %}
+        </div>
+        <div class="item-info">
+          <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
+          <div class="item-description">{{ exhibit.model }}</div>
+          <div class="item-meta">
+            {% if exhibit.category %}({{ exhibit.category }}){% endif %}
+            {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
+            {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
+            {% if exhibit.country %}<br>🌍 {{ exhibit.country }}{% endif %}
+            {% if exhibit.collectionstatus %}
+              <br>
+              {% assign status = exhibit.collectionstatus | default: "" | upcase %}
+              {% if status == "ПОИСК" or status contains "ИЩУ" %}
+                <span class="status-seek">{{ exhibit.collectionstatus }}</span>
+              {% else %}
+                {{ exhibit.collectionstatus }}
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
