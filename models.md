@@ -42,3 +42,13 @@ title: "Модели вычислительной техники"
     {% endif %}
   {% endfor %}
 </div>
+
+
+
+Модели расположены в алфавитном порядке.
+
+{% assign sorted_models = site.models | sort: "title" %}
+{% include models-list.html 
+    collection=sorted_models 
+    subtitle="Все модели в алфавитном порядке" 
+%}
