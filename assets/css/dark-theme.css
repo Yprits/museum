@@ -71,6 +71,107 @@ details[open] summary::before {
   content: "▼";
 }
 
+/* === ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ШАБЛОНА === */
+
+.page-wrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Навигация */
+.main-nav {
+  margin: 10px 0;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+.desktop-menu {
+  display: block;
+}
+
+.more-menu {
+  display: inline-block;
+  position: relative;
+}
+
+.more-menu summary {
+  cursor: pointer;
+  color: #00aaaa;
+  font-weight: bold;
+}
+
+.submenu {
+  position: absolute;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  min-width: 200px;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.submenu a {
+  display: block;
+  margin: 5px 0;
+}
+
+/* Адаптивность для меню */
+@media screen and (max-width: 1023px) {
+  .desktop-menu {
+    display: none;
+  }
+  
+  .mobile-menu {
+    display: block;
+  }
+  
+  .mobile-menu .nav-links {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-top: 5px;
+  }
+  
+  .mobile-menu .nav-links a {
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .mobile-menu .nav-links a:last-child {
+    border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .page-header p {
+    font-size: 0.9em;
+    line-height: 1.4;
+  }
+}
+
+/* Стили для основного контента */
+.page-content {
+  min-height: 70vh;
+  padding: 20px 0;
+}
+
+.page-footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  font-size: 0.9em;
+  color: #666;
+  border-top: 1px solid #eee;
+}
+
 /* 2. ОБЩИЕ КЛАССЫ ДЛЯ КАРТОЧЕК */
 .items-grid {
   display: grid;
