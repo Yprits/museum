@@ -306,15 +306,15 @@ details[open] summary::before {
 /* ===================== СТИЛИ ДЛЯ ЭФЕМЕРОВ (отдельные) =========================== */
 
 /* 7. СЕТКА ЭФЕМЕРОВ - отдельный дизайн */
-.ephemera-grid {
+/* 7. СТИЛИ ДЛЯ СПИСКА ЭФЕМЕРОВ */
+.ephemera-list-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
   padding: 25px 0;
 }
 
-/* Карточка эфемера - вертикальная компоновка */
-.ephemera-card {
+.ephemera-list-card {
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -324,15 +324,16 @@ details[open] summary::before {
   height: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-left: 4px solid #d35400; /* Оранжевая полоса */
 }
 
-.ephemera-card:hover {
+.ephemera-list-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Изображение эфемера - большее, чем у экспонатов */
-.ephemera-image {
+/* Большие изображения для эфемеров */
+.ephemera-list-image {
   height: 180px;
   display: flex;
   align-items: center;
@@ -342,67 +343,104 @@ details[open] summary::before {
   border-bottom: 1px solid #ddd;
 }
 
-.ephemera-image img {
+.ephemera-list-image img {
   max-width: 100%;
   max-height: 160px;
   object-fit: contain;
   border-radius: 4px;
-  transition: transform 0.3s ease;
 }
 
-.ephemera-card:hover .ephemera-image img {
-  transform: scale(1.03);
-}
-
-/* Информационная часть эфемера */
-.ephemera-info {
+/* Информационная часть */
+.ephemera-list-info {
   flex: 1;
   padding: 20px;
   display: flex;
   flex-direction: column;
 }
 
-.ephemera-title {
+.ephemera-list-title {
   font-size: 1.2em;
   font-weight: bold;
-  color: #d35400; /* Оранжевый для эфемеров */
+  color: #d35400; /* Оранжевый */
   margin-bottom: 10px;
   line-height: 1.3;
   text-decoration: none;
 }
 
-.ephemera-title:hover {
+.ephemera-list-title:hover {
   color: #a04000;
   text-decoration: underline;
 }
 
-.ephemera-description {
+.ephemera-list-description {
   color: #444;
   font-size: 0.95em;
   line-height: 1.5;
   margin-bottom: 12px;
   flex-grow: 1;
   
-  /* Ограничение текста с многоточием */
+  /* Ограничение текста */
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* 3 строки */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.ephemera-meta {
+/* Блок с мета-информацией */
+.ephemera-list-meta {
   color: #666;
   font-size: 0.85em;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.ephemera-list-meta-item {
+  margin-bottom: 4px;
+}
+
+.ephemera-list-meta-item strong {
+  color: #d35400;
+}
+
+/* Специальный блок для связанных моделей */
+.ephemera-list-models {
+  margin-top: 12px;
+  padding-top: 12px;
   border-top: 1px solid #eee;
-  padding-top: 10px;
-  margin-top: auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+}
+
+.ephemera-list-models-title {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #d35400;
+  margin-bottom: 6px;
+}
+
+.ephemera-list-models-list {
+  font-size: 0.85em;
+  color: #555;
+  line-height: 1.4;
+}
+
+.ephemera-list-models-list a {
+  color: #0077aa;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.ephemera-list-models-list a:hover {
+  text-decoration: underline;
 }
 
 /* Бейджи для мета-информации */
-.ephemera-badge {
+.ephemera-list-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.ephemera-list-badge {
   display: inline-block;
   background: #f0f0f0;
   color: #555;
@@ -412,148 +450,118 @@ details[open] summary::before {
   white-space: nowrap;
 }
 
-.ephemera-badge.type {
+.ephemera-list-badge.type {
+  background: #f8e8d8;
+  color: #d35400;
+}
+
+.ephemera-list-badge.year {
   background: #e8f4f8;
   color: #0088aa;
 }
 
-.ephemera-badge.year {
-  background: #f0f8f0;
-  color: #228822;
+.ephemera-list-badge.rare {
+  background: #f8d7da;
+  color: #c0392b;
 }
 
-/* Специальный стиль для редких эфемеров */
-.ephemera-card.rare {
-  border: 2px solid #c0392b;
-  position: relative;
-}
-
-.ephemera-card.rare::before {
-  content: "★";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: #c0392b;
-  color: white;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9em;
-  z-index: 1;
-}
-
-/* 8. АДАПТИВНОСТЬ ДЛЯ ЭФЕМЕРОВ */
+/* 8. АДАПТИВНОСТЬ ДЛЯ СПИСКА ЭФЕМЕРОВ */
 @media screen and (min-width: 1600px) {
-  .ephemera-grid {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  .ephemera-list-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1599px) {
-  .ephemera-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  .ephemera-list-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1199px) {
-  .ephemera-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  .ephemera-list-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 18px;
   }
   
-  .ephemera-image {
+  .ephemera-list-image {
     height: 160px;
     padding: 18px;
   }
   
-  .ephemera-image img {
+  .ephemera-list-image img {
     max-height: 140px;
   }
   
-  .ephemera-info {
+  .ephemera-list-info {
     padding: 18px;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .ephemera-grid {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  .ephemera-list-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 15px;
   }
   
-  .ephemera-card {
+  .ephemera-list-card {
     max-width: 100%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .ephemera-grid {
+  .ephemera-list-grid {
     grid-template-columns: 1fr;
     gap: 15px;
   }
   
-  .ephemera-image {
+  .ephemera-list-image {
     height: 160px;
     padding: 15px;
   }
   
-  .ephemera-image img {
+  .ephemera-list-image img {
     max-height: 140px;
   }
   
-  .ephemera-info {
+  .ephemera-list-info {
     padding: 15px;
   }
   
-  .ephemera-title {
+  .ephemera-list-title {
     font-size: 1.1em;
   }
   
-  .ephemera-description {
+  .ephemera-list-description {
     font-size: 0.9em;
     -webkit-line-clamp: 3;
+  }
+  
+  .ephemera-list-models-list {
+    font-size: 0.8em;
   }
 }
 
 @media screen and (max-width: 360px) {
-  .ephemera-image {
+  .ephemera-list-image {
     height: 140px;
     padding: 12px;
   }
   
-  .ephemera-image img {
+  .ephemera-list-image img {
     max-height: 120px;
   }
   
-  .ephemera-info {
+  .ephemera-list-info {
     padding: 12px;
   }
   
-  .ephemera-title {
+  .ephemera-list-title {
     font-size: 1.05em;
   }
   
-  .ephemera-description {
+  .ephemera-list-description {
     -webkit-line-clamp: 2;
   }
-}
-
-/* 9. Улучшение читаемости для эфемеров */
-.ephemera-description {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
-}
-
-/* Placeholder для эфемеров */
-.ephemera-image img[src*="placehold.co"] {
-  opacity: 0.6;
-  background: #f0f0f0;
-  padding: 15px;
-  border-radius: 4px;
-  border: 2px dashed #ccc;
 }
