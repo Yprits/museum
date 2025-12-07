@@ -1,118 +1,78 @@
-/* === museum-theme.css - УЛУЧШЕННАЯ ВЕРСИЯ === */
 
-/* 1. БАЗОВЫЕ СТИЛИ с улучшениями */
+/* === museum-theme.css - ОБЩИЙ CSS для всей коллекции === */
+
+/* 1. БАЗОВЫЕ СТИЛИ (одинаковые для всех) */
 body {
   margin: 0;
   padding: 10px;
-  background: #f8f9fa; /* Светлее, менее серый */
-  color: #1a1a1a; /* Чуть темнее для лучшего контраста */
-  font-family: Verdana, Geneva, sans-serif; /* Добавил Geneva как альтернативу */
+  background: #f2f3f4;
+  color: #222222;
+  font-family: Verdana, sans-serif;
   font-size: 16px;
-  line-height: 1.6; /* Чуть больше межстрочный интервал для читаемости */
-  max-width: 1400px; /* Ограничим максимальную ширину для больших экранов */
-  margin: 0 auto; /* Центрируем контент */
-  
-  /* Улучшение рендеринга текста */
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  
-  /* Автоматические переносы для всего сайта */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
+  line-height: 1.5;
+  max-width: 100%;
 }
 
-/* 2. Заголовки и ссылки с улучшениями */
 h1 {
   border-bottom: 2px solid #00aaaa;
-  padding-bottom: 12px;
-  margin: 25px 0 20px 0;
-  color: #000000; /* Черный для лучшего контраста */
-  font-weight: 600; /* Чуть легче жирности */
-}
-
-h2, h3, h4 {
-  color: #111111;
-  margin-top: 1.8em;
-  margin-bottom: 0.8em;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 a {
-  color: #0088cc; /* Более стандартный синий для ссылок */
+  color: #00aaaa;
   text-decoration: none;
-  transition: color 0.15s ease; /* Плавное изменение цвета */
 }
 
 a:hover {
-  color: #005580; /* Темнее при наведении */
   text-decoration: underline;
 }
 
-/* 3. Детали (details/summary) с улучшениями */
 details {
-  margin: 12px 0;
-  background: #f1f5f9; /* Чуть другой оттенок фона */
-  border: 1px solid #cbd5e1; /* Более мягкая граница */
-  border-radius: 6px; /* Немного больше скругление */
-  padding: 10px;
-  transition: background-color 0.15s ease;
-}
-
-details[open] {
-  background: #e0f2fe; /* Светло-голубой при открытии */
+  margin: 10px 0;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px;
 }
 
 summary {
   cursor: pointer;
-  color: #0369a1; /* Цвет как у ссылок */
-  font-weight: 600;
+  color: #008888;
+  font-weight: bold;
   list-style: none;
-  padding: 8px 8px 8px 32px; /* Увеличил отступы */
+  padding-left: 20px;
   position: relative;
-  border-radius: 4px;
-}
-
-summary:hover {
-  background-color: rgba(0, 136, 204, 0.05); /* Легкий фон при наведении */
 }
 
 summary::before {
   content: "▶";
   position: absolute;
-  left: 12px;
-  color: #0088cc;
-  font-size: 0.9em;
+  left: 0;
+  color: #00aaaa;
 }
 
 details[open] summary::before {
   content: "▼";
 }
 
-/* 4. ОБЩИЕ КЛАССЫ ДЛЯ КАРТОЧЕК с улучшениями */
+/* 2. ОБЩИЕ КЛАССЫ ДЛЯ КАРТОЧЕК */
 .items-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  gap: 18px; /* Чуть больше расстояние между карточками */
-  padding: 25px 0;
+  gap: 15px;
+  padding: 20px 0;
   justify-content: center;
 }
 
 .item-card {
   display: flex;
   background: #ffffff;
-  border: 1px solid #e2e8f0; /* Более мягкая граница */
-  border-radius: 8px; /* Чуть больше скругление */
+  border: 1px solid #ddd;
+  border-radius: 6px;
   overflow: hidden;
-  min-height: 160px; /* Чуть выше */
+  min-height: 150px;
   width: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Легкая тень для объема */
-  transition: box-shadow 0.15s ease, border-color 0.15s ease;
-}
-
-.item-card:hover {
-  border-color: #94a3b8; /* Темнее граница при наведении */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07); /* Тень при наведении */
 }
 
 .item-image {
@@ -120,68 +80,48 @@ details[open] summary::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px; /* Чуть больше отступ */
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); /* Градиентный фон */
-  border-right: 1px solid #e2e8f0;
+  padding: 15px;
+  background: #f8f9fa;
+  border-right: 1px solid #ddd;
 }
 
 .item-image img {
   max-width: 100%;
   max-height: 120px;
   object-fit: contain;
-  border-radius: 4px; /* Скругление углов изображения */
 }
 
 .item-info {
   flex: 1;
-  padding: 18px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
-  /* Улучшение переносов внутри карточки */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
 }
 
 .item-title {
-  font-size: 1.25em; /* Чуть меньше */
-  font-weight: 700; /* Жирнее */
-  color: #0088cc;
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #00aaaa;
   display: block;
   margin-bottom: 8px;
-  line-height: 1.3;
-  
-  /* Обеспечим перенос длинных названий/номеров */
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  hyphens: auto;
 }
 
 .item-description {
-  font-weight: 600; /* Чуть легче жирности */
-  margin-bottom: 6px;
-  color: #1e293b; /* Темнее для лучшего контраста */
-  font-size: 1.05em;
-  line-height: 1.4;
-  
-  /* Ограничение по высоте с многоточием для очень длинных названий */
-  display: -webkit-box;
-  -webkit-line-clamp: 2; /* Максимум 2 строки */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333333;
+  font-size: 1.1em;
 }
 
 .item-meta {
-  color: #64748b; /* Более мягкий серый */
+  color: #666666;
   font-size: 0.9em;
-  margin-top: 6px;
-  line-height: 1.4;
+  margin-top: 5px;
 }
 
-/* 5. СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ ЭКСПОНАТОВ */
+/* 3. СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ ЭКСПОНАТОВ */
+/* (можно переопределить общие стили если нужно) */
 .exhibits-grid {
   /* Наследует все от .items-grid */
 }
@@ -190,7 +130,7 @@ details[open] summary::before {
   /* Наследует все от .item-card */
 }
 
-/* 6. СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ МОДЕЛЕЙ */
+/* 4. СПЕЦИФИЧЕСКИЕ СТИЛИ ДЛЯ МОДЕЛЕЙ */
 .models-grid {
   /* Наследует все от .items-grid */
 }
@@ -199,71 +139,33 @@ details[open] summary::before {
   /* Наследует все от .item-card */
 }
 
+/* Можно сделать небольшие отличия если нужно */
 .model-card .item-description {
   font-style: italic;
-  color: #475569; /* Другой оттенок серого */
+  color: #555;
 }
 
 .model-card .item-meta {
-  font-weight: 600;
-  color: #334155; /* Темнее для мета-информации моделей */
+  font-weight: bold;
 }
 
-/* 7. Placeholder изображение с улучшениями */
-.item-image img[src*="placehold.co"] {
-  opacity: 0.5;
-  background: #e2e8f0;
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px dashed #94a3b8;
-}
-
-/* 8. Улучшенная АДАПТИВНОСТЬ ДЛЯ ВСЕХ КАРТОЧЕК */
+/* 5. АДАПТИВНОСТЬ ДЛЯ ВСЕХ КАРТОЧЕК */
 @media screen and (min-width: 2000px) {
   .items-grid {
-    grid-template-columns: repeat(auto-fill, minmax(520px, 1fr));
-    gap: 20px;
-  }
-  
-  body {
-    max-width: 1600px;
+    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
   }
 }
 
 @media screen and (min-width: 1400px) and (max-width: 1999px) {
   .items-grid {
-    grid-template-columns: repeat(auto-fill, minmax(460px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1399px) {
   .items-grid {
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    gap: 16px;
-  }
-  
-  .item-card {
-    min-height: 150px;
-  }
-  
-  .item-image {
-    flex: 0 0 160px;
-    padding: 16px;
-  }
-  
-  .item-image img {
-    max-height: 110px;
-  }
-  
-  .item-info {
-    padding: 16px;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .items-grid {
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 12px;
   }
   
   .item-card {
@@ -272,7 +174,31 @@ details[open] summary::before {
   
   .item-image {
     flex: 0 0 140px;
-    padding: 14px;
+    padding: 12px;
+  }
+  
+  .item-image img {
+    max-height: 110px;
+  }
+  
+  .item-info {
+    padding: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .items-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 12px;
+  }
+  
+  .item-card {
+    min-height: 130px;
+  }
+  
+  .item-image {
+    flex: 0 0 130px;
+    padding: 10px;
   }
   
   .item-image img {
@@ -280,7 +206,7 @@ details[open] summary::before {
   }
   
   .item-info {
-    padding: 14px;
+    padding: 12px;
   }
   
   .item-title {
@@ -289,7 +215,6 @@ details[open] summary::before {
   
   .item-description {
     font-size: 1em;
-    -webkit-line-clamp: 2;
   }
 }
 
@@ -298,17 +223,13 @@ details[open] summary::before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
   }
   
   .item-card {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     min-height: auto;
-  }
-  
-  body {
-    padding: 12px;
   }
 }
 
@@ -316,96 +237,53 @@ details[open] summary::before {
   .item-card {
     flex-direction: column;
     min-height: auto;
-    max-width: 100%; /* На мобильных занимает всю ширину */
-    border-radius: 6px;
+    max-width: 300px;
   }
   
   .item-image {
     flex: 0 0 auto;
-    height: 160px; /* Выше на мобильных */
+    height: 150px;
     border-right: none;
-    border-bottom: 1px solid #e2e8f0;
-    padding: 16px;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
   }
   
   .item-image img {
-    max-height: 130px; /* Крупнее на мобильных */
+    max-height: 120px;
   }
   
   .item-info {
-    padding: 16px;
+    padding: 15px;
   }
   
   body {
-    padding: 10px;
-    font-size: 15px; /* Чуть меньше шрифт на мобильных */
-  }
-  
-  .item-description {
-    -webkit-line-clamp: 3; /* На мобильных показываем больше строк */
+    padding: 8px;
+    font-size: 14px;
   }
 }
 
 @media screen and (max-width: 360px) {
   .item-image {
-    height: 140px;
-    padding: 14px;
+    height: 120px;
+    padding: 10px;
   }
   
   .item-image img {
-    max-height: 110px;
+    max-height: 100px;
   }
   
   .item-info {
-    padding: 14px;
+    padding: 12px;
   }
   
   .item-title {
-    font-size: 1.15em;
-  }
-  
-  body {
-    padding: 8px;
+    font-size: 1.1em;
   }
 }
 
-/* 9. Дополнительные улучшения читаемости */
-/* Для очень длинных слов (например, технических названий) */
-.word-break {
-  word-break: break-word;
-}
-
-/* Контейнер для основного контента (если понадобится) */
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-/* Стиль для блока с информацией о количестве */
-.collection-stats {
-  background: #f1f5f9;
-  border-radius: 6px;
-  padding: 12px 16px;
-  margin: 15px 0;
-  border-left: 4px solid #0088cc;
-  font-size: 0.95em;
-}
-
-/* Улучшение для печати */
-@media print {
-  .item-card {
-    break-inside: avoid;
-    box-shadow: none;
-    border: 1px solid #cccccc;
-  }
-  
-  .item-image {
-    display: none; /* При печати изображения обычно не нужны */
-  }
-  
-  a {
-    color: #000000 !important;
-    text-decoration: underline !important;
-  }
+/* 6. Улучшение читаемости */
+.item-description {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
