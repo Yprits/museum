@@ -12,6 +12,12 @@ collections:
   pgs:
     output: true
     permalink: /:collection/:name/
+  ephemera:
+    output: true
+    permalink: /:collection/:name/
+  literature:
+    output: true
+    permalink: /:collection/:name/
 
 defaults:
 - scope:
