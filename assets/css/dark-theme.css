@@ -1,97 +1,79 @@
-/* dark-theme.css - Обновленная версия с адаптивным дизайном */
+/* === dark-theme.css - УЛЬТРА-АДАПТИВНЫЙ CSS для онлайн-коллекции === */
+
+/* 1. Глобальные переменные для быстрой настройки */
 :root {
-  --primary-color: #00aaaa;
-  --primary-dark: #008888;
-  --secondary-color: #333333;
-  --background-light: #ffffe0;
-  --background-gray: #f2f3f4;
-  --text-dark: #222222;
-  --text-light: #f8f9fa;
-  --border-color: #dee2e6;
-  --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  --card-shadow-hover: 0 5px 15px rgba(0,0,0,0.15);
-  --transition-speed: 0.3s;
+  --color-primary: #00aaaa;
+  --color-primary-dark: #008888;
+  --color-bg-light: #ffffe0;
+  --color-bg-gray: #f2f3f4;
+  --color-text: #222222;
+  --color-card-bg: #ffffff;
+  --color-border: #dee2e6;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  --border-radius: 12px;
+  --transition: 0.3s ease;
+}
+
+/* 2. Базовые стили */
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background-color: var(--background-light);
-  color: var(--text-dark);
+  margin: 0;
+  padding: 20px;
+  background-color: var(--color-bg-light);
+  color: var(--color-text);
   font-family: Verdana, Georgia, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  background: var(--background-gray);
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px;
+  background: var(--color-bg-gray);
+  max-width: 100%;
   min-height: 100vh;
 }
 
-/* Для заголовков */
+/* 3. Заголовки */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--secondary-color);
+  color: #333333;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
 
 h1 {
-  border-bottom: 2px solid var(--primary-color);
+  border-bottom: 2px solid var(--color-primary);
   padding-bottom: 10px;
 }
 
-/* Для ссылок */
+/* 4. Ссылки */
 a {
-  color: var(--primary-color);
+  color: var(--color-primary);
   text-decoration: none;
-  transition: color var(--transition-speed) ease;
+  transition: color var(--transition);
 }
 
 a:hover {
-  color: var(--primary-dark);
+  color: var(--color-primary-dark);
   text-decoration: underline;
 }
 
-/* Для кода и преформатированного текста */
-code, pre {
-  background-color: #1e1e1e;
-  color: #d4d4d4;
-  border: 1px solid #333;
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-family: 'Courier New', monospace;
-}
-
-pre {
-  padding: 15px;
-  overflow-x: auto;
-}
-
-blockquote {
-  border-left: 4px solid var(--primary-color);
-  background-color: var(--text-light);
-  padding: 10px 20px;
-  margin: 20px 0;
-  border-radius: 0 8px 8px 0;
-  box-shadow: var(--card-shadow);
-}
-
-/* Стили для details/summary */
+/* 5. Детали (details/summary) */
 details {
   margin: 15px 0;
-  background: var(--text-light);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
+  background: #f8f9fa;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
   padding: 10px;
-  transition: all var(--transition-speed) ease;
+  transition: all var(--transition);
 }
 
 details[open] {
   background: #e8f4f8;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 summary {
   cursor: pointer;
-  color: var(--primary-dark);
+  color: var(--color-primary-dark);
   font-weight: bold;
   list-style: none;
   padding: 10px 10px 10px 35px;
@@ -105,8 +87,8 @@ summary::before {
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--primary-color);
-  transition: transform var(--transition-speed) ease;
+  color: var(--color-primary);
+  transition: transform var(--transition);
 }
 
 details[open] summary::before {
@@ -114,160 +96,193 @@ details[open] summary::before {
   transform: translateY(-50%) rotate(0deg);
 }
 
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Контейнер для списка деталей внутри details */
 details > div {
   padding: 15px;
-  border-top: 1px solid var(--border-color);
+  border-top: 1px solid var(--color-border);
   margin-top: 10px;
 }
 
-/* Сетка экспонатов */
+/* 6. СЕКЦИЯ КАРТОЧЕК ЭКСПОНАТОВ */
+/* Основная сетка - максимально адаптивная */
 .exhibits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* Автоматически заполняем строку максимальным количеством карточек */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   padding: 30px 0;
   margin: 20px 0;
+  
+  /* Оптимизация производительности */
+  will-change: transform;
+  contain: content;
 }
 
+/* Карточка экспоната */
 .exhibit-card {
-  display: flex;
-  background: white;
-  border-radius: 12px;
-  box-shadow: var(--card-shadow);
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--color-shadow);
   overflow: hidden;
-  transition: all var(--transition-speed) ease;
+  transition: all var(--transition);
+  border: 1px solid var(--color-border);
   height: 100%;
-  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .exhibit-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--card-shadow-hover);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* Изображение в карточке */
 .exhibit-image {
-  flex: 0 0 130px;
+  aspect-ratio: 4/3;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
-  background: #f8f9fa;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  overflow: hidden;
 }
 
 .exhibit-image img {
   width: 100%;
-  height: 120px;
+  height: 100%;
   object-fit: contain;
-  border-radius: 6px;
-  transition: transform var(--transition-speed) ease;
+  transition: transform var(--transition);
+  border-radius: 8px;
 }
 
 .exhibit-card:hover .exhibit-image img {
   transform: scale(1.05);
 }
 
+/* Placeholder изображение */
+.exhibit-image img[src*="placehold.co"] {
+  opacity: 0.7;
+  background: #f0f0f0;
+  padding: 15px;
+  border-radius: 6px;
+}
+
+/* Информация об экспонате */
 .exhibit-info {
-  flex: 1;
   padding: 20px;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .exhibit-number {
   font-size: 1.3em;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--color-primary);
   display: block;
   margin-bottom: 8px;
   text-decoration: none !important;
 }
 
 .exhibit-number:hover {
-  color: var(--primary-dark);
+  color: var(--color-primary-dark);
   text-decoration: underline !important;
 }
 
 .exhibit-model {
   font-weight: bold;
   margin-bottom: 5px;
-  color: var(--secondary-color);
+  color: #333333;
   font-size: 1.1em;
   line-height: 1.4;
+  flex-grow: 1;
+  
+  /* Обрезаем слишком длинные названия */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .exhibit-year {
-  color: #666;
+  color: #666666;
   font-size: 0.95em;
   font-style: italic;
+  margin-top: 5px;
 }
 
-/* Стили для placeholder изображений */
-.exhibit-image img[src*="placehold.co"] {
-  opacity: 0.6;
-  background: linear-gradient(135deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 400% 400%;
-  animation: placeholderShimmer 2s ease-in-out infinite;
-  padding: 20px;
-  border: 2px dashed #ccc;
+/* 7. АДАПТИВНОСТЬ ДЛЯ РАЗНЫХ ЭКРАНОВ */
+
+/* ОЧЕНЬ большие мониторы (4K и выше) - максимум 6 карточек в строке */
+@media screen and (min-width: 1920px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 320px));
+    justify-content: center;
+    gap: 30px;
+  }
 }
 
-@keyframes placeholderShimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Большие десктопы - максимум 5 карточек в строке */
+@media screen and (min-width: 1600px) and (max-width: 1919px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
 }
 
-/* Адаптивные стили */
-@media screen and (max-width: 1024px) {
+/* Стандартные десктопы - 3-4 карточки в строке */
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+  }
+}
+
+/* Ноутбуки и планшеты в альбомной ориентации - 2-3 карточки */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
   .exhibits-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
   }
+}
+
+/* Планшеты - 2 карточки в строке */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
   
-  body {
+  .exhibit-image {
+    aspect-ratio: 16/9;
     padding: 15px;
-    max-width: 100%;
   }
 }
 
-@media screen and (max-width: 768px) {
+/* Большие смартфоны - 2 карточки в строке */
+@media screen and (min-width: 576px) and (max-width: 767px) {
   .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 15px;
   }
   
   body {
-    padding: 12px;
+    padding: 15px;
     font-size: 15px;
   }
   
-  .exhibit-card {
-    flex-direction: column;
-  }
-  
   .exhibit-image {
-    flex: 0 0 auto;
-    padding: 20px;
-  }
-  
-  .exhibit-image img {
-    height: 140px;
-    max-width: 200px;
+    aspect-ratio: 16/9;
+    padding: 15px;
   }
   
   .exhibit-info {
     padding: 15px;
-    text-align: center;
   }
 }
 
-@media screen and (max-width: 480px) {
+/* Мобильные телефоны - 1 карточка в строке */
+@media screen and (max-width: 575px) {
   .exhibits-grid {
     grid-template-columns: 1fr;
     gap: 15px;
@@ -278,20 +293,25 @@ details > div {
     font-size: 14px;
   }
   
+  .exhibit-card {
+    max-width: 100%;
+  }
+  
+  .exhibit-image {
+    aspect-ratio: 16/9;
+    padding: 15px;
+  }
+  
+  .exhibit-info {
+    padding: 15px;
+  }
+  
   h1 {
     font-size: 1.8em;
   }
-  
-  .exhibit-image img {
-    height: 120px;
-  }
-  
-  .exhibit-number {
-    font-size: 1.2em;
-  }
 }
 
-/* Стили для очень маленьких экранов */
+/* Очень маленькие экраны */
 @media screen and (max-width: 360px) {
   body {
     padding: 8px;
@@ -302,34 +322,88 @@ details > div {
   }
   
   .exhibit-image {
-    padding: 15px;
+    padding: 10px;
   }
   
-  .exhibit-image img {
-    height: 100px;
+  .exhibit-info {
+    padding: 12px;
   }
 }
 
-/* Утилитарные классы */
-.text-center {
+/* 8. Оптимизация для устройств с медленной анимацией */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .exhibit-card,
+  .exhibit-image img,
+  details {
+    transition: none !important;
+  }
+  
+  .exhibit-card:hover {
+    transform: none;
+  }
+}
+
+/* 9. Стили для печати */
+@media print {
+  .exhibits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .exhibit-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #cccccc;
+  }
+  
+  .exhibit-image {
+    display: none;
+  }
+  
+  .exhibit-number {
+    color: #000000 !important;
+  }
+}
+
+/* 10. Дополнительные улучшения */
+/* Информация о количестве */
+.performance-info {
   text-align: center;
-}
-
-.mt-20 {
   margin-top: 20px;
+  padding: 10px;
+  color: #666666;
+  font-size: 0.9em;
+  border-top: 1px solid var(--color-border);
 }
 
-.mb-20 {
-  margin-bottom: 20px;
+/* Улучшение для ссылок в деталях */
+details a {
+  display: block;
+  padding: 5px 0;
+  color: var(--color-primary);
 }
 
-/* Стили для подсветки активного элемента */
-:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
+details a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
 }
 
-/* Улучшение скроллбара */
+/* Стиль для основного контейнера */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 11. Улучшение скроллбара */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
@@ -341,10 +415,10 @@ details > div {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: var(--color-primary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
+  background: var(--color-primary-dark);
 }
