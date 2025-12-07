@@ -664,7 +664,167 @@ details[open] summary::before {
 
 /* ===================== СТИЛИ ДЛЯ СТРАНИЦ ЭКСПОНАТОВ/МОДЕЛЕЙ/ЭФЕМЕР ==================== */
 
-/* Улучшение блока характеристик */
+/* Блок характеристик в виде GRID (аккуратная таблица) */
+.specs-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px 15px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.spec-name {
+  font-weight: bold;
+  color: #008888;
+  text-align: right;
+  white-space: nowrap;
+  min-width: 180px;
+  padding-right: 10px;
+  border-right: 2px solid #e0e0e0;
+}
+
+.spec-value {
+  color: #333;
+  line-height: 1.5;
+  word-break: break-word;
+  min-width: 0; /* важно для переноса длинного текста */
+}
+
+/* На мобильных устройствах перестраиваем в одну колонку */
+@media screen and (max-width: 768px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  
+  .spec-name {
+    text-align: left;
+    border-right: none;
+    border-bottom: 1px dashed #e0e0e0;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+    min-width: auto;
+    padding-right: 0;
+  }
+  
+  .spec-value {
+    margin-bottom: 10px;
+  }
+}
+
+/* Стиль для статуса "ПОИСК" - БЕЗ АНИМАЦИИ (не тормозит) */
+.status-seek {
+  background-color: #fff3cd;
+  color: #856404;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 4px;
+  border: 2px solid #ffc107;
+  display: inline-block;
+}
+
+/* Убираем анимацию pulse - она действительно может тормозить */
+/* Просто делаем яркий фон без анимации */
+
+/* Улучшаем таблицу с фото - более компактно */
+.photo-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.photo-table tr {
+  background: white;
+}
+
+.photo-table tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.photo-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.photo-table td:first-child {
+  width: 180px; /* Фиксированная ширина для фото */
+  text-align: center;
+  vertical-align: middle;
+  background: #f8f9fa;
+}
+
+.photo-table img {
+  max-width: 160px;
+  max-height: 120px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  padding: 3px;
+  transition: transform 0.15s ease; /* Очень короткая анимация - не тормозит */
+}
+
+.photo-table img:hover {
+  transform: scale(1.02); /* Минимальное увеличение */
+}
+
+/* Адаптивность для таблицы с фото */
+@media screen and (max-width: 768px) {
+  .photo-table {
+    display: block;
+  }
+  
+  .photo-table tbody {
+    display: block;
+  }
+  
+  .photo-table tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    background: white;
+  }
+  
+  .photo-table td:first-child {
+    width: 100%;
+    padding: 15px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .photo-table td:last-child {
+    padding: 15px;
+  }
+  
+  .photo-table img {
+    max-width: 100%;
+    max-height: 200px;
+  }
+}
+
+/* Общие улучшения для страниц */
+.model, .exhibit, .ephemera {
+  margin-top: 20px;
+}
+
+.description {
+  line-height: 1.7;
+  margin: 25px 0;
+}
+
+/* Старый блок .specs оставляем для совместимости, но он будет использоваться 
+   только если в старых шаблонах остались старые классы */
 .specs {
   background: #f8f9fa;
   border-left: 4px solid #00aaaa;
@@ -683,100 +843,4 @@ details[open] summary::before {
   color: #008888;
   min-width: 150px;
   display: inline-block;
-}
-
-/* Улучшение таблицы с фотографиями */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 30px 0;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-}
-
-table tr {
-  border-bottom: 1px solid #eee;
-}
-
-table tr:last-child {
-  border-bottom: none;
-}
-
-table td {
-  padding: 15px;
-  vertical-align: top;
-}
-
-table td:first-child {
-  width: 200px;
-  text-align: center;
-  background: #f8f9fa;
-}
-
-table img {
-  max-width: 100%;
-  max-height: 150px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  transition: transform 0.2s ease;
-}
-
-table img:hover {
-  transform: scale(1.02);
-}
-
-/* Адаптивность для таблицы */
-@media screen and (max-width: 768px) {
-  table {
-    display: block;
-  }
-  
-  table tr {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 6px;
-  }
-  
-  table td:first-child {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  
-  table td:last-child {
-    padding-top: 0;
-  }
-}
-
-/* Стиль для статуса "ПОИСК" */
-.status-seek {
-  background: linear-gradient(45deg, #ffeb3b, #ff9800);
-  color: #d32f2f !important;
-  font-weight: bold;
-  padding: 4px 12px;
-  border-radius: 20px;
-  display: inline-block;
-  text-shadow: 0 1px 1px rgba(255,255,255,0.5);
-  box-shadow: 0 2px 4px rgba(255,152,0,0.3);
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.8; }
-  100% { opacity: 1; }
-}
-
-/* Общие улучшения для страниц */
-.model, .exhibit, .ephemera {
-  margin-top: 20px;
-}
-
-.description {
-  line-height: 1.7;
-  margin: 25px 0;
 }
