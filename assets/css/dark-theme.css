@@ -844,3 +844,32 @@ details[open] summary::before {
   min-width: 150px;
   display: inline-block;
 }
+
+
+/* ===================== СТИЛИ ДЛЯ СТРАНИЦЫ ЭФЕМЕРЫ ==================== */
+
+/* Оранжевый акцент для эфемер */
+.ephemera .specs {
+  border-left-color: #d35400; /* Оранжевая полоска слева */
+}
+
+.ephemera .spec-name {
+  color: #d35400; /* Оранжевый цвет для названий параметров */
+}
+
+.ephemera .item-title {
+  color: #d35400; /* Оранжевый цвет для заголовков в списках */
+}
+
+.ephemera-list-card {
+  border-left: 4px solid #d35400; /* Оранжевая полоска в карточках списка */
+}
+
+/* Для списка эфемер (если нужно) */
+.ephemera-list-title {
+  color: #d35400;
+}
+
+.ephemera-list-title:hover {
+  color: #a04000;
+}
