@@ -8,7 +8,7 @@ layout: pgs
     <!-- Основное фото -->
     <!-- #<img src="{{ page.photo }}" alt="{{ page.title }}"> -->
 
-    <!-- Блок с характеристиками -->
+    <!-- Блок с характеристиками 
     <div class="specs">
       <p><strong>Модель:</strong> {{ page.model }}</p>
       <p><strong>Тип:</strong> {{ page.category }}</p>
@@ -41,8 +41,40 @@ layout: pgs
   {% endif %}
 </p>
       
-   {% if page.seek %}<p><strong>Что требуется: </strong> {{ page.seek }}</p>{% endif %}     
-      
+   {% if page.seek %}<p><strong>Что требуется: </strong> {{ page.seek }}</p>{% endif %}    --> 
+
+    <!-- Блок с характеристиками в виде таблицы -->
+<div class="specs">
+  <div class="specs-grid">
+    {% if page.model %}<div class="spec-name">Модель:</div><div class="spec-value">{{ page.model }}</div>{% endif %}
+    {% if page.category %}<div class="spec-name">Тип:</div><div class="spec-value">{{ page.category }}</div>{% endif %}
+    {% if page.modelyears %}<div class="spec-name">Годы выпуска:</div><div class="spec-value">{{ page.modelyears }}</div>{% endif %}
+    {% if page.manufacturer %}<div class="spec-name">Производитель:</div><div class="spec-value">{{ page.manufacturer }}</div>{% endif %}
+    {% if page.country %}<div class="spec-name">Страна:</div><div class="spec-value">{{ page.country }}</div>{% endif %}
+    {% if page.price %}<div class="spec-name">Цена:</div><div class="spec-value">{{ page.price }}</div>{% endif %}
+    {% if page.cpu %}<div class="spec-name">Процессор:</div><div class="spec-value">{{ page.cpu }}</div>{% endif %}
+    {% if page.ram %}<div class="spec-name">Память:</div><div class="spec-value">{{ page.ram }}</div>{% endif %}
+    {% if page.material %}<div class="spec-name">Материал:</div><div class="spec-value">{{ page.material }}</div>{% endif %}
+    {% if page.inputs %}<div class="spec-name">Ввод:</div><div class="spec-value">{{ page.inputs }}</div>{% endif %}
+    {% if page.outputs %}<div class="spec-name">Вывод:</div><div class="spec-value">{{ page.outputs }}</div>{% endif %}
+    {% if page.storage %}<div class="spec-name">Хранение информации:</div><div class="spec-value">{{ page.storage }}</div>{% endif %}
+    {% if page.powersupply %}<div class="spec-name">Источник питания:</div><div class="spec-value">{{ page.powersupply }}</div>{% endif %}
+    {% if page.seealso %}<div class="spec-name">Смотрите также:</div><div class="spec-value">{{ page.also }}</div>{% endif %}
+    {% if page.mainarticle %}<div class="spec-name">Основная статья:</div><div class="spec-value">{{ page.mainmodel }}</div>{% endif %}
+    
+    <!-- Статус отдельно, так как у него особое оформление -->
+    <div class="spec-name">Статус:</div>
+    <div class="spec-value">
+      {% if page.status | default: "ПОИСК" | upcase == "ПОИСК" %}
+        <span class="status-seek">{{ page.status | default: "ПОИСК" }}</span>
+      {% else %}
+        {{ page.status }}
+      {% endif %}
+    </div>
+    
+    {% if page.seek %}<div class="spec-name">Что требуется:</div><div class="spec-value">{{ page.seek }}</div>{% endif %}
+
+    
       <!-- Добавьте другие поля по аналогии -->
     </div>
 
