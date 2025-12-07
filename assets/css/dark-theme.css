@@ -658,3 +658,125 @@ details[open] summary::before {
     padding: 10px 0;
   }
 }
+
+
+
+
+/* ===================== СТИЛИ ДЛЯ СТРАНИЦ ЭКСПОНАТОВ/МОДЕЛЕЙ/ЭФЕМЕР ==================== */
+
+/* Улучшение блока характеристик */
+.specs {
+  background: #f8f9fa;
+  border-left: 4px solid #00aaaa;
+  padding: 15px 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.specs p {
+  margin: 8px 0;
+  line-height: 1.5;
+}
+
+.specs strong {
+  color: #008888;
+  min-width: 150px;
+  display: inline-block;
+}
+
+/* Улучшение таблицы с фотографиями */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 30px 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+table tr {
+  border-bottom: 1px solid #eee;
+}
+
+table tr:last-child {
+  border-bottom: none;
+}
+
+table td {
+  padding: 15px;
+  vertical-align: top;
+}
+
+table td:first-child {
+  width: 200px;
+  text-align: center;
+  background: #f8f9fa;
+}
+
+table img {
+  max-width: 100%;
+  max-height: 150px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+table img:hover {
+  transform: scale(1.02);
+}
+
+/* Адаптивность для таблицы */
+@media screen and (max-width: 768px) {
+  table {
+    display: block;
+  }
+  
+  table tr {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+  }
+  
+  table td:first-child {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  table td:last-child {
+    padding-top: 0;
+  }
+}
+
+/* Стиль для статуса "ПОИСК" */
+.status-seek {
+  background: linear-gradient(45deg, #ffeb3b, #ff9800);
+  color: #d32f2f !important;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+  box-shadow: 0 2px 4px rgba(255,152,0,0.3);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* Общие улучшения для страниц */
+.model, .exhibit, .ephemera {
+  margin-top: 20px;
+}
+
+.description {
+  line-height: 1.7;
+  margin: 25px 0;
+}
