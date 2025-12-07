@@ -1,68 +1,350 @@
-/* dark-theme.css */
+/* dark-theme.css - Обновленная версия с адаптивным дизайном */
+:root {
+  --primary-color: #00aaaa;
+  --primary-dark: #008888;
+  --secondary-color: #333333;
+  --background-light: #ffffe0;
+  --background-gray: #f2f3f4;
+  --text-dark: #222222;
+  --text-light: #f8f9fa;
+  --border-color: #dee2e6;
+  --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  --card-shadow-hover: 0 5px 15px rgba(0,0,0,0.15);
+  --transition-speed: 0.3s;
+}
+
 body {
-  background-color: #ffffe0; /*Мягко-белый фон */
-  color: #222222;          /* темный текст */
-  
+  background-color: var(--background-light);
+  color: var(--text-dark);
   font-family: Verdana, Georgia, sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: #222222;      /* Для темного фона */
-  background: #f2f3f4;
-  max-width: 1400px;     /* Ограничение ширины текста */
+  background: var(--background-gray);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
 }
 
 /* Для заголовков */
 h1, h2, h3, h4, h5, h6 {
-  color: #333333;         /* более серый для заголовков */
+  color: var(--secondary-color);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
 }
 
 /* Для ссылок */
 a {
-  color: #00aaaa;         /* Светло-фиолетовый для ссылок */
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
 }
 
 a:hover {
-  color: #008888;        /* Белый при наведении */
+  color: var(--primary-dark);
   text-decoration: underline;
 }
 
 /* Для кода и преформатированного текста */
 code, pre {
-  background-color: #1e1e1e; /* Темный фон для кода */
-  color: #d4d4d4;          /* Светло-серый текст кода */
-  border: 1px solid #333; /* Тонкая граница */
+  background-color: #1e1e1e;
+  color: #d4d4d4;
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 2px 6px;
+  font-family: 'Courier New', monospace;
 }
 
+pre {
+  padding: 15px;
+  overflow-x: auto;
+}
 
 blockquote {
-  border-left: 4px solid #007bff;
-  background-color: #f8f9fa;
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--text-light);
   padding: 10px 20px;
-  margin: 0 0 20px;
+  margin: 20px 0;
+  border-radius: 0 8px 8px 0;
+  box-shadow: var(--card-shadow);
 }
 
-
-/* Максимально упрощенная версия */
+/* Стили для details/summary */
 details {
-  margin: 8px 0;
+  margin: 15px 0;
+  background: var(--text-light);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 10px;
+  transition: all var(--transition-speed) ease;
+}
+
+details[open] {
+  background: #e8f4f8;
+  box-shadow: var(--card-shadow);
 }
 
 summary {
   cursor: pointer;
-  color: #008888;
+  color: var(--primary-dark);
   font-weight: bold;
   list-style: none;
-  padding-left: 20px;
+  padding: 10px 10px 10px 35px;
   position: relative;
+  user-select: none;
 }
 
 summary::before {
   content: "▶";
   position: absolute;
-  left: 0;
-  color: #00aaaa;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  transition: transform var(--transition-speed) ease;
 }
 
 details[open] summary::before {
   content: "▼";
+  transform: translateY(-50%) rotate(0deg);
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Контейнер для списка деталей внутри details */
+details > div {
+  padding: 15px;
+  border-top: 1px solid var(--border-color);
+  margin-top: 10px;
+}
+
+/* Сетка экспонатов */
+.exhibits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding: 30px 0;
+  margin: 20px 0;
+}
+
+.exhibit-card {
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: all var(--transition-speed) ease;
+  height: 100%;
+  border: 1px solid var(--border-color);
+}
+
+.exhibit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.exhibit-image {
+  flex: 0 0 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: #f8f9fa;
+}
+
+.exhibit-image img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: transform var(--transition-speed) ease;
+}
+
+.exhibit-card:hover .exhibit-image img {
+  transform: scale(1.05);
+}
+
+.exhibit-info {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.exhibit-number {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: var(--primary-color);
+  display: block;
+  margin-bottom: 8px;
+  text-decoration: none !important;
+}
+
+.exhibit-number:hover {
+  color: var(--primary-dark);
+  text-decoration: underline !important;
+}
+
+.exhibit-model {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
+.exhibit-year {
+  color: #666;
+  font-size: 0.95em;
+  font-style: italic;
+}
+
+/* Стили для placeholder изображений */
+.exhibit-image img[src*="placehold.co"] {
+  opacity: 0.6;
+  background: linear-gradient(135deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 400% 400%;
+  animation: placeholderShimmer 2s ease-in-out infinite;
+  padding: 20px;
+  border: 2px dashed #ccc;
+}
+
+@keyframes placeholderShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Адаптивные стили */
+@media screen and (max-width: 1024px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  
+  body {
+    padding: 15px;
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  body {
+    padding: 12px;
+    font-size: 15px;
+  }
+  
+  .exhibit-card {
+    flex-direction: column;
+  }
+  
+  .exhibit-image {
+    flex: 0 0 auto;
+    padding: 20px;
+  }
+  
+  .exhibit-image img {
+    height: 140px;
+    max-width: 200px;
+  }
+  
+  .exhibit-info {
+    padding: 15px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .exhibits-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  body {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  .exhibit-image img {
+    height: 120px;
+  }
+  
+  .exhibit-number {
+    font-size: 1.2em;
+  }
+}
+
+/* Стили для очень маленьких экранов */
+@media screen and (max-width: 360px) {
+  body {
+    padding: 8px;
+  }
+  
+  .exhibits-grid {
+    gap: 12px;
+  }
+  
+  .exhibit-image {
+    padding: 15px;
+  }
+  
+  .exhibit-image img {
+    height: 100px;
+  }
+}
+
+/* Утилитарные классы */
+.text-center {
+  text-align: center;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+/* Стили для подсветки активного элемента */
+:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Улучшение скроллбара */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
 }
