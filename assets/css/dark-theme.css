@@ -1,350 +1,117 @@
-/* dark-theme.css - Обновленная версия с адаптивным дизайном */
+/* Ультра-адаптивная сетка с максимальным заполнением */
 :root {
-  --primary-color: #00aaaa;
-  --primary-dark: #008888;
-  --secondary-color: #333333;
-  --background-light: #ffffe0;
-  --background-gray: #f2f3f4;
-  --text-dark: #222222;
-  --text-light: #f8f9fa;
-  --border-color: #dee2e6;
-  --card-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  --card-shadow-hover: 0 5px 15px rgba(0,0,0,0.15);
-  --transition-speed: 0.3s;
+  --card-min-width: 280px;  /* Минимальная ширина карточки */
+  --card-max-width: 400px;  /* Максимальная ширина карточки */
+  --gap-size: 20px;         /* Расстояние между карточками */
 }
 
-body {
-  background-color: var(--background-light);
-  color: var(--text-dark);
-  font-family: Verdana, Georgia, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  background: var(--background-gray);
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px;
-  min-height: 100vh;
-}
-
-/* Для заголовков */
-h1, h2, h3, h4, h5, h6 {
-  color: var(--secondary-color);
-  margin-top: 1.5em;
-  margin-bottom: 0.5em;
-}
-
-h1 {
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 10px;
-}
-
-/* Для ссылок */
-a {
-  color: var(--primary-color);
-  text-decoration: none;
-  transition: color var(--transition-speed) ease;
-}
-
-a:hover {
-  color: var(--primary-dark);
-  text-decoration: underline;
-}
-
-/* Для кода и преформатированного текста */
-code, pre {
-  background-color: #1e1e1e;
-  color: #d4d4d4;
-  border: 1px solid #333;
-  border-radius: 4px;
-  padding: 2px 6px;
-  font-family: 'Courier New', monospace;
-}
-
-pre {
-  padding: 15px;
-  overflow-x: auto;
-}
-
-blockquote {
-  border-left: 4px solid var(--primary-color);
-  background-color: var(--text-light);
-  padding: 10px 20px;
-  margin: 20px 0;
-  border-radius: 0 8px 8px 0;
-  box-shadow: var(--card-shadow);
-}
-
-/* Стили для details/summary */
-details {
-  margin: 15px 0;
-  background: var(--text-light);
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 10px;
-  transition: all var(--transition-speed) ease;
-}
-
-details[open] {
-  background: #e8f4f8;
-  box-shadow: var(--card-shadow);
-}
-
-summary {
-  cursor: pointer;
-  color: var(--primary-dark);
-  font-weight: bold;
-  list-style: none;
-  padding: 10px 10px 10px 35px;
-  position: relative;
-  user-select: none;
-}
-
-summary::before {
-  content: "▶";
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--primary-color);
-  transition: transform var(--transition-speed) ease;
-}
-
-details[open] summary::before {
-  content: "▼";
-  transform: translateY(-50%) rotate(0deg);
-}
-
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Контейнер для списка деталей внутри details */
-details > div {
-  padding: 15px;
-  border-top: 1px solid var(--border-color);
-  margin-top: 10px;
-}
-
-/* Сетка экспонатов */
+/* Динамическая сетка с автоподбором колонок */
 .exhibits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 25px;
-  padding: 30px 0;
-  margin: 20px 0;
+  /* Автоматически подбирает количество колонок */
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min-width), 1fr));
+  gap: var(--gap-size);
+  padding: 20px 0;
+  
+  /* Оптимизация производительности */
+  will-change: transform;
+  contain: layout style paint;
 }
 
+/* Улучшенные карточки */
 .exhibit-card {
-  display: flex;
-  background: white;
+  background: #fff;
   border-radius: 12px;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   overflow: hidden;
-  transition: all var(--transition-speed) ease;
-  height: 100%;
-  border: 1px solid var(--border-color);
-}
-
-.exhibit-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--card-shadow-hover);
-}
-
-.exhibit-image {
-  flex: 0 0 130px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  background: #f8f9fa;
-}
-
-.exhibit-image img {
-  width: 100%;
-  height: 120px;
-  object-fit: contain;
-  border-radius: 6px;
-  transition: transform var(--transition-speed) ease;
-}
-
-.exhibit-card:hover .exhibit-image img {
-  transform: scale(1.05);
-}
-
-.exhibit-info {
-  flex: 1;
-  padding: 20px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Гарантируем, что карточки растягиваются равномерно */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  height: 100%;
+  max-width: var(--card-max-width);
+  margin: 0 auto; /* Центрируем если мало карточек в строке */
 }
 
-.exhibit-number {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: var(--primary-color);
-  display: block;
-  margin-bottom: 8px;
-  text-decoration: none !important;
-}
-
-.exhibit-number:hover {
-  color: var(--primary-dark);
-  text-decoration: underline !important;
-}
-
-.exhibit-model {
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: var(--secondary-color);
-  font-size: 1.1em;
-  line-height: 1.4;
-}
-
-.exhibit-year {
-  color: #666;
-  font-size: 0.95em;
-  font-style: italic;
-}
-
-/* Стили для placeholder изображений */
-.exhibit-image img[src*="placehold.co"] {
-  opacity: 0.6;
-  background: linear-gradient(135deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 400% 400%;
-  animation: placeholderShimmer 2s ease-in-out infinite;
+/* Автоматическое растягивание карточек по высоте */
+.exhibit-info {
+  flex-grow: 1;
   padding: 20px;
-  border: 2px dashed #ccc;
 }
 
-@keyframes placeholderShimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+/* МЕДИА-ЗАПРОСЫ для точной настройки на разных экранах */
 
-/* Адаптивные стили */
-@media screen and (max-width: 1024px) {
+/* Большие мониторы (4K и выше) */
+@media screen and (min-width: 2560px) {
   .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  
-  body {
-    padding: 15px;
-    max-width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    --gap-size: 30px;
   }
 }
 
-@media screen and (max-width: 768px) {
+/* Стандартные десктопы */
+@media screen and (min-width: 1200px) {
   .exhibits-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
+    /* Формула для точного расчета: (ширина_контейнера - (n-1)*gap) / n >= min-width */
+    grid-template-columns: repeat(auto-fill, 
+      minmax(max(var(--card-min-width), calc((100% - 3*var(--gap-size)) / 4)), 1fr));
   }
-  
-  body {
-    padding: 12px;
-    font-size: 15px;
+}
+
+/* Ноутбуки и планшеты в горизонтальной ориентации */
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .exhibits-grid {
+    grid-template-columns: repeat(auto-fill, 
+      minmax(max(var(--card-min-width), calc((100% - 2*var(--gap-size)) / 3)), 1fr));
+  }
+}
+
+/* Планшеты */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .exhibits-grid {
+    --card-min-width: 250px;
+    grid-template-columns: repeat(auto-fill, 
+      minmax(max(var(--card-min-width), calc((100% - 1*var(--gap-size)) / 2)), 1fr));
+  }
+}
+
+/* Большие телефоны */
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .exhibits-grid {
+    --card-min-width: 240px;
+    --gap-size: 15px;
+    grid-template-columns: repeat(auto-fill, 
+      minmax(max(var(--card-min-width), calc((100% - 1*var(--gap-size)) / 2)), 1fr));
+  }
+}
+
+/* Мобильные телефоны */
+@media screen and (max-width: 575px) {
+  .exhibits-grid {
+    --card-min-width: 280px; /* Одна карточка на всю ширину */
+    --gap-size: 15px;
+    grid-template-columns: 1fr; /* Всегда одна колонка на мобильных */
   }
   
   .exhibit-card {
-    flex-direction: column;
-  }
-  
-  .exhibit-image {
-    flex: 0 0 auto;
-    padding: 20px;
-  }
-  
-  .exhibit-image img {
-    height: 140px;
-    max-width: 200px;
-  }
-  
-  .exhibit-info {
-    padding: 15px;
-    text-align: center;
+    max-width: 100%; /* Занимает всю доступную ширину */
   }
 }
 
-@media screen and (max-width: 480px) {
+/* Специальные случаи для очень широких экранов */
+@media screen and (min-width: 1800px) {
   .exhibits-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  body {
-    padding: 10px;
-    font-size: 14px;
-  }
-  
-  h1 {
-    font-size: 1.8em;
-  }
-  
-  .exhibit-image img {
-    height: 120px;
-  }
-  
-  .exhibit-number {
-    font-size: 1.2em;
+    grid-template-columns: repeat(auto-fill, 
+      minmax(max(300px, calc((100% - 5*var(--gap-size)) / 6)), 1fr));
   }
 }
 
-/* Стили для очень маленьких экранов */
-@media screen and (max-width: 360px) {
-  body {
-    padding: 8px;
-  }
-  
-  .exhibits-grid {
-    gap: 12px;
-  }
-  
-  .exhibit-image {
-    padding: 15px;
-  }
-  
-  .exhibit-image img {
-    height: 100px;
-  }
-}
-
-/* Утилитарные классы */
-.text-center {
-  text-align: center;
-}
-
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mb-20 {
-  margin-bottom: 20px;
-}
-
-/* Стили для подсветки активного элемента */
-:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-/* Улучшение скроллбара */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
-  border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary-dark);
-}
+/* Альтернативный подход с JavaScript (опционально) */
+/* Добавляем классы для тонкой настройки */
+.js-columns-1 .exhibits-grid { grid-template-columns: repeat(1, 1fr); }
+.js-columns-2 .exhibits-grid { grid-template-columns: repeat(2, 1fr); }
+.js-columns-3 .exhibits-grid { grid-template-columns: repeat(3, 1fr); }
+.js-columns-4 .exhibits-grid { grid-template-columns: repeat(4, 1fr); }
+.js-columns-5 .exhibits-grid { grid-template-columns: repeat(5, 1fr); }
+.js-columns-6 .exhibits-grid { grid-template-columns: repeat(6, 1fr); }
