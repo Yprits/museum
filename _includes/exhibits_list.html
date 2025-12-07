@@ -1,0 +1,56 @@
+<!-- Шаблон для отображения списка экспонатов -->
+<!-- Принимает параметры: 
+     collection - массив экспонатов для отображения
+     title - заголовок списка (опционально)
+     subtitle - подзаголовок (опционально)
+-->
+
+{% if include.title %}
+<h2>{{ include.title }}</h2>
+{% endif %}
+
+{% if include.subtitle %}
+<p class="list-subtitle">{{ include.subtitle }}</p>
+{% endif %}
+
+<div class="exhibits-grid items-grid">
+  {% for exhibit in include.collection %}
+    {% if exhibit.innernumber %}
+      <div class="exhibit-card item-card">
+        <div class="item-image">
+          {% if exhibit.photo0 and exhibit.prev0 %}
+            <a href="{{ exhibit.photo0 }}">
+              <img src="{{ exhibit.prev0 }}" alt="{{ exhibit.model }}" loading="lazy">
+            </a>
+          {% else %}
+            <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
+                 alt="Фото пока нет" loading="lazy">
+          {% endif %}
+        </div>
+        <div class="item-info">
+          <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
+          <div class="item-description">{{ exhibit.model }}</div>
+          <div class="item-meta">
+            {% if exhibit.category %}({{ exhibit.category }}){% endif %}
+            {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
+            {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear | replace: ".", "." }}{% endif %}
+            {% if exhibit.country %}<br>🌍 {{ exhibit.country }}{% endif %}
+            {% if exhibit.collectionstatus %}
+              <br>
+              {% assign status = exhibit.collectionstatus | upcase %}
+              {% if status contains "ПОИСК" or status contains "ИЩУ" %}
+                <span class="status-seek">{{ exhibit.collectionstatus }}</span>
+              {% elsif status contains "В РЕМОНТЕ" or status contains "РЕМОНТ" %}
+                <span class="status-repair">{{ exhibit.collectionstatus }}</span>
+              {% elsif status contains "ПРОДАН" or status contains "ПОДАРЕН" %}
+                <span class="status-sold">{{ exhibit.collectionstatus }}</span>
+              {% else %}
+                <span class="status-owned">{{ exhibit.collectionstatus }}</span>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
