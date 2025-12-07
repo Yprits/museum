@@ -30,14 +30,16 @@ layout: pgs
       
 
       <p><strong>Статус:</strong>
-    {% if page.status | default: "ПОИСК" | upcase == "ПОИСК" %}
-      <span style="background-color: yellow; color: red; font-weight: bold; padding: 2px 6px;">
-        {{ page.status | default: "ПОИСК" }}
-        </span>
-      {% else %}
-        {{ page.status }}
-      {% endif %}
-    </p>
+  {% if page.status | default: "ПОИСК" | upcase == "ПОИСК" %}
+    <span class="status-seek">
+      {{ page.status | default: "ПОИСК" }}
+    </span>
+  {% else %}
+    <span style="color: #008800; font-weight: bold;">
+      {{ page.status }}
+    </span>
+  {% endif %}
+</p>
       
    {% if page.seek %}<p><strong>Что требуется: </strong> {{ page.seek }}</p>{% endif %}     
       
