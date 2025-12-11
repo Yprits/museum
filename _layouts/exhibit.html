@@ -98,68 +98,103 @@ layout: pgs
   </div>
 
   <!-- Таблица с фотографиями -->
+  <table class="photo-table">
+    {% assign suffixes = "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F" | split: "," %}
+    {% assign thumb_domain = "https://thumbs2.imgbox.com/" %}
+    {% assign image_domain = "https://images2.imgbox.com/" %}
 
- <table class="photo-table">
-  {% assign suffixes = "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F" | split: "," %}
-  {% assign thumb_domain = "https://thumbs2.imgbox.com/" %}
-  {% assign image_domain = "https://images2.imgbox.com/" %}
-
-  {% for suffix in suffixes %}
-    {% assign photo_var = "photo" | append: suffix %}
-    {% assign text_var = "text" | append: suffix %}
-    {% assign full_url = page[photo_var] %}
-    {% assign description = page[text_var] %}
-
-    {% comment %} ГЛАВНАЯ ПРОВЕРКА: ссылка существует и не пустая {% endcomment %}
-    {% if full_url and full_url != empty and full_url != "" %}
-      {% comment %} ШАГ 1: Разбиваем ссылку по слешам {% endcomment %}
-      {% assign url_parts = full_url | split: "/" %}
-      {% if url_parts.size >= 4 %}
-        {% comment %} ШАГ 2: Собираем путь (элементы с 4-го до конца) {% endcomment %}
-        {% assign path_with_suffix = "" %}
-        {% for part in url_parts %}
+    {% comment %} === НАЧАЛО ИЗМЕНЕНИЙ: ГЕНЕРАЦИЯ prev0 ИЗ photo0 === {% endcomment %}
+    {% assign generated_prev0 = "" %}
+    {% if page.photo0 and page.photo0 != empty and page.photo0 != "" %}
+      {% assign url_parts_0 = page.photo0 | split: "/" %}
+      {% if url_parts_0.size >= 4 %}
+        {% assign path_with_suffix_0 = "" %}
+        {% for part in url_parts_0 %}
           {% if forloop.index >= 4 %}
-            {% assign path_with_suffix = path_with_suffix | append: part %}
+            {% assign path_with_suffix_0 = path_with_suffix_0 | append: part %}
             {% unless forloop.last %}
-              {% assign path_with_suffix = path_with_suffix | append: "/" %}
+              {% assign path_with_suffix_0 = path_with_suffix_0 | append: "/" %}
             {% endunless %}
           {% endif %}
         {% endfor %}
-
-        {% comment %} ШАГ 3: Проверяем, что путь не пустой и содержит символы {% endcomment %}
-        {% if path_with_suffix and path_with_suffix != empty and path_with_suffix != "" %}
-          {% comment %} ШАГ 4: Извлекаем часть до подчёркивания {% endcomment %}
-          {% assign parts_by_underscore = path_with_suffix | split: "_" %}
-          {% if parts_by_underscore.size >= 1 %}
-            {% assign base = parts_by_underscore[0] %}
-            {% comment %} ФИНАЛЬНАЯ ПРОВЕРКА: base должен быть непустой строкой {% endcomment %}
-            {% if base and base != empty and base != "" %}
-              <tr>
-                <td>
-                  <a href="{{ thumb_domain }}{{ base }}_t.jpg" target="_blank" rel="noopener noreferrer">
-                    <img src="{{ thumb_domain }}{{ base }}_b.jpg" 
-                         loading="lazy" 
-                         alt="Фото: {% if description %}{{ description | strip_html | truncatewords: 5 }}{% else %}без описания{% endif %}">
-                  </a>
-                </td>
-                <td>
-                  {% if description and description != empty and description != "" %}
-                    <a href="{{ image_domain }}{{ base }}_o.jpg" target="_blank" rel="noopener noreferrer">
-                      {{ description }}
-                    </a>
-                  {% else %}
-                    <a href="{{ image_domain }}{{ base }}_o.jpg" target="_blank" rel="noopener noreferrer">
-                      <em>(описание отсутствует)</em>
-                    </a>
-                  {% endif %}
-                </td>
-              </tr>
+        {% if path_with_suffix_0 and path_with_suffix_0 != empty and path_with_suffix_0 != "" %}
+          {% assign parts_by_underscore_0 = path_with_suffix_0 | split: "_" %}
+          {% if parts_by_underscore_0.size >= 1 %}
+            {% assign base_0 = parts_by_underscore_0[0] %}
+            {% if base_0 and base_0 != empty and base_0 != "" %}
+              {% assign generated_prev0 = thumb_domain | append: base_0 | append: "_b.jpg" %}
+              {% assign generated_full_url_0 = image_domain | append: base_0 | append: "_o.jpg" %}
             {% endif %}
           {% endif %}
         {% endif %}
       {% endif %}
     {% endif %}
-  {% endfor %}
-</table>
-  
+    {% comment %} === КОНЕЦ ИЗМЕНЕНИЙ === {% endcomment %}
+
+    {% for suffix in suffixes %}
+      {% assign photo_var = "photo" | append: suffix %}
+      {% assign text_var = "text" | append: suffix %}
+      {% assign full_url = page[photo_var] %}
+      {% assign description = page[text_var] %}
+
+      {% comment %} ГЛАВНАЯ ПРОВЕРКА: ссылка существует и не пустая {% endcomment %}
+      {% if full_url and full_url != empty and full_url != "" %}
+        {% comment %} === ИЗМЕНЕНИЕ: ДЛЯ photo0 ИСПОЛЬЗУЕМ УЖЕ ВЫЧИСЛЕННЫЕ ЗНАЧЕНИЯ === {% endcomment %}
+        {% if suffix == "0" and generated_prev0 != "" %}
+          {% comment %} Используем заранее вычисленные значения для photo0 {% endcomment %}
+          {% assign thumb_url = generated_prev0 %}
+          {% assign full_photo_url = generated_full_url_0 %}
+          {% assign base = base_0 %} {% comment %} base всё ещё нужен для генерации _t ссылки {% endcomment %}
+        {% else %}
+          {% comment %} Стандартная логика для photo1, photo2 и т.д. {% endcomment %}
+          {% assign url_parts = full_url | split: "/" %}
+          {% if url_parts.size >= 4 %}
+            {% assign path_with_suffix = "" %}
+            {% for part in url_parts %}
+              {% if forloop.index >= 4 %}
+                {% assign path_with_suffix = path_with_suffix | append: part %}
+                {% unless forloop.last %}
+                  {% assign path_with_suffix = path_with_suffix | append: "/" %}
+                {% endunless %}
+              {% endif %}
+            {% endfor %}
+            {% if path_with_suffix and path_with_suffix != empty and path_with_suffix != "" %}
+              {% assign parts_by_underscore = path_with_suffix | split: "_" %}
+              {% if parts_by_underscore.size >= 1 %}
+                {% assign base = parts_by_underscore[0] %}
+                {% if base and base != empty and base != "" %}
+                  {% assign thumb_url = thumb_domain | append: base | append: "_b.jpg" %}
+                  {% assign full_photo_url = image_domain | append: base | append: "_o.jpg" %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+
+        {% comment %} === ФИНАЛЬНАЯ ПРОВЕРКА И ВЫВОД === {% endcomment %}
+        {% if base and base != empty and base != "" %}
+          <tr>
+            <td>
+              <a href="{{ thumb_domain }}{{ base }}_t.jpg" target="_blank" rel="noopener noreferrer">
+                <img src="{{ thumb_url }}" 
+                     loading="lazy" 
+                     alt="Фото: {% if description %}{{ description | strip_html | truncatewords: 5 }}{% else %}без описания{% endif %}">
+              </a>
+            </td>
+            <td>
+              {% if description and description != empty and description != "" %}
+                <a href="{{ full_photo_url }}" target="_blank" rel="noopener noreferrer">
+                  {{ description }}
+                </a>
+              {% else %}
+                <a href="{{ full_photo_url }}" target="_blank" rel="noopener noreferrer">
+                  <em>(описание отсутствует)</em>
+                </a>
+              {% endif %}
+            </td>
+          </tr>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </table>
 </div>
