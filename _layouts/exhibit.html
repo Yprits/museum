@@ -99,15 +99,41 @@ layout: pgs
 
   <!-- Таблица с фотографиями -->
 
- <!-- ТЕСТОВЫЙ ШАБЛОН -->
-<p>Начинаем рендеринг. Первая фото-переменная: {{ page.photo0 }}</p>
+ <table class="photo-table">
+  {% assign suffixes = "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F" | split: "," %}
 
-{% assign suffixes = "0,1,2" | split: "," %}
-{% for suffix in suffixes %}
+  {% for suffix in suffixes %}
+    {% assign prev_var = "prev" | append: suffix %}
     {% assign photo_var = "photo" | append: suffix %}
-    <p>Суффикс {{ suffix }}: переменная '{{ photo_var }}' = '{{ page[photo_var] }}'</p>
-{% endfor %}
+    {% assign text_var = "text" | append: suffix %}
 
-<p>Рендеринг завершён.</p>
+    {% assign preview_url = page[prev_var] %}
+    {% assign full_url = page[photo_var] %}
+    {% assign description = page[text_var] %}
+
+    {% if preview_url and preview_url != empty %}
+      <tr>
+        <td>
+          <!-- Клик по превью (_b) открывает _t версию -->
+          <a href="{{ preview_url | replace: '_b.jpg', '_t.jpg' }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ preview_url }}" 
+                 loading="lazy" 
+                 alt="Фото: {% if description %}{{ description | strip_html | truncatewords: 5 }}{% endif %}">
+          </a>
+        </td>
+        <td>
+          {% if description and description != empty %}
+            <!-- Клик по тексту открывает оригинал (_o) -->
+            <a href="{{ full_url }}" target="_blank" rel="noopener noreferrer">
+              {{ description }}
+            </a>
+          {% else %}
+            <em>(нет описания)</em>
+          {% endif %}
+        </td>
+      </tr>
+    {% endif %}
+  {% endfor %}
+</table>
   
 </div>
