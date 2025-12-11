@@ -1,0 +1,34 @@
+{% comment %} 
+  Файл: _includes/get_imgbox_thumb.liquid
+  Возвращает ссылку на превью (_b) из переданной ссылки на оригинал (_o)
+  Использование: {% include get_imgbox_thumb.liquid url=page.photo0 %}
+{% endcomment %}
+
+{% assign result = "" %}
+{% assign full_url = include.url %}
+
+{% if full_url and full_url != empty and full_url != "" %}
+  {% assign url_parts = full_url | split: "/" %}
+  {% if url_parts.size >= 4 %}
+    {% assign path_with_suffix = "" %}
+    {% for part in url_parts %}
+      {% if forloop.index >= 4 %}
+        {% assign path_with_suffix = path_with_suffix | append: part %}
+        {% unless forloop.last %}
+          {% assign path_with_suffix = path_with_suffix | append: "/" %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    {% if path_with_suffix and path_with_suffix != empty and path_with_suffix != "" %}
+      {% assign parts_by_underscore = path_with_suffix | split: "_" %}
+      {% if parts_by_underscore.size >= 1 %}
+        {% assign base = parts_by_underscore[0] %}
+        {% if base and base != empty and base != "" %}
+          {% assign result = "https://thumbs2.imgbox.com/" | append: base | append: "_b.jpg" %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+{{ result }}
