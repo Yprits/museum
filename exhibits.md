@@ -49,16 +49,25 @@ title: "Все экспонаты коллекции"
   {% for exhibit in sorted_exhibits %}
     {% if exhibit.innernumber %}
       <div class="exhibit-card item-card">
-        <div class="item-image">
-          {% if exhibit.photo0 and exhibit.prev0 %}
-            <a href="{{ exhibit.photo0 }}">
-              <img src="{{ exhibit.prev0 }}" alt="{{ exhibit.model }}" loading="lazy">
-            </a>
-          {% else %}
-            <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
-                 alt="Фото пока нет" loading="lazy">
-          {% endif %}
-        </div>
+       <div class="item-image">
+  {% if exhibit.photo0 %}
+    {% capture generated_prev0 %}
+      {% include get_imgbox_thumb.liquid url=exhibit.photo0 %}
+    {% endcapture %}
+    {% assign thumb_url = generated_prev0 | strip %}
+    {% if thumb_url != "" %}
+      <a href="{{ exhibit.photo0 }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ thumb_url }}" alt="{{ exhibit.model }}" loading="lazy">
+      </a>
+    {% else %}
+      <img src="https://placehold.co/150x100/png?text=Ошибка+ссылки&font=verdana" 
+           alt="Ошибка в ссылке на фото" loading="lazy">
+    {% endif %}
+  {% else %}
+    <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
+         alt="Фото пока нет" loading="lazy">
+  {% endif %}
+</div>
         <div class="item-info">
           <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
           <div class="item-description">{{ exhibit.model }}</div>
