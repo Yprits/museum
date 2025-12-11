@@ -99,62 +99,15 @@ layout: pgs
 
   <!-- Таблица с фотографиями -->
 
-  <table class="photo-table">
-  {% assign suffixes = "0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F" | split: "," %}
-  {% assign thumb_domain = "https://thumbs2.imgbox.com/" %}
-  {% assign image_domain = "https://images2.imgbox.com/" %}
-  
-  {% for suffix in suffixes %}
-    {% comment %} Формируем имена переменных {% endcomment %}
+ <!-- ТЕСТОВЫЙ ШАБЛОН -->
+<p>Начинаем рендеринг. Первая фото-переменная: {{ page.photo0 }}</p>
+
+{% assign suffixes = "0,1,2" | split: "," %}
+{% for suffix in suffixes %}
     {% assign photo_var = "photo" | append: suffix %}
-    {% assign text_var = "text" | append: suffix %}
-    
-    {% comment === КРИТИЧЕСКАЯ ПРОВЕРКА: есть ли фото? === %}
-    {% assign full_url = page[photo_var] %}
-    {% if full_url and full_url != "" and full_url != nil %}
-      {% comment %} Извлекаем base только если ссылка существует {% endcomment %}
-      {% assign url_parts = full_url | split: "/" %}
-      {% if url_parts.size >= 4 %}
-        {% assign path_with_suffix = "" %}
-        {% for part in url_parts %}
-          {% if forloop.index >= 4 %}
-            {% assign path_with_suffix = path_with_suffix | append: part %}
-            {% unless forloop.last %}
-              {% assign path_with_suffix = path_with_suffix | append: "/" %}
-            {% endunless %}
-          {% endif %}
-        {% endfor %}
-        
-        {% assign base = path_with_suffix | split: "_" | first %}
-        
-        {% if base and base != "" %}
-          <tr>
-            <td>
-              <a href="{{ thumb_domain }}{{ base }}_t.jpg" target="_blank" rel="noopener noreferrer">
-                <img src="{{ thumb_domain }}{{ base }}_b.jpg" 
-                     loading="lazy" 
-                     alt="Фото экспоната: {% if page[text_var] %}{{ page[text_var] | strip_html | truncatewords: 8 }}{% else %}без описания{% endif %}">
-              </a>
-            </td>
-            <td>
-              {% comment %} Проверяем, есть ли текст для этого фото {% endcomment %}
-              {% assign description = page[text_var] %}
-              {% if description and description != "" and description != nil %}
-                <a href="{{ image_domain }}{{ base }}_o.jpg" target="_blank" rel="noopener noreferrer">
-                  {{ description }}
-                </a>
-              {% else %}
-                {% comment %} Если текста нет, всё равно делаем ссылку на полное фото {% endcomment %}
-                <a href="{{ image_domain }}{{ base }}_o.jpg" target="_blank" rel="noopener noreferrer">
-                  <em>(описание отсутствует)</em>
-                </a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endif %}
-      {% endif %}
-    {% endif %}
-  {% endfor %}
-</table>
+    <p>Суффикс {{ suffix }}: переменная '{{ photo_var }}' = '{{ page[photo_var] }}'</p>
+{% endfor %}
+
+<p>Рендеринг завершён.</p>
   
 </div>
