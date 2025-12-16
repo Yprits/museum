@@ -1,7 +1,6 @@
 ---
-layout: taglist
+layout: page
 title: Советская техника
-tagz: ussr
 ---
 
 Экспонаты с тегом "СССР" ☭
