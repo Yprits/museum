@@ -8,7 +8,7 @@
 
 {% if tag_name != "" %}
   {% assign filtered_exhibits = site.exhibits | where_exp: "item", "item.tags contains tag_name" %}
-  {% assign sorted_exhibits = filtered_exhibits | sort: "innernumber" %}
+  {% assign sorted_exhibits = filtered_exhibits | sort: "basename" %}
   
   <div class="exhibits-grid items-grid">
     {% for exhibit in sorted_exhibits %}
