@@ -1,0 +1,62 @@
+<!--
+  Чистый список экспонатов по тегу
+  Принимает только один параметр: tag (обязательный)
+  Возвращает только сетку с карточками, без заголовков и фильтров
+-->
+
+{% assign tag_name = include.tag | default: "" %}
+
+{% if tag_name != "" %}
+  {% assign filtered_exhibits = site.exhibits | where_exp: "item", "item.tags contains tag_name" %}
+  {% assign sorted_exhibits = filtered_exhibits | sort: "innernumber" %}
+  
+  <div class="exhibits-grid items-grid">
+    {% for exhibit in sorted_exhibits %}
+      {% if exhibit.innernumber %}
+        <div class="exhibit-card item-card">
+          <div class="item-image">
+            {% if exhibit.photo0 %}
+              {% capture generated_prev0 %}
+                {% include get_imgbox_thumb.liquid url=exhibit.photo0 %}
+              {% endcapture %}
+              {% assign thumb_url = generated_prev0 | strip %}
+              {% if thumb_url != "" %}
+                <a href="{{ exhibit.photo0 }}" target="_blank" rel="noopener noreferrer">
+                  <img src="{{ thumb_url }}" alt="{{ exhibit.model }}" loading="lazy">
+                </a>
+              {% else %}
+                <img src="https://placehold.co/150x100/png?text=Ошибка+ссылки&font=verdana" 
+                     alt="Ошибка в ссылке на фото" loading="lazy">
+              {% endif %}
+            {% else %}
+              <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
+                   alt="Фото пока нет" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="item-info">
+            <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
+            <div class="item-description">{{ exhibit.model }}</div>
+            <div class="item-meta">
+              {% if exhibit.category %}({{ exhibit.category }}){% endif %}
+              {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
+              {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
+              {% if exhibit.country %}<br>🌍 {{ exhibit.country }}{% endif %}
+              {% if exhibit.collectionstatus %}
+                <br>
+                {% assign status = exhibit.collectionstatus | default: "" | upcase %}
+                {% if status == "ПОИСК" or status contains "ИЩУ" %}
+                  <span class="status-seek">{{ exhibit.collectionstatus }}</span>
+                {% else %}
+                  {{ exhibit.collectionstatus }}
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% else %}
+  <!-- Если тег не указан, показываем сообщение -->
+  <p>Тег не указан. Укажите тег для фильтрации экспонатов.</p>
+{% endif %}
