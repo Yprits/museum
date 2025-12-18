@@ -34,7 +34,7 @@ permalink: /exhibits/tags/
    
       <div class="tag-section">
         <h3 class="tag-header">
-          <a href="/exhibits/tag/{{ tag | slugify }}/" class="tag-link">
+          <a href="/exhibits/{{ tag | slugify }}/" class="tag-link">
             {{ tag }}
             <span class="tag-count">({{ exhibits_count }})</span>
           </a>
