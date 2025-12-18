@@ -873,3 +873,38 @@ details[open] summary::before {
 .ephemera-list-title:hover {
   color: #a04000;
 }
+
+/* Стили для тегов на странице экспоната */
+.tags-container-small {
+  line-height: 1.6;
+}
+
+.tag-link-small {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 2px 4px 2px 0;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9em;
+  border: 1px solid #ddd;
+  transition: background-color 0.2s;
+}
+
+.tag-link-small:hover {
+  background-color: #e0e0e0;
+  text-decoration: none;
+}
+
+/* Или можно использовать более простой вариант без фона */
+.tag-link-plain {
+  color: #0066cc;
+  text-decoration: none;
+  border-bottom: 1px dotted #0066cc;
+}
+
+.tag-link-plain:hover {
+  color: #ff6600;
+  border-bottom: 1px solid #ff6600;
+}
