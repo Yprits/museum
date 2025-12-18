@@ -60,7 +60,7 @@ layout: pgs
   <div class="spec-name">Теги:</div>
   <div class="spec-value">
     {% for tag in page.tags %}
-      <a href="museum/exhibits/tag/{{ tag | slugify }}/" class="tag-link-small">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+      <a href="museum/exhibits/{{ tag | slugify }}/" class="tag-link-small">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
     {% endfor %}
   </div>
 {% endif %}
