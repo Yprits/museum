@@ -14,12 +14,7 @@ layout: pgs
       
       <div class="spec-name">Дата выпуска:</div>
       <div class="spec-value">{{ page.prodyear }}</div>
-      
-      {% if page.modelyears %}
-      <div class="spec-name">Годы выпуска модели:</div>
-      <div class="spec-value">{{ page.modelyears }}</div>
-      {% endif %}
-      
+          
       {% if page.serial %}
       <div class="spec-name">Серийный номер:</div>
       <div class="spec-value">{{ page.serial }}</div>
@@ -60,6 +55,15 @@ layout: pgs
       <div class="spec-name">Внутренний номер:</div>
       <div class="spec-value">{{ page.innernumber }}</div>
       {% endif %}
+
+      {% if page.tags and page.tags.size > 0 %}
+  <div class="spec-name">Теги:</div>
+  <div class="spec-value">
+    {% for tag in page.tags %}
+      <a href="/exhibits/tag/{{ tag | slugify }}/" class="tag-link-small">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  </div>
+{% endif %}
       
       {% if page.acquired_date %}
       <div class="spec-name">Дата приобретения:</div>
