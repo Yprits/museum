@@ -97,7 +97,6 @@ title: "Все экспонаты коллекции"
                   {% endif %}
                 {% endfor %}
               </div>
-            {% geopolitical_fallback_check %}
             {% elsif exhibit.country %}
               <br>🌍 {{ exhibit.country }}
             {% endif %}
