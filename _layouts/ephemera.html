@@ -11,6 +11,28 @@ layout: pgs
       
       <div class="spec-name">Тип:</div>
       <div class="spec-value">{{ page.type }}</div>
+
+      <!-- Источник / Наличие оригинала -->
+      <div class="spec-name">Наличие оригинала:</div>
+      <div class="spec-value">
+        {% if page.in_collection == true %}
+          <span style="color: #00ff00; font-weight: bold;">● В коллекции музея</span>
+        {% else %}
+          <span style="color: #ffaa00; font-weight: bold;">○ Цифровая копия</span>
+        {% endif %}
+      </div>
+
+      <!-- Источник скана, если вещь из интернета -->
+      {% if page.in_collection != true and page.source_name %}
+      <div class="spec-name">Источник скана:</div>
+      <div class="spec-value">
+        {% if page.source_url %}
+          <a href="{{ page.source_url }}" target="_blank" style="color: #ffaa00; text-decoration: underline;">{{ page.source_name }}</a>
+        {% else %}
+          {{ page.source_name }}
+        {% endif %}
+      </div>
+      {% endif %}
       
       {% if page.year %}
       <div class="spec-name">Год выпуска:</div>
@@ -38,13 +60,24 @@ layout: pgs
       {% endif %}
       
       {% if page.condition %}
+      <!-- Показываем состояние, только если вещь физически у вас -->
+      {% if page.in_collection == true %}
       <div class="spec-name">Состояние:</div>
       <div class="spec-value">{{ page.condition }}</div>
       {% endif %}
+      {% endif %}
       
       {% if page.models %}
+      <!-- Связываем с паспортом модели, если она есть в _models -->
       <div class="spec-name">На изображении:</div>
-      <div class="spec-value">{{ page.models }}</div>
+      <div class="spec-value">
+        {% assign model_page = site.models | where: "title", page.models | first %}
+        {% if model_page %}
+          <a href="{{ model_page.url | relative_url }}">{{ page.models }}</a>
+        {% else %}
+          {{ page.models }}
+        {% endif %}
+      </div>
       {% endif %}
       
       {% if page.material %}
@@ -91,7 +124,7 @@ layout: pgs
     </div>
   </div>
 
-  <!-- Таблица с изображениями -->
+  <!-- Таблица с изображениями с фотохостинга (без relative_url) -->
   <table class="photo-table">
     {% if page.photo0 %}
     <tr>
