@@ -75,7 +75,33 @@ title: "Все экспонаты коллекции"
             {% if exhibit.category %}({{ exhibit.category }}){% endif %}
             {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
             {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
-            {% if exhibit.country %}<br>🌍 {{ exhibit.country }}{% endif %}
+                        <!-- Новая компактная логика флагов для общего списка -->
+            {% if exhibit.flags %}
+              <br>🌍 
+              <div class="exhibit-flags-container" style="display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;">
+                {% for flag in exhibit.flags %}
+                  {% if flag.code and flag.code != "" and flag.code != empty %}
+                    {% assign hint = flag.note | default: flag.code | upcase %}
+                    <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
+                         alt="{{ hint }}" 
+                         title="{{ hint }}"
+                         class="exhibit-flag"
+                         style="width: 20px; height: 14px; border: 1px solid #e0e0e0; border-radius: 1px; object-fit: contain; vertical-align: middle;">     
+                     {% unless forloop.last %}
+                      {% assign next_index = forloop.index %}
+                      {% assign next_flag = exhibit.flags[next_index] %}
+                      {% if next_flag.code and next_flag.code != "" %}
+                        <span style="font-weight: bold; color: #999; font-size: 11px; margin: 0 1px;">/</span>
+                      {% endif %}
+                    {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% geopolitical_fallback_check %}
+            {% elsif exhibit.country %}
+              <br>🌍 {{ exhibit.country }}
+            {% endif %}
+     <!-- Новая компактная логика флагов для общего списка -->        
             {% if exhibit.collectionstatus %}
               <br>
               {% assign status = exhibit.collectionstatus | default: "" | upcase %}
