@@ -922,12 +922,18 @@ details[open] summary::before {
 
 /* Сам флаг-иконка */
 .exhibit-flag {
-  width: 28px !important;    /* Жесткая ширина, чтобы верстка не ехала */
-  height: 20px !important;   /* Контейнер для флага */
-  object-fit: contain;       /* Сохраняет родные пропорции флагов (1:1 для Швейцарии и т.д.) */
-  vertical-align: middle;    /* Выравнивание ровно по центру текстовой строки */
-  border: 1px solid #e0e0e0; /* Тонкая серая рамка, чтобы флаги с белым фоном не сливались */
-  border-radius: 2px;        /* Едва заметное закругление углов для красоты */
-  background: transparent;   /* Прозрачный фон вокруг нестандартных флагов */
+  width: 28px !important;
+  height: 20px !important;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 1px;        /* Чуть уменьшим закругление для строгости */
+  background: transparent;
+  
+  /* Убираем рамку, которая давала эффект БЧБ полос */
+  border: none !important;   
+  
+  /* Добавляем очень мягкую круговую тень */
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1);
 }
+S
 
