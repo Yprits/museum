@@ -124,6 +124,20 @@ layout: pgs
     </div>
   </div>
 
+   <!-- СКАЧАТЬ: Блок для загрузки целого документа/архива -->
+  {% if page.download_url %}
+  <div class="download-box" style="margin: 25px 0; padding: 15px; background: #1a1a1a; border: 1px solid #333; text-align: center; border-radius: 4px;">
+    <p style="margin: 0 0 10px 0; font-size: 0.9em; color: #888;">Доступен файл для загрузки (PDF, DJVU или ZIP):</p>
+    <a href="{{ page.download_url }}" 
+       target="_blank" 
+       rel="noopener"
+       style="display: inline-block; padding: 10px 20px; background: #00ff00; color: #000; font-weight: bold; text-decoration: none; border-radius: 3px; font-family: monospace; text-transform: uppercase;">
+      💾 Скачать документ целиком
+    </a>
+  </div>
+  {% endif %}
+
+
   <!-- Таблица с изображениями с фотохостинга (без relative_url) -->
   <table class="photo-table">
     {% if page.photo0 %}
