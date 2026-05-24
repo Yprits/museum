@@ -75,10 +75,11 @@ title: "Все экспонаты коллекции"
             {% if exhibit.category %}({{ exhibit.category }}){% endif %}
             {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
             {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
-                        <!-- Новая компактная логика флагов для общего списка -->
+                           <!-- Новая компактная логика флагов для общего списка -->
             {% if exhibit.flags %}
-              <br>🌍 
-              <div class="exhibit-flags-container" style="display: inline-flex; align-items: center; gap: 4px; vertical-align: middle;">
+              <br>
+              <div class="exhibit-flags-container" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; vertical-align: middle;">
+                <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
                 {% for flag in exhibit.flags %}
                   {% if flag.code and flag.code != "" and flag.code != empty %}
                     {% assign hint = flag.note | default: flag.code | upcase %}
@@ -86,12 +87,12 @@ title: "Все экспонаты коллекции"
                          alt="{{ hint }}" 
                          title="{{ hint }}"
                          class="exhibit-flag"
-                         style="width: 20px !important; height: 14px !important; border: none !important; box-shadow: 0 0 1px rgba(0,0,0,0.4); border-radius: 1px; object-fit: contain; vertical-align: middle;">     
+                         style="width: 28px !important; height: 20px !important; border: none !important; box-shadow: 0 0 1px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.1) !important; border-radius: 1px !important; object-fit: contain !important; vertical-align: middle !important; padding: 0 !important; margin: 0 !important;">     
                      {% unless forloop.last %}
                       {% assign next_index = forloop.index %}
                       {% assign next_flag = exhibit.flags[next_index] %}
                       {% if next_flag.code and next_flag.code != "" %}
-                        <span style="font-weight: bold; color: #999; font-size: 11px; margin: 0 1px;">/</span>
+                        <span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>
                       {% endif %}
                     {% endunless %}
                   {% endif %}
@@ -100,7 +101,7 @@ title: "Все экспонаты коллекции"
             {% elsif exhibit.country %}
               <br>🌍 {{ exhibit.country }}
             {% endif %}
-            <!-- Новая компактная логика флагов для общего списка -->        
+            <!-- Новая компактная логика флагов для общего списка -->          
             {% if exhibit.collectionstatus %}
               <br>
               {% assign status = exhibit.collectionstatus | default: "" | upcase %}
