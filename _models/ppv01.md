@@ -4,6 +4,8 @@ title: ППВ-01
 category: Инженерный калькулятор
 modelyears: 1981-1993
 manufacturer: Электроника
+flags:
+  - { code: "su", note: "СССР" }
 country: СССР
 price: 57 р. (1981-90), 85 р. (1990), свободная розничная цена
 cpu: К145ИП16П

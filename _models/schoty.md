@@ -4,6 +4,8 @@ title: Счеты
 category: Домеханическое
 modelyears: 
 manufacturer: 
+flags:
+  - { code: "ru", note: "Россия" }
 country: Россия
 price: 
 material: 

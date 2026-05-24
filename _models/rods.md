@@ -4,6 +4,8 @@ title: Счетные палочки арт. РСЧ 20
 category: Домеханическое
 modelyears: ...2022...
 manufacturer: ООО НПО "Рантис"
+flags:
+  - { code: "ru", note: "Россия" }
 country: Россия
 price: 
 material: пластик
