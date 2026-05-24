@@ -75,10 +75,10 @@ title: "Все экспонаты коллекции"
             {% if exhibit.category %}({{ exhibit.category }}){% endif %}
             {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
             {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
-                        <!-- Новая компактная логика флагов для общего списка -->
+                       <!-- Новая компактная логика флагов для общего списка -->
             {% if exhibit.flags %}
               <br>
-              <div class="exhibit-flags-container" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; vertical-align: middle;">
+              <div class="exhibit-flags-container" style="margin-top: 4px;">
                 <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
                 {% for flag in exhibit.flags %}
                   {% if flag.code and flag.code != "" and flag.code != empty %}
@@ -86,8 +86,7 @@ title: "Все экспонаты коллекции"
                     <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
                          alt="{{ hint }}" 
                          title="{{ hint }}"
-                         class="exhibit-flag"
-                         style="width: 28px !important; height: 20px !important; border: none !important; box-shadow: 0 0 1px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.1) !important; border-radius: 1px !important; object-fit: contain !important; vertical-align: middle !important; padding: 0 !important; margin: 0 !important;">     
+                         class="exhibit-flag">     
                      {% unless forloop.last %}
                       {% assign next_index = forloop.index %}
                       {% assign next_flag = exhibit.flags[next_index] %}
@@ -102,7 +101,7 @@ title: "Все экспонаты коллекции"
             {% elsif exhibit.country %}
               <br>🌍 {{ exhibit.country }}
             {% endif %}
-            <!-- Новая компактная логика флагов для общего списка -->        
+            <!-- Новая компактная логика флагов для общего списка -->   
             {% if exhibit.collectionstatus %}
               <br>
               {% assign status = exhibit.collectionstatus | default: "" | upcase %}
