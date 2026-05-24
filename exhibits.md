@@ -60,11 +60,11 @@ title: "Все экспонаты коллекции"
         <img src="{{ thumb_url }}" alt="{{ exhibit.model }}" loading="lazy">
       </a>
     {% else %}
-      <img src="https://placehold.co" 
+      <img src="https://placehold.co/150x100/png" 
            alt="Ошибка в ссылке на фото" loading="lazy">
     {% endif %}
   {% else %}
-    <img src="https://placehold.co" 
+    <img src="https://placehold.co/150x100/png" 
          alt="Фото пока нет" loading="lazy">
   {% endif %}
 </div>
