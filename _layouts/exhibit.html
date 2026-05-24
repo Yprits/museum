@@ -25,10 +25,32 @@ layout: pgs
       <div class="spec-value">{{ page.manufacturer }}</div>
       {% endif %}
       
-      {% if page.country %}
+      <!-- Модернизированный блок страны / флагов с текстом -->
+      {% if page.flags %}
+      <div class="spec-name">Страна/Регион:</div>
+      <div class="spec-value">
+        <div class="exhibit-flags-container">
+          {% for flag in page.flags %}
+            <div class="flag-item" style="display: inline-flex; align-items: center; gap: 4px;">
+              <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code }}.svg" 
+                   alt="{{ flag.code | upcase }}" 
+                   class="exhibit-flag">
+              {% if flag.note %}
+                <span class="flag-text">({{ flag.note }})</span>
+              {% endif %}
+            </div>
+            {% unless forloop.last %}
+              <span class="flag-separator" style="font-weight: bold; color: #999; margin: 0 4px;">/</span>
+            {% endunless %}
+          {% endfor %}
+        </div>
+      </div>
+      {% elsif page.country %}
       <div class="spec-name">Страна:</div>
       <div class="spec-value">{{ page.country }}</div>
       {% endif %}
+    <!-- Модернизированный блок страны / флагов с текстом -->
+      
       
       {% if page.price %}
       <div class="spec-name">Цена:</div>
