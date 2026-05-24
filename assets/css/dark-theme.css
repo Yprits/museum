@@ -908,3 +908,26 @@ details[open] summary::before {
   color: #ff6600;
   border-bottom: 1px solid #ff6600;
 }
+
+/* --- СТИЛИ ДЛЯ МУЗЕЙНЫХ ФЛАГОВ --- */
+
+/* Контейнер, который держит всю цепочку флагов в одну линию с текстом */
+.exhibit-flags-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;    /* Чтобы слеш выглядел аккуратно */
+  color: #666;
+}
+
+/* Сам флаг-иконка */
+.exhibit-flag {
+  width: 28px !important;    /* Жесткая ширина, чтобы верстка не ехала */
+  height: 20px !important;   /* Контейнер для флага */
+  object-fit: contain;       /* Сохраняет родные пропорции флагов (1:1 для Швейцарии и т.д.) */
+  vertical-align: middle;    /* Выравнивание ровно по центру текстовой строки */
+  border: 1px solid #e0e0e0; /* Тонкая серая рамка, чтобы флаги с белым фоном не сливались */
+  border-radius: 2px;        /* Едва заметное закругление углов для красоты */
+  background: transparent;   /* Прозрачный фон вокруг нестандартных флагов */
+}
+
