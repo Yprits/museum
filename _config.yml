@@ -2,6 +2,7 @@ baseurl: "/museum"
 url: "https://yprits.github.io"
 title: "Моя коллекция"
 remote_theme: pages-themes/hacker@v0.2.0
+
 collections:
   exhibits:
     output: true
@@ -23,27 +24,30 @@ collections:
     permalink: /:collection/:name/
 
 defaults:
-- scope:
+  - scope:
       path: "_exhibits"
       type: exhibits
-  values:
-    model: "не указана"
-    category: "прочее"
-    prodyear: "не указан"
-    modelyears: "неизвестны"
-    serial: "-"
-    manufacturer: "неизвестен"
-    country: "неизвестна"
-    price: "не указана"
-    condition: "не проверено"
-- scope:
+    values:
+      model_ref: "не указана"
+      category: "прочее"
+      prodyear: "не указан"
+      modelyears: "неизвестны"
+      serial: "-"
+      manufacturer: "неизвестен"
+      country: "неизвестна"
+      price: "не указана"
+      condition: "не проверено"
+  - scope:
       path: "_models"
       type: models
-  values:
+    values:
       status: "ПОИСК"
-- scope:
-     path: "_kunstkamera"
-     type: kunstkamera
-   values:
-     prodyear: "не поддается датировке"
-     condition: "существует вопреки логике"
+      manufacturer: "неизвестен"
+      country: "неизвестна"
+      modelyears: "неизвестны"
+  - scope:
+      path: "_kunstkamera"
+      type: kunstkamera
+    values:
+      prodyear: "не поддается датировке"
+      condition: "существует вопреки логике"
