@@ -923,7 +923,7 @@ details[open] summary::before {
 /* Сам флаг-иконка */
 .exhibit-flag {
   width: 28px !important;
-  height: 20px !important;
+  height: auto !important;
   object-fit: contain;
   vertical-align: middle;
   border-radius: 1px;        /* Чуть уменьшим закругление для строгости */
