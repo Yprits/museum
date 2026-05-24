@@ -27,7 +27,7 @@ title: "Все экспонаты коллекции"
   </details>
 
   <details>
-    <summary>Искать по странам</summary>
+    <summary>Искать по странах</summary>
     <div class="filter-content">
       <ul>
         <li><a href="./exhibits/ussr">Советские</a> - все, связанные с СССР</li>
@@ -86,7 +86,7 @@ title: "Все экспонаты коллекции"
                          alt="{{ hint }}" 
                          title="{{ hint }}"
                          class="exhibit-flag"
-                         style="width: 20px; height: 14px; border: 1px solid #e0e0e0; border-radius: 1px; object-fit: contain; vertical-align: middle;">     
+                         style="width: 20px !important; height: 14px !important; border: none !important; box-shadow: 0 0 1px rgba(0,0,0,0.4); border-radius: 1px; object-fit: contain; vertical-align: middle;">     
                      {% unless forloop.last %}
                       {% assign next_index = forloop.index %}
                       {% assign next_flag = exhibit.flags[next_index] %}
@@ -101,7 +101,7 @@ title: "Все экспонаты коллекции"
             {% elsif exhibit.country %}
               <br>🌍 {{ exhibit.country }}
             {% endif %}
-     <!-- Новая компактная логика флагов для общего списка -->        
+            <!-- Новая компактная логика флагов для общего списка -->        
             {% if exhibit.collectionstatus %}
               <br>
               {% assign status = exhibit.collectionstatus | default: "" | upcase %}
