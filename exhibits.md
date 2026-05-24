@@ -7,7 +7,7 @@ title: "Все экспонаты коллекции"
 
 Чтобы посмотреть информацию про любой экземпляр, просто кликните на его номер в коллекции!
 
-Хотите искать по моделям? Вам <a href="https://yprits.github.io/museum/models">сюда</a>.
+Хотите искать по моделям? Вам <a href="https://github.io">сюда</a>.
 
 <div class="filter-section">
   <details>
@@ -60,11 +60,11 @@ title: "Все экспонаты коллекции"
         <img src="{{ thumb_url }}" alt="{{ exhibit.model }}" loading="lazy">
       </a>
     {% else %}
-      <img src="https://placehold.co/150x100/png?text=Ошибка+ссылки&font=verdana" 
+      <img src="https://placehold.co" 
            alt="Ошибка в ссылке на фото" loading="lazy">
     {% endif %}
   {% else %}
-    <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
+    <img src="https://placehold.co" 
          alt="Фото пока нет" loading="lazy">
   {% endif %}
 </div>
@@ -75,7 +75,7 @@ title: "Все экспонаты коллекции"
             {% if exhibit.category %}({{ exhibit.category }}){% endif %}
             {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
             {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
-                           <!-- Новая компактная логика флагов для общего списка -->
+                        <!-- Новая компактная логика флагов для общего списка -->
             {% if exhibit.flags %}
               <br>
               <div class="exhibit-flags-container" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; vertical-align: middle;">
@@ -98,10 +98,11 @@ title: "Все экспонаты коллекции"
                   {% endif %}
                 {% endfor %}
               </div>
+            {% comment %} Тут была битая строка {% endcomment %}
             {% elsif exhibit.country %}
               <br>🌍 {{ exhibit.country }}
             {% endif %}
-            <!-- Новая компактная логика флагов для общего списка -->          
+            <!-- Новая компактная логика флагов для общего списка -->        
             {% if exhibit.collectionstatus %}
               <br>
               {% assign status = exhibit.collectionstatus | default: "" | upcase %}
