@@ -1,4 +1,6 @@
 {% assign item = include.item %}
+{% assign exhibit = item %} <!-- Маскируемся под старую переменную для плагина get_imgbox_thumb -->
+
 <div class="exhibit-card item-card">
   <div class="item-image">
     {% if item.photo0 %}
@@ -11,10 +13,10 @@
           <img src="{{ thumb_url }}" alt="{{ item.model }}" loading="lazy">
         </a>
       {% else %}
-        <img src="https://placehold.co/150x100/png" alt="Ошибка в ссылке на фото" loading="lazy">
+        <img src="https://placehold.co" alt="Ошибка в ссылке на фото" loading="lazy">
       {% endif %}
     {% else %}
-      <img src="https://placehold.co/150x100/png" alt="Фото пока нет" loading="lazy">
+      <img src="https://placehold.co" alt="Фото пока нет" loading="lazy">
     {% endif %}
   </div>
   <div class="item-info">
