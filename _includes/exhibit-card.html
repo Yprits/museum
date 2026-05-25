@@ -11,10 +11,10 @@
           <img src="{{ thumb_url }}" alt="{{ item.model }}" loading="lazy">
         </a>
       {% else %}
-        <img src="https://placehold.co" alt="Ошибка в ссылке" loading="lazy">
+        <img src="https://placehold.co/150x100/png" alt="Ошибка в ссылке на фото" loading="lazy">
       {% endif %}
     {% else %}
-      <img src="https://placehold.co" alt="Фото пока нет" loading="lazy">
+      <img src="https://placehold.co/150x100/png" alt="Фото пока нет" loading="lazy">
     {% endif %}
   </div>
   <div class="item-info">
@@ -25,7 +25,29 @@
       {% if item.manufacturer %}<br>🏭 {{ item.manufacturer }}{% endif %}
       {% if item.prodyear %}<br>📅 {{ item.prodyear }}{% endif %}
       
-      {% if item.country %}
+      <!-- Компактная логика флагов -->
+      {% if item.flags %}
+        <br>
+        <div class="exhibit-flags-container" style="margin-top: 4px;">
+          <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
+          {% for flag in item.flags %}
+            {% if flag.code and flag.code != "" and flag.code != empty %}
+              {% assign hint = flag.note | default: flag.code | upcase %}
+              <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
+                   alt="{{ hint }}" 
+                   title="{{ hint }}"
+                   class="exhibit-flag">     
+               {% unless forloop.last %}
+                {% assign next_index = forloop.index %}
+                {% assign next_flag = item.flags[next_index] %}
+                {% if next_flag.code and next_flag.code != "" %}
+                  <span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>
+                {% endif %}
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elif item.country %}
         <br>🌍 {{ item.country }}
       {% endif %}
          
