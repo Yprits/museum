@@ -1,52 +1,66 @@
-{% assign item = include.item %}
+{% assign exhibit = include.exhibit %}
+
 <div class="exhibit-card item-card">
   <div class="item-image">
-    {% if include.thumb and include.thumb != "" %}
-      <a href="{{ item.photo0 }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ include.thumb }}" alt="{{ item.model }}" loading="lazy">
-      </a>
+    {% if exhibit.photo0 %}
+      {% capture generated_prev0 %}
+        {% include get_imgbox_thumb.liquid url=exhibit.photo0 %}
+      {% endcapture %}
+      {% assign thumb_url = generated_prev0 | strip %}
+      {% if thumb_url != "" %}
+        <a href="{{ exhibit.photo0 }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ thumb_url }}" alt="{{ exhibit.model }}" loading="lazy">
+        </a>
+      {% else %}
+        <img src="https://placehold.co/150x100/png?text=ошибка+фото" alt="Ошибка в ссылке на фото" loading="lazy">
+      {% endif %}
     {% else %}
-      <img src="https://placehold.co" alt="Фото пока нет" loading="lazy">
+      <img src="https://placehold.co/150x100/png?text=нет+фото" alt="Фото пока нет" loading="lazy">
     {% endif %}
   </div>
+
   <div class="item-info">
-    <a href="{{ item.url | relative_url }}" class="item-title">{{ item.innernumber }}</a>
-    <div class="item-description">{{ item.model }}</div>
+    <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
+    <div class="item-description">{{ exhibit.model }}</div>
     <div class="item-meta">
-      {% if item.category %}({{ item.category }}){% endif %}
-      {% if item.manufacturer %}<br>🏭 {{ item.manufacturer }}{% endif %}
-      {% if item.prodyear %}<br>📅 {{ item.prodyear }}{% endif %}
-      
-      <!-- Безопасный вывод флагов -->
-      {% if item.flags %}
+      {% if exhibit.category %}({{ exhibit.category }}){% endif %}
+      {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
+      {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
+
+      <!-- Флаги (компактная версия) -->
+      {% if exhibit.flags %}
         <br>
         <div class="exhibit-flags-container" style="margin-top: 4px;">
           <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
-          {% for flag in item.flags %}
-            {% if flag.code and flag.code != "" %}
+          {% for flag in exhibit.flags %}
+            {% if flag.code and flag.code != "" and flag.code != empty %}
               {% assign hint = flag.note | default: flag.code | upcase %}
               <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
                    alt="{{ hint }}" 
                    title="{{ hint }}"
-                   class="exhibit-flag"
-                   style="height: 16px; vertical-align: middle;">     
-               {% unless forloop.last %}
-                 <span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>
-               {% endunless %}
+                   class="exhibit-flag">
+              {% unless forloop.last %}
+                {% assign next_index = forloop.index %}
+                {% assign next_flag = exhibit.flags[next_index] %}
+                {% if next_flag.code and next_flag.code != "" %}
+                  <span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>
+                {% endif %}
+              {% endunless %}
             {% endif %}
           {% endfor %}
         </div>
-      {% elif item.country %}
-        <br>🌍 {{ item.country }}
+      {% elsif exhibit.country %}
+        <br>🌍 {{ exhibit.country }}
       {% endif %}
-         
-      {% if item.collectionstatus %}
+
+      <!-- Статус коллекции -->
+      {% if exhibit.collectionstatus %}
         <br>
-        {% assign status = item.collectionstatus | default: "" | upcase %}
+        {% assign status = exhibit.collectionstatus | default: "" | upcase %}
         {% if status == "ПОИСК" or status contains "ИЩУ" %}
-          <span class="status-seek">{{ item.collectionstatus }}</span>
+          <span class="status-seek">{{ exhibit.collectionstatus }}</span>
         {% else %}
-          {{ item.collectionstatus }}
+          {{ exhibit.collectionstatus }}
         {% endif %}
       {% endif %}
     </div>
