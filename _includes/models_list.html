@@ -1,0 +1,16 @@
+{% assign tag_name = include.tag | default: "" %}
+{% assign sort_by = include.sort_by | default: "title" %}
+
+{% if tag_name != "" %}
+  {% assign filtered = site.models | where_exp: "item", "item.tags contains tag_name" %}
+{% else %}
+  {% assign filtered = site.models %}
+{% endif %}
+
+{% assign sorted = filtered | sort: sort_by %}
+
+<div class="models-grid items-grid">
+  {% for model in sorted %}
+    {% include model_card.html model=model %}
+  {% endfor %}
+</div>
