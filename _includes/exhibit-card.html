@@ -2,9 +2,17 @@
 <div class="exhibit-card item-card">
   <div class="item-image">
     {% if item.photo0 %}
-      <a href="{{ item.photo0 }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ item.photo0 }}" alt="{{ item.model }}" loading="lazy" style="max-width: 150px; height: auto;">
-      </a>
+      {% capture generated_prev0 %}
+        {% include get_imgbox_thumb.liquid url=item.photo0 %}
+      {% endcapture %}
+      {% assign thumb_url = generated_prev0 | strip %}
+      {% if thumb_url != "" %}
+        <a href="{{ item.photo0 }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ thumb_url }}" alt="{{ item.model }}" loading="lazy">
+        </a>
+      {% else %}
+        <img src="https://placehold.co" alt="Ошибка в ссылке" loading="lazy">
+      {% endif %}
     {% else %}
       <img src="https://placehold.co" alt="Фото пока нет" loading="lazy">
     {% endif %}
