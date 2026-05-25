@@ -1,0 +1,59 @@
+{% assign item = include.item %}
+<div class="exhibit-card item-card">
+  <div class="item-image">
+    {% if item.photo0 %}
+      {% capture generated_prev0 %}
+        {% include get_imgbox_thumb.liquid url=item.photo0 %}
+      {% endcapture %}
+      {% assign thumb_url = generated_prev0 | strip %}
+      {% if thumb_url != "" %}
+        <a href="{{ item.photo0 }}" target="_blank" rel="noopener noreferrer">
+          <img src="{{ thumb_url }}" alt="{{ item.model }}" loading="lazy">
+        </a>
+      {% else %}
+        <img src="https://placehold.co" alt="Ошибка в ссылке" loading="lazy">
+      {% endif %}
+    {% else %}
+      <img src="https://placehold.co" alt="Фото пока нет" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="item-info">
+    <a href="{{ item.url | relative_url }}" class="item-title">{{ item.innernumber }}</a>
+    <div class="item-description">{{ item.model }}</div>
+    <div class="item-meta">
+      {% if item.category %}({{ item.category }}){% endif %}
+      {% if item.manufacturer %}<br>🏭 {{ item.manufacturer }}{% endif %}
+      {% if item.prodyear %}<br>📅 {{ item.prodyear }}{% endif %}
+      
+      {% if item.flags %}
+        <br>
+        <div class="exhibit-flags-container" style="margin-top: 4px;">
+          <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
+          {% for flag in item.flags %}
+            {% if flag.code and flag.code != "" and flag.code != empty %}
+              {% assign hint = flag.note | default: flag.code | upcase %}
+              <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" alt="{{ hint }}" title="{{ hint }}" class="exhibit-flag">     
+               {% unless forloop.last %}
+                {% assign next_index = forloop.index %}
+                {% assign next_flag = item.flags[next_index] %}
+                {% if next_flag.code and next_flag.code != "" %}<span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>{% endif %}
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elif item.country %}
+        <br>🌍 {{ item.country }}
+      {% endif %}
+         
+      {% if item.collectionstatus %}
+        <br>
+        {% assign status = item.collectionstatus | default: "" | upcase %}
+        {% if status == "ПОИСК" or status contains "ИЩУ" %}
+          <span class="status-seek">{{ item.collectionstatus }}</span>
+        {% else %}
+          {{ item.collectionstatus }}
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
