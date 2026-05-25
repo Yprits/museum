@@ -912,7 +912,8 @@ details[open] summary::before {
 /* --- СТИЛИ ДЛЯ МУЗЕЙНЫХ ФЛАГОВ --- */
 
 /* Контейнер, который держит всю цепочку флагов в одну линию с текстом */
-.exhibit-flags-container {
+.exhibit-flags-container,
+.model-flags-container {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -921,7 +922,8 @@ details[open] summary::before {
 }
 
 /* Сам флаг-иконка */
-.exhibit-flag {
+.exhibit-flag,
+.model-flag {
   width: 28px !important;     /* Крупный размер */
   height: auto !important;    /* АВТО-ВЫСОТА: именно она убирает белые полосы по бокам флага СССР */
   object-fit: contain;
