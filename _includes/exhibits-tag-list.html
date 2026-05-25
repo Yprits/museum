@@ -7,15 +7,46 @@
   <div class="exhibits-grid items-grid">
     {% for exhibit in sorted_exhibits %}
       {% if exhibit.innernumber %}
-        
-        <!-- Безопасно генерируем миниатюру в контексте списка -->
-        {% assign current_thumb = "" %}
-        {% if exhibit.photo0 %}
-          {% capture generated_prev0 %}{% include get_imgbox_thumb.liquid url=exhibit.photo0 %}{% endcapture %}
-          {% assign current_thumb = generated_prev0 | strip %}
-        {% endif %}
-
-        {% include exhibit-card.html item=exhibit thumb=current_thumb %}
+        <div class="exhibit-card item-card">
+          <div class="item-image">
+            {% if exhibit.photo0 %}
+              {% capture generated_prev0 %}
+                {% include get_imgbox_thumb.liquid url=exhibit.photo0 %}
+              {% endcapture %}
+              {% assign thumb_url = generated_prev0 | strip %}
+              {% if thumb_url != "" %}
+                <a href="{{ exhibit.photo0 }}" target="_blank" rel="noopener noreferrer">
+                  <img src="{{ thumb_url }}" alt="{{ exhibit.model }}" loading="lazy">
+                </a>
+              {% else %}
+                <img src="https://placehold.co" 
+                     alt="Ошибка в ссылке на фото" loading="lazy">
+              {% endif %}
+            {% else %}
+              <img src="https://placehold.co" 
+                   alt="Фото пока нет" loading="lazy">
+            {% endif %}
+          </div>
+          <div class="item-info">
+            <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
+            <div class="item-description">{{ exhibit.model }}</div>
+            <div class="item-meta">
+              {% if exhibit.category %}({{ exhibit.category }}){% endif %}
+              {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
+              {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
+              {% if exhibit.country %}<br>🌍 {{ exhibit.country }}{% endif %}
+              {% if exhibit.collectionstatus %}
+                <br>
+                {% assign status = exhibit.collectionstatus | default: "" | upcase %}
+                {% if status == "ПОИСК" or status contains "ИЩУ" %}
+                  <span class="status-seek">{{ exhibit.collectionstatus }}</span>
+                {% else %}
+                  {{ exhibit.collectionstatus }}
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
       {% endif %}
     {% endfor %}
   </div>
