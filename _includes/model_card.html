@@ -14,9 +14,12 @@
   <div class="item-info">
     <a href="{{ model.url | relative_url }}" class="item-title">{{ model.title }}</a>
     <div class="item-meta">
-      {% if model.category %}({{ model.category }}{% endif %}
-      {% if model.short %}; {{ model.short }}{% endif %}{% if model.category or model.short %}){% endif %}
-      {% if model.modelyears %} 📆 {{ model.modelyears }}{% endif %}
+      {% if model.category or model.short %}
+        <br>({% if model.category %}{{ model.category }}{% endif %}{% if model.category and model.short %}; {% endif %}{% if model.short %}{{ model.short }}{% endif %})
+      {% endif %}
+      {% if model.modelyears %}
+        <br>📆 {{ model.modelyears }}
+      {% endif %}
       
            <!-- Флаги (компактная версия) для моделей -->
       {% if model.flags %}
