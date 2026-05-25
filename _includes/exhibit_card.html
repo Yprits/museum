@@ -27,21 +27,21 @@
       {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
       {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
 
-            <!-- Флаги (компактная версия) для моделей -->
-      {% if model.flags %}
+      <!-- Флаги (компактная версия) -->
+      {% if exhibit.flags %}
         <br>
-        <div class="model-flags-container" style="margin-top: 4px;">
+        <div class="exhibit-flags-container" style="margin-top: 4px;">
           <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
-          {% for flag in model.flags %}
+          {% for flag in exhibit.flags %}
             {% if flag.code and flag.code != "" and flag.code != empty %}
               {% assign hint = flag.note | default: flag.code | upcase %}
               <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
                    alt="{{ hint }}" 
                    title="{{ hint }}"
-                   class="model-flag">
+                   class="exhibit-flag">
               {% unless forloop.last %}
                 {% assign next_index = forloop.index %}
-                {% assign next_flag = model.flags[next_index] %}
+                {% assign next_flag = exhibit.flags[next_index] %}
                 {% if next_flag.code and next_flag.code != "" %}
                   <span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>
                 {% endif %}
@@ -49,8 +49,8 @@
             {% endif %}
           {% endfor %}
         </div>
-      {% elsif model.country %}
-        <br>🌍 {{ model.country }}
+      {% elsif exhibit.country %}
+        <br>🌍 {{ exhibit.country }}
       {% endif %}
 
       <!-- Статус коллекции -->
