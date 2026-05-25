@@ -1,20 +1,10 @@
 {% assign item = include.item %}
-{% assign exhibit = item %} <!-- Маскируемся под старую переменную для плагина get_imgbox_thumb -->
-
 <div class="exhibit-card item-card">
   <div class="item-image">
-    {% if item.photo0 %}
-      {% capture generated_prev0 %}
-        {% include get_imgbox_thumb.liquid url=item.photo0 %}
-      {% endcapture %}
-      {% assign thumb_url = generated_prev0 | strip %}
-      {% if thumb_url != "" %}
-        <a href="{{ item.photo0 }}" target="_blank" rel="noopener noreferrer">
-          <img src="{{ thumb_url }}" alt="{{ item.model }}" loading="lazy">
-        </a>
-      {% else %}
-        <img src="https://placehold.co" alt="Ошибка в ссылке на фото" loading="lazy">
-      {% endif %}
+    {% if include.thumb and include.thumb != "" %}
+      <a href="{{ item.photo0 }}" target="_blank" rel="noopener noreferrer">
+        <img src="{{ include.thumb }}" alt="{{ item.model }}" loading="lazy">
+      </a>
     {% else %}
       <img src="https://placehold.co" alt="Фото пока нет" loading="lazy">
     {% endif %}
