@@ -1,16 +1,10 @@
-<!--
-  Чистый список экспонатов по тегу
-  Принимает только один параметр: tag (обязательный)
-  Возвращает только сетку с карточками, без заголовков и фильтров
--->
-
 {% assign tag_name = include.tag | default: "" %}
 
 {% if tag_name != "" %}
   {% assign filtered_exhibits = site.exhibits | where_exp: "item", "item.tags contains tag_name" %}
   {% assign sorted_exhibits = filtered_exhibits | sort: "basename" %}
   
-  <div class="exhibits-grid items-grid">
+  <div class="exhibits-grid items-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
     {% for exhibit in sorted_exhibits %}
       {% if exhibit.innernumber %}
         {% include exhibit-card.html item=exhibit %}
@@ -18,6 +12,6 @@
     {% endfor %}
   </div>
 {% else %}
+  <!-- Если тег не указан, показываем сообщение -->
   <p>Тег не указан. Укажите тег для фильтрации экспонатов.</p>
 {% endif %}
-
