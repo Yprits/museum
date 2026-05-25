@@ -1,0 +1,43 @@
+{% assign model = include.model %}
+
+<div class="model-card item-card">
+  <div class="item-image">
+    {% if model.photo0 and model.prev0 %}
+      <a href="{{ model.photo0 }}">
+        <img src="{{ model.prev0 }}" alt="{{ model.title }}" loading="lazy">
+      </a>
+    {% else %}
+      <img src="https://placehold.co/150x100/png?text=Фото+пока+нет&font=verdana" 
+           alt="Фото пока нет" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="item-info">
+    <a href="{{ model.url | relative_url }}" class="item-title">{{ model.title }}</a>
+    <div class="item-meta">
+      {% if model.category %}({{ model.category }}{% endif %}
+      {% if model.short %}; {{ model.short }}{% endif %}{% if model.category or model.short %}){% endif %}
+      {% if model.modelyears %} 📆 {{ model.modelyears }}{% endif %}
+      
+      {# Флаги, если есть #}
+      {% if model.flags %}
+        <br>
+        <div class="model-flags-container" style="margin-top: 4px;">
+          <span style="font-size: 20px;">🌍</span>
+          {% for flag in model.flags %}
+            {% if flag.code and flag.code != "" %}
+              <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
+                   alt="{{ flag.note | default: flag.code | upcase }}" 
+                   title="{{ flag.note | default: flag.code | upcase }}"
+                   class="model-flag">
+              {% unless forloop.last %} / {% endunless %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elsif model.country %}
+        <br>🌍 {{ model.country }}
+      {% endif %}
+      
+      {% if model.manufacturer %} <br>🏭 {{ model.manufacturer }}{% endif %}
+    </div>
+  </div>
+</div>
