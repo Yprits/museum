@@ -9,16 +9,15 @@ title: Категории экспонатов
     font-family: "Courier New", Courier, monospace;
     font-size: 15px;
     line-height: 1.4;
-    background-color: #fafafa; /* Светлый нейтральный фон */
-    color: #24292e;            /* Темно-серый текст */
+
     padding: 20px;
     border-radius: 4px;
     border: 1px solid #e1e4e8;  /* Тонкая светлая рамка */
     overflow-x: auto;
   }
-  .tree-line { color: #6a737d; } /* Серые линии ветвления */
-  .tree-code { color: #005cc5; font-weight: bold; } /* Синие коды категорий */
-  .tree-text { color: #24292e; } /* Текст описания */
+  .tree-line  /* Серые линии ветвления */
+  .tree-code  /* Синие коды категорий */
+  .tree-text  /* Текст описания */
 </style>
 
 <!-- Блок с деревом структуры -->
