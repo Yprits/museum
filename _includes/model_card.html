@@ -18,18 +18,25 @@
       {% if model.short %}; {{ model.short }}{% endif %}{% if model.category or model.short %}){% endif %}
       {% if model.modelyears %} 📆 {{ model.modelyears }}{% endif %}
       
-      {# Флаги, если есть #}
+           <!-- Флаги (компактная версия) для моделей -->
       {% if model.flags %}
         <br>
         <div class="model-flags-container" style="margin-top: 4px;">
-          <span style="font-size: 20px;">🌍</span>
+          <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
           {% for flag in model.flags %}
-            {% if flag.code and flag.code != "" %}
+            {% if flag.code and flag.code != "" and flag.code != empty %}
+              {% assign hint = flag.note | default: flag.code | upcase %}
               <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
-                   alt="{{ flag.note | default: flag.code | upcase }}" 
-                   title="{{ flag.note | default: flag.code | upcase }}"
+                   alt="{{ hint }}" 
+                   title="{{ hint }}"
                    class="model-flag">
-              {% unless forloop.last %} / {% endunless %}
+              {% unless forloop.last %}
+                {% assign next_index = forloop.index %}
+                {% assign next_flag = model.flags[next_index] %}
+                {% if next_flag.code and next_flag.code != "" %}
+                  <span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>
+                {% endif %}
+              {% endunless %}
             {% endif %}
           {% endfor %}
         </div>
