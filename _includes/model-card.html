@@ -1,0 +1,47 @@
+{% assign item = include.item %}
+<div class="model-card item-card">
+  <div class="item-image">
+    {% if item.photo0 and item.prev0 %}
+      <a href="{{ item.photo0 }}">
+        <img src="{{ item.prev0 }}" alt="{{ item.title }}" loading="lazy">
+      </a>
+    {% else %}
+      <img src="https://placehold.co" alt="Фото пока нет" loading="lazy">
+    {% endif %}
+  </div>
+  <div class="item-info">
+    <a href="{{ item.url | relative_url }}" class="item-title">{{ item.title }}</a>
+    <div class="item-meta">
+      {% if item.category %}({{ item.category }}; {% endif %}
+      {% if item.short %}{{ item.short }}){% else %}){% endif %}
+      {% if item.modelyears %} 📆 {{ item.modelyears }}{% endif %}
+      {% if item.manufacturer %} 🏭 {{ item.manufacturer }}{% endif %}
+      
+      <!-- Компактная логика флагов для моделей -->
+      {% if item.flags %}
+        <div class="exhibit-flags-container" style="display: inline-block; margin-left: 6px; vertical-align: middle;">
+          <span style="font-size: 16px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
+          {% for flag in item.flags %}
+            {% if flag.code and flag.code != "" and flag.code != empty %}
+              {% assign hint = flag.note | default: flag.code | upcase %}
+              <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
+                   alt="{{ hint }}" 
+                   title="{{ hint }}"
+                   class="exhibit-flag"
+                   style="height: 14px; vertical-align: middle;">     
+               {% unless forloop.last %}
+                {% assign next_index = forloop.index %}
+                {% assign next_flag = item.flags[next_index] %}
+                {% if next_flag.code and next_flag.code != "" %}
+                  <span style="font-weight: bold; color: #999; font-size: 12px; margin: 0 1px; vertical-align: middle;">/</span>
+                {% endif %}
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% elif item.country %}
+         🌍 {{ item.country }}
+      {% endif %}
+    </div>
+  </div>
+</div>
