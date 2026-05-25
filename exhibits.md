@@ -44,8 +44,3 @@ title: "Все экспонаты коллекции"
 </div>
 
 {% include exhibits_list.html sort_by="basename" %}
-        </div>
-      </div>
-    {% endif %}
-  {% endfor %}
-</div>
