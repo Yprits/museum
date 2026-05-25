@@ -4,14 +4,21 @@
   {% assign filtered_exhibits = site.exhibits | where_exp: "item", "item.tags contains tag_name" %}
   {% assign sorted_exhibits = filtered_exhibits | sort: "basename" %}
   
-  <div class="exhibits-grid items-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-top: 20px;">
+  <div class="exhibits-grid items-grid">
     {% for exhibit in sorted_exhibits %}
       {% if exhibit.innernumber %}
-        {% include exhibit-card.html item=exhibit %}
+        
+        <!-- Безопасно генерируем миниатюру в контексте списка -->
+        {% assign current_thumb = "" %}
+        {% if exhibit.photo0 %}
+          {% capture generated_prev0 %}{% include get_imgbox_thumb.liquid url=exhibit.photo0 %}{% endcapture %}
+          {% assign current_thumb = generated_prev0 | strip %}
+        {% endif %}
+
+        {% include exhibit-card.html item=exhibit thumb=current_thumb %}
       {% endif %}
     {% endfor %}
   </div>
 {% else %}
-  <!-- Если тег не указан, показываем сообщение -->
   <p>Тег не указан. Укажите тег для фильтрации экспонатов.</p>
 {% endif %}
