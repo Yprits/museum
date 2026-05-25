@@ -5,20 +5,20 @@ title: Категории экспонатов
 
 <!-- Стили для красивого отображения дерева -->
 <style>
-  .museum-tree {
+  .museum-tree-light {
     font-family: "Courier New", Courier, monospace;
     font-size: 15px;
     line-height: 1.4;
-    background-color: #1e1e1e;
-    color: #d4d4d4;
-    padding: 25px;
-    border-radius: 5px;
-    border: 1px solid #3c3c3c;
+    background-color: #fafafa; /* Светлый нейтральный фон */
+    color: #24292e;            /* Темно-серый текст */
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #e1e4e8;  /* Тонкая светлая рамка */
     overflow-x: auto;
   }
-  .tree-root { color: #569cd6; font-weight: bold; }
-  .tree-node { color: #4ec9b0; }
-  .tree-leaf { color: #ce9178; }
+  .tree-line { color: #6a737d; } /* Серые линии ветвления */
+  .tree-code { color: #005cc5; font-weight: bold; } /* Синие коды категорий */
+  .tree-text { color: #24292e; } /* Текст описания */
 </style>
 
 <!-- Блок с деревом структуры -->
@@ -64,8 +64,7 @@ title: Категории экспонатов
     font-family: "Courier New", Courier, monospace;
     font-size: 14px;
     line-height: 1.5;
-    background-color: #1a1a1a;
-    color: #858585;
+   
     padding: 20px;
     border-radius: 5px;
     border: 1px dashed #3c3c3c;
