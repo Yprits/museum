@@ -1,5 +1,5 @@
 ---
-layout: pgs
+layout: exhibit
 title: Белорусская техника
 ---
 
