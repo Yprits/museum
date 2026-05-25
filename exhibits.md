@@ -43,75 +43,7 @@ title: "Все экспонаты коллекции"
   </details>
 </div>
 
-<!-- Сортируем экспонаты по числовому номеру -->
-{% assign sorted_exhibits = site.exhibits | sort: "basename" %}
-<div class="exhibits-grid items-grid">
-  {% for exhibit in sorted_exhibits %}
-    {% if exhibit.innernumber %}
-      <div class="exhibit-card item-card">
-       <div class="item-image">
-  {% if exhibit.photo0 %}
-    {% capture generated_prev0 %}
-      {% include get_imgbox_thumb.liquid url=exhibit.photo0 %}
-    {% endcapture %}
-    {% assign thumb_url = generated_prev0 | strip %}
-    {% if thumb_url != "" %}
-      <a href="{{ exhibit.photo0 }}" target="_blank" rel="noopener noreferrer">
-        <img src="{{ thumb_url }}" alt="{{ exhibit.model }}" loading="lazy">
-      </a>
-    {% else %}
-      <img src="https://placehold.co/150x100/png" 
-           alt="Ошибка в ссылке на фото" loading="lazy">
-    {% endif %}
-  {% else %}
-    <img src="https://placehold.co/150x100/png" 
-         alt="Фото пока нет" loading="lazy">
-  {% endif %}
-</div>
-        <div class="item-info">
-          <a href="{{ exhibit.url | relative_url }}" class="item-title">{{ exhibit.innernumber }}</a>
-          <div class="item-description">{{ exhibit.model }}</div>
-          <div class="item-meta">
-            {% if exhibit.category %}({{ exhibit.category }}){% endif %}
-            {% if exhibit.manufacturer %}<br>🏭 {{ exhibit.manufacturer }}{% endif %}
-            {% if exhibit.prodyear %}<br>📅 {{ exhibit.prodyear }}{% endif %}
-                       <!-- Новая компактная логика флагов для общего списка -->
-            {% if exhibit.flags %}
-              <br>
-              <div class="exhibit-flags-container" style="margin-top: 4px;">
-                <span style="font-size: 20px; line-height: 1; vertical-align: middle; margin-right: 2px;">🌍</span>
-                {% for flag in exhibit.flags %}
-                  {% if flag.code and flag.code != "" and flag.code != empty %}
-                    {% assign hint = flag.note | default: flag.code | upcase %}
-                    <img src="{{ '/assets/img/flags/' | relative_url }}{{ flag.code | downcase }}.svg" 
-                         alt="{{ hint }}" 
-                         title="{{ hint }}"
-                         class="exhibit-flag">     
-                     {% unless forloop.last %}
-                      {% assign next_index = forloop.index %}
-                      {% assign next_flag = exhibit.flags[next_index] %}
-                      {% if next_flag.code and next_flag.code != "" %}
-                        <span style="font-weight: bold; color: #999; font-size: 14px; margin: 0 2px; vertical-align: middle;">/</span>
-                      {% endif %}
-                    {% endunless %}
-                  {% endif %}
-                {% endfor %}
-              </div>
-            {% comment %} Тут была битая строка {% endcomment %}
-            {% elsif exhibit.country %}
-              <br>🌍 {{ exhibit.country }}
-            {% endif %}
-            <!-- Новая компактная логика флагов для общего списка -->   
-            {% if exhibit.collectionstatus %}
-              <br>
-              {% assign status = exhibit.collectionstatus | default: "" | upcase %}
-              {% if status == "ПОИСК" or status contains "ИЩУ" %}
-                <span class="status-seek">{{ exhibit.collectionstatus }}</span>
-              {% else %}
-                {{ exhibit.collectionstatus }}
-              {% endif %}
-            {% endif %}
-          </div>
+{% include exhibits_list.html sort_by="basename" %}
         </div>
       </div>
     {% endif %}
