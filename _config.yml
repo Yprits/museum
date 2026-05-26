@@ -24,10 +24,10 @@ collections:
     permalink: /:collection/:name/
   time_exhibits:
     output: true
-    permalink: /:collection/:name/
+    permalink: /time/:name/
   time_models:
     output: true
-    permalink: /:collection/:name/
+    permalink: /time/models/:name/
 
 defaults:
   - scope:
