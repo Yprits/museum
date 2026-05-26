@@ -22,6 +22,12 @@ collections:
   kunstkamera:
     output: true
     permalink: /:collection/:name/
+  time_exhibits:
+    output: true
+    permalink: /:collection/:name/
+  time_models:
+    output: true
+    permalink: /:collection/:name/
 
 defaults:
   - scope:
@@ -51,3 +57,23 @@ defaults:
     values:
       prodyear: "не поддается датировке"
       condition: "существует вопреки логике"
+  - scope:
+      path: "_time_exhibits"
+      type: time_exhibits
+    values:
+      model_ref: "не указана"       # Ссылка на модель/калибр из time_models
+      category: "прочее"            # ЧМХ, ЧЦХ и т.д.
+      prodyear: "не указан"
+      serial: "-"
+      manufacturer: "неизвестен"    # Завод (МЧЗ, ПЧЗ, Интеграл)
+      country: "неизвестна"
+      condition: "не проверено"     # Ходят / стоят / пасхалка
+      folk_name: "-"                # Для «Терминаторов» и «Чебурашек»
+  - scope:
+      path: "_time_models"
+      type: time_models
+    values:
+      status: "ПОИСК"               # Для чеклиста, чего в коллекции еще нет
+      manufacturer: "неизвестен"
+      country: "неизвестна"
+      caliber: "неизвестен"         # Номер механизма/модуля (например, 2209 или 29367)
