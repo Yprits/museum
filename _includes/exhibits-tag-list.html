@@ -1,7 +1,7 @@
 {% assign tag_name = include.tag | default: "" %}
 
 {% if tag_name != "" %}
-  <p>Экспонаты с тегом «{{ tag_name }}»:</p>
+  <p></p>
   {% include exhibits_list.html tag=tag_name sort_by="basename" %}
 {% else %}
   <p>Тег не указан. Укажите тег для фильтрации экспонатов.</p>
