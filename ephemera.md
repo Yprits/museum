@@ -3,61 +3,45 @@ layout: pgs
 title: "Эфемеры"
 ---
 
-Здесь представлены рекламные материалы, марки, визитки, календари и другая бумажная продукция, изначально не предназначенная к долговременному хранению.
+Здесь представлены рекламные материалы, марки, визитки, календари и другая бумажная продукция, изначально не предназначенная к долговременному хранению. Сюда же идут карикатуры, интересные обложки, пропагандистские и информационные плакаты и прочее.
 
 {% if site.ephemera.size > 0 %}
 <div class="ephemera-list-grid">
   {% for item in site.ephemera %}
     {% if item.title %}
     <div class="ephemera-list-card">
-      <!-- Изображение -->
+      
+      <!-- 1. Изображение -->
       <div class="ephemera-list-image">
         {% if item.photo0 and item.prev0 %}
           <a href="{{ item.url | relative_url }}">
             <img src="{{ item.prev0 }}" alt="{{ item.title }}" loading="lazy">
           </a>
         {% else %}
-          <img src="https://placehold.co/250x180/png?text=Документ&font=verdana" 
+          <img src="https://placehold.co" 
                alt="Изображение отсутствует" loading="lazy">
         {% endif %}
       </div>
       
-      <!-- Информация -->
+      <!-- 2. Блок информации -->
       <div class="ephemera-list-info">
+        
         <!-- Заголовок -->
         <a href="{{ item.url | relative_url }}" class="ephemera-list-title">{{ item.title }}</a>
         
-        <!-- Описание -->
+        <!-- Описание (очищаем от возможных случайных тегов ради безопасности) -->
         <div class="ephemera-list-description">
-          {{ item.description | default: "Без описания" }}
+          {{ item.description | strip_html | default: "Без описания" }}
         </div>
         
-        <!-- Основная мета-информация -->
+        <!-- Техническая мета-информация (только то, чего нет в бейджах) -->
+        {% if item.pages %}
         <div class="ephemera-list-meta">
-          {% if item.type %}
-          <div class="ephemera-list-meta-item">
-            <strong>Тип:</strong> {{ item.type }}
-          </div>
-          {% endif %}
-          
-          {% if item.year %}
-          <div class="ephemera-list-meta-item">
-            <strong>Год:</strong> {{ item.year }}
-          </div>
-          {% endif %}
-          
-          {% if item.language %}
-          <div class="ephemera-list-meta-item">
-            <strong>Язык:</strong> {{ item.language }}
-          </div>
-          {% endif %}
-          
-          {% if item.pages %}
           <div class="ephemera-list-meta-item">
             <strong>Страниц:</strong> {{ item.pages }}
           </div>
-          {% endif %}
         </div>
+        {% endif %}
         
         <!-- Связанные модели -->
         {% if item.models %}
@@ -68,7 +52,7 @@ title: "Эфемеры"
             {% for model_ref in model_refs %}
               {% assign model_name = model_ref | strip %}
               {% if model_name != "" %}
-                {% assign found_model = site.models | where: "title", model_name | first %}
+                {% assign found_model = site.models | where_exp: "m", "m.title == model_name" | first %}
                 {% if found_model %}
                   <a href="{{ found_model.url | relative_url }}" class="ephemera-list-model-item">{{ model_name }}</a>
                 {% else %}
@@ -80,7 +64,7 @@ title: "Эфемеры"
         </div>
         {% endif %}
         
-        <!-- Бейджи -->
+        <!-- Визуальные Бейджи (выводятся строго один раз внизу) -->
         <div class="ephemera-list-badges">
           {% if item.type %}
           <span class="ephemera-list-badge type" title="Тип документа">{{ item.type }}</span>
@@ -95,11 +79,12 @@ title: "Эфемеры"
           {% endif %}
           
           {% if item.language %}
-          <span class="ephemera-list-badge" title="Язык">{{ item.language }}</span>
+          <span class="ephemera-list-badge language" title="Язык">{{ item.language }}</span>
           {% endif %}
         </div>
-      </div>
-    </div>
+
+      </div> <!-- /ephemera-list-info -->
+    </div> <!-- /ephemera-list-card -->
     {% endif %}
   {% endfor %}
 </div>
